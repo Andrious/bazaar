@@ -1,0 +1,116 @@
+name: shopping_cart
+description: A new Flutter project.
+
+version: 0.1.0
+
+environment:
+  sdk: ">=2.3.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: #^0.1.2
+  carousel_pro: #^0.0.13
+  firebase_core: ^0.4.0+6
+  firebase_auth: ^0.11.1+6
+  google_sign_in: #^4.0.2
+  cloud_firestore: #^0.12.5
+  shared_preferences: #^0.4.3
+  firebase_storage:
+  firebase_database:
+  loader_search_bar: #^1.0.3+3
+  url_launcher: #^5.0.3
+  provider:
+
+  mvc_application:
+    path: ../../../packages/mvc_application
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: "^0.6.1"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/icon/icon1.jpg"
+
+dependency_overrides:
+  image: ^2.1.4 #2.0.7
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - images/c1.jpg
+    - images/c2.jpg
+    - images/c3.jpg
+    - images/c4.jpg
+    - images/c5.jpg
+    - images/c6.jpg
+    - images/c7.jpg
+
+    - images/facebook.png
+    - images/google.png
+    - images/category1.jpg
+    - images/category2.jpg
+    - images/products/blazer1.jpg
+    - images/products/blazer2.jpg
+    - images/products/dress1.jpg
+    - images/products/dress2.jpg
+    - images/products/hills1.jpg
+    - images/products/hills2.jpg
+    - images/products/jeans1.jpg
+    - images/products/jeans2.jpg
+    - images/products/shoe1.jpg
+    - images/products/shoe2.jpg
+    - images/products/skirt1.jpg
+    - images/products/skirt2.jpg
+    - images/products/tshirt1.jpg
+    - images/products/tshirt2.jpg
+    - images/recentImages/blazer1.jpeg
+    - images/recentImages/dress1.jpeg
+    - images/recentImages/hills1.jpeg
+    - images/recentImages/skt1.jpeg
+    - images/sunny.png
+    - images/moon.png
+
+    - images/logos/github.png
+    - images/logos/linkedin.png
+    - images/logos/twitter.png
+
+  #  - images/a_dot_ham.jpeg
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: fonts/montserrat/Montserrat-Medium.ttf
+        # - asset: fonts/Montserrat-Regular.ttf
+        # style: italic
+    - family: Roboto
+      fonts:
+        - asset: fonts/roboto/Roboto-Medium.ttf
+          # - asset: fonts/TrajanPro_Bold.ttf
+          weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
