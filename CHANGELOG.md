@@ -1,3 +1,7 @@
+## 1.1.0
+ September 20, 2019
+- Adjusted Contact page
+
 ## 1.0.0
  September 20, 2019
 - Incorporate MVC pattern

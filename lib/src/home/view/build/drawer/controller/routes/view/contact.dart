@@ -118,18 +118,6 @@ class Contact extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Text("OR Email me at :"),
-                  Text("greg.perry@andrioussolutions.com",
-                      style: TextStyle(color: Colors.blueGrey))
-                ],
-              ),
-            ),
           ],
         ),
       ),
