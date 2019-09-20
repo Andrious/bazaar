@@ -1,5 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:shopping_cart/src/home/build/appbar/view/cart_product_details.dart';
+import 'package:flutter/material.dart'
+    show
+        AppBar,
+        BuildContext,
+        Color,
+        Colors,
+        Container,
+        Divider,
+        EdgeInsets,
+        ListView,
+        MaterialButton,
+        Padding,
+        Scaffold,
+        State,
+        StatefulWidget,
+        Text,
+        Widget;
+
+import 'package:bazaar/src/home/view/build/appbar/view/cart_product_details.dart'
+    show CartProductDetails;
 
 class Cart extends StatefulWidget {
   @override

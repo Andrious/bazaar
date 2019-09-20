@@ -1,5 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:shopping_cart/src/home/build/appbar/view/cart_product_details.dart';
+import 'package:flutter/material.dart'
+    show
+        AppBar,
+        BuildContext,
+        Color,
+        Container,
+        Scaffold,
+        StatelessWidget,
+        Text,
+        Widget;
+
+import 'package:bazaar/src/view.dart' show CartProductDetails, MyOrders;
 
 class MyOrders extends StatelessWidget {
   @override

@@ -1,15 +1,67 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        AlertDialog,
+        Alignment,
+        AnimatedBuilder,
+        Animation,
+        AnimationController,
+        BorderRadius,
+        BoxDecoration,
+        BuildContext,
+        Center,
+        CircularProgressIndicator,
+        Color,
+        Colors,
+        Column,
+        Container,
+        CurvedAnimation,
+        Curves,
+        EdgeInsets,
+        FlatButton,
+        FontWeight,
+        Form,
+        FormState,
+        GlobalKey,
+        Icon,
+        IconButton,
+        Icons,
+        Image,
+        InkWell,
+        InputDecoration,
+        Interval,
+        LinearGradient,
+        ListTile,
+        ListView,
+        MaterialButton,
+        MaterialPageRoute,
+        Matrix4,
+        MediaQuery,
+        Navigator,
+        RoundedRectangleBorder,
+        Row,
+        Scaffold,
+        SingleTickerProviderStateMixin,
+        SizedBox,
+        StatefulWidget,
+        Text,
+        TextEditingController,
+        TextFormField,
+        TextInputType,
+        TextStyle,
+        Transform,
+        Tween,
+        Visibility,
+        Widget,
+        showDialog;
 
-import 'package:shopping_cart/src/controller.dart';
-import 'package:shopping_cart/src/view.dart';
+import 'package:bazaar/src/controller.dart' as c;
 
-import 'package:shopping_cart/src/login/view/loginPage.dart';
-import 'package:shopping_cart/src/home/view/homepage.dart';
+import 'package:bazaar/src/view.dart'
+    show Controllers, HomePage, Login, StateMVC;
 
-//import 'package:shopping_cart/src/model/firebaseDB/googleSignIn.dart';
-//import 'package:shopping_cart/src/model/firebaseDB/userManagement.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:bazaar/src/login/view/loginPage.dart' show Login;
+
+import 'package:bazaar/src/home/view/homepage.dart' show HomePage;
 
 class SignUp extends StatefulWidget {
   @override
@@ -18,18 +70,13 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends StateMVC<SignUp>
     with SingleTickerProviderStateMixin {
-  _SignUpState() : super(SignUpPage()) {
+  _SignUpState() : super(c.SignUpPage()) {
     con = controller;
   }
-  SignUpPage con;
-
-//// Google sign in
-//  Auth auth = Auth();
-//// Google sign in
+  c.SignUpPage con;
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-//  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-//  UserManagement userManagement = UserManagement();
+
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
@@ -37,13 +84,16 @@ class _SignUpState extends StateMVC<SignUp>
   Animation animation, delayAnimation, muchDelayedAnimation;
   AnimationController animationController;
   bool hidePass = true;
-  SharedPreferences preferences;
   bool isLoading = false;
   bool isLoggedIn = false;
 
   @override
   void initState() {
     super.initState();
+    final ad = Controllers.of<c.BazaarApp>()?.ads;
+    if (ad != null) {
+      ad?.closeBannerAd();
+    }
     animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 2000),
@@ -71,7 +121,7 @@ class _SignUpState extends StateMVC<SignUp>
     setState(() {
       isLoading = true;
     });
-    preferences = await SharedPreferences.getInstance();
+
     if (isLoggedIn) {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => HomePage()));
@@ -286,6 +336,7 @@ class _SignUpState extends StateMVC<SignUp>
                                 ),
                               ),
                               onPressed: () async {
+                                Navigator.of(context).pop();
                                 signUpUser();
                               },
                               color: Color(0xFFB33771),
@@ -332,7 +383,7 @@ class _SignUpState extends StateMVC<SignUp>
                                           builder: (context) => HomePage()));
                                 } else {
                                   if (con.inError) {
-                                    _showDialogue(text: con.getError().toString());
+                                    con.msgError(context);
                                   } else {
                                     Navigator.pop(context);
                                   }
@@ -377,7 +428,6 @@ class _SignUpState extends StateMVC<SignUp>
   }
 
   Future signUpUser() async {
-//    print("signUp");
     FormState formState = _formKey.currentState;
     if (formState.validate()) {
       formState.reset();
@@ -389,6 +439,8 @@ class _SignUpState extends StateMVC<SignUp>
         if (signIn) {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => HomePage()));
+        } else {
+          if (con.inError) con.msgError(context);
         }
       }
     }
@@ -396,10 +448,7 @@ class _SignUpState extends StateMVC<SignUp>
 
   _loadingDialog() => _showDialogue(
           content: Row(
-        children: [
-          CircularProgressIndicator(),
-          Text("Loading!")
-        ],
+        children: [CircularProgressIndicator(), Text("Loading!")],
       ));
 
   _showDialogue({

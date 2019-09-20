@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show BuildContext, Drawer, ListView, StatelessWidget, Widget;
 
-import 'package:shopping_cart/src/view.dart';
+import 'package:bazaar/src/view.dart' hide HomeDrawer;
 
-import 'package:shopping_cart/src/controller.dart' as c;
+import 'package:bazaar/src/controller.dart' as c;
 
 class HomeDrawer extends StatelessWidget {
   HomeDrawer(this.state);

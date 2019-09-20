@@ -1,16 +1,57 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        BoxDecoration,
+        CircleAvatar,
+        Color,
+        Colors,
+        FontWeight,
+        GestureDetector,
+        Icons,
+        Image,
+        InkWell,
+        ListTile,
+        MaterialPageRoute,
+        Navigator,
+        Switch,
+        Text,
+        TextStyle,
+        ThemeData,
+        UserAccountsDrawerHeader,
+        Widget;
 
-import 'package:shopping_cart/src/model.dart';
-import 'package:shopping_cart/src/view.dart';
-import 'package:shopping_cart/src/controller.dart';
+import 'package:auth/auth.dart' show Auth;
+
+import 'package:bazaar/src/view.dart' hide BazaarApp;
+
+import 'package:bazaar/src/controller.dart'
+    show BazaarApp, ControllerMVC, Controllers, ThemeChanger;
 
 class HomeDrawer extends ControllerMVC {
   HomePageState state;
   ThemeChanger theme;
+  Auth _auth;
+  BazaarApp con;
 
-  initState() {
+  bool _darkmode;
+
+  @override
+  void initState() {
+    con = Controllers.of<BazaarApp>();
+    _auth = con.auth;
     state = stateMVC;
     theme = state.controllerByType<ThemeChanger>(state.context);
+    _darkmode = theme.darkMode;
+    // Load the Ad into memory.
+    con.ads.setBannerAd();
+  }
+
+  void onTap(Widget widget) {
+    con.ads.showBannerAd(state: this.stateMVC);
+    Navigator.of(state.context)
+        .push(MaterialPageRoute(builder: (context) => widget))
+        .then((_) {
+      con.ads.closeBannerAd(load: true);
+    });
   }
 
   Widget get header => UserAccountsDrawerHeader(
@@ -33,7 +74,7 @@ class HomeDrawer extends ControllerMVC {
       );
 
   Widget get darkmode => ListTile(
-        leading: state.darkmode
+        leading: _darkmode
             ? Image.asset(
                 'images/moon.png',
                 height: 30.0,
@@ -46,24 +87,18 @@ class HomeDrawer extends ControllerMVC {
               ),
         title: Text("DarkMode"),
         trailing: Switch(
-          value: state.darkmode,
+          value: _darkmode,
           onChanged: (val) {
-//            setState(() {
-              state.darkmode = val;
-//           });
-            if (state.darkmode) {
-                theme.setTheme(ThemeData.dark());
-              } else {
-                theme.setTheme(ThemeData.light());
-              }
+            _darkmode = val;
+            theme.setDarkMode(_darkmode);
+            refresh();
           },
         ),
       );
 
   Widget get account => InkWell(
         onTap: () {
-          Navigator.of(state.context)
-              .push(MaterialPageRoute(builder: (context) => MyAccount()));
+          onTap(MyAccount());
         },
         child: state.showList(
           "My Account",
@@ -73,8 +108,7 @@ class HomeDrawer extends ControllerMVC {
 
   Widget get orders => InkWell(
         onTap: () {
-          Navigator.of(state.context)
-              .push(MaterialPageRoute(builder: (context) => MyOrders()));
+          onTap(MyOrders());
         },
         child: state.showList(
           "My Orders",
@@ -84,8 +118,7 @@ class HomeDrawer extends ControllerMVC {
 
   Widget get settings => InkWell(
         onTap: () {
-          Navigator.of(state.context)
-              .push(MaterialPageRoute(builder: (context) => Settings()));
+          onTap(Settings());
         },
         child: state.showList(
           "Settings",
@@ -95,8 +128,7 @@ class HomeDrawer extends ControllerMVC {
 
   Widget get about => InkWell(
         onTap: () {
-          Navigator.of(state.context)
-              .push(MaterialPageRoute(builder: (context) => About()));
+          onTap(About());
         },
         child: state.showList(
           "About",
@@ -106,8 +138,7 @@ class HomeDrawer extends ControllerMVC {
 
   Widget get contact => InkWell(
         onTap: () {
-          Navigator.of(state.context)
-              .push(MaterialPageRoute(builder: (context) => Contact()));
+          onTap(Contact());
         },
         child: state.showList(
           "Contact",
@@ -117,7 +148,7 @@ class HomeDrawer extends ControllerMVC {
 
   Widget get logout => InkWell(
         onTap: () {
-          FirebaseAuth.instance.signOut().then((value) {
+          _auth.signOut().then((value) {
             Navigator.of(state.context).pop();
             Navigator.pushReplacement(state.context,
                 MaterialPageRoute(builder: (context) => Login()));

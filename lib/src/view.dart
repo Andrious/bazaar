@@ -21,19 +21,27 @@
 ///
 ///
 
-export 'package:mvc_application/mvc.dart' show StateMVC;
+//export 'package:mvc_application/mvc.dart' show StateMVC;
+export 'package:mvc_application/view.dart';
 
-export 'package:shopping_cart/src/home/view/homepage.dart';
-export 'package:shopping_cart/src/login/view/signupPage.dart';
-export 'package:shopping_cart/src/login/view/loginPage.dart';
+export 'package:bazaar/src/home/view/homepage.dart';
+export 'package:bazaar/src/login/view/signupPage.dart';
+export 'package:bazaar/src/login/view/loginPage.dart';
 
-export 'package:shopping_cart/src/home/build/drawer/view/homeDrawer.dart';
+export 'package:bazaar/src/app/view/BazaarApp.dart';
 
-export 'package:shopping_cart/src/home/build/drawer/view/myAccount.dart';
-export 'package:shopping_cart/src/home/build/drawer/view/myOrders.dart';
-export 'package:shopping_cart/src/home/build/drawer/view/settings.dart';
-export 'package:shopping_cart/src/home/build/drawer/view/about.dart';
-export 'package:shopping_cart/src/home/build/drawer/view/contact.dart';
+export 'package:bazaar/src/home/view/build/view/recent_products.dart';
+export 'package:bazaar/src/home/view/build/view/routes/view/child/view/similar_products.dart';
 
-export 'package:shopping_cart/src/home/build/appbar/view/cart.dart';
-export 'package:shopping_cart/src/home/build/appbar/view/cart_product_details.dart';
+export 'package:bazaar/src/home/view/build/drawer/view/homeDrawer.dart';
+
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/myAccount.dart';
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/myOrders.dart';
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/settings.dart';
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/about.dart';
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/contact.dart';
+
+export 'package:bazaar/src/home/view/build/view/routes/view/product_detail_view.dart';
+
+export 'package:bazaar/src/home/view/build/appbar/view/cart.dart';
+export 'package:bazaar/src/home/view/build/appbar/view/cart_product_details.dart';

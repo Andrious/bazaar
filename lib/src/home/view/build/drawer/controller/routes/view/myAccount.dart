@@ -1,7 +1,48 @@
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/painting.dart';
-import 'package:shopping_cart/src/login/view/loginPage.dart';
+import 'package:flutter/material.dart'
+    show
+        AppBar,
+        BorderRadius,
+        BuildContext,
+        Card,
+        Center,
+        Color,
+        Colors,
+        Column,
+        Container,
+        Divider,
+        EdgeInsets,
+        FontWeight,
+        ListTile,
+        ListView,
+        MainAxisAlignment,
+        MaterialButton,
+        MaterialPageRoute,
+        MediaQuery,
+        Navigator,
+        Padding,
+        RoundedRectangleBorder,
+        Scaffold,
+        SizedBox,
+        State,
+        StatefulWidget,
+        Text,
+        TextStyle,
+        Widget;
+
+import 'package:flutter/painting.dart'
+    show
+        BorderRadius,
+        Color,
+        EdgeInsets,
+        FontWeight,
+        RoundedRectangleBorder,
+        TextStyle;
+
+import 'package:auth/auth.dart' show Auth;
+
+import 'package:bazaar/src/view.dart' hide BazaarApp;
+
+import 'package:bazaar/src/controller.dart' show BazaarApp, Controllers;
 
 class MyAccount extends StatefulWidget {
   @override
@@ -9,40 +50,20 @@ class MyAccount extends StatefulWidget {
 }
 
 class _MyAccountState extends State<MyAccount> {
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  FirebaseUser currentUser;
+  Auth _auth;
+
   @override
   void initState() {
+    BazaarApp con = Controllers.of<BazaarApp>();
+    _auth = con.auth;
     super.initState();
-    _loadCurrentUser();
   }
 
-  void _loadCurrentUser() {
-    firebaseAuth.currentUser().then((FirebaseUser user) {
-      setState(() {
-        // call setState to rebuild the view
-        this.currentUser = user;
-      });
-    });
-  }
-
-  String userName() {
-    if (currentUser != null) {
-      if (currentUser.displayName == null) {
-        return currentUser.email.replaceAll('@gmail.com', '');
-      }
-      return currentUser.displayName;
-    } else {
-      return "";
+  String get userName {
+    if (_auth.displayName == null || _auth.displayName.isEmpty) {
+      return _auth.email.replaceAll('@gmail.com', '');
     }
-  }
-
-  String email() {
-    if (currentUser != null) {
-      return currentUser.email;
-    } else {
-      return "Guest User";
-    }
+    return _auth.displayName;
   }
 
   @override
@@ -79,7 +100,7 @@ class _MyAccountState extends State<MyAccount> {
                   Container(
                     padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
                     child: Text(
-                      "${userName()}",
+                      "$userName",
                     ),
                   ),
                   Divider(
@@ -95,7 +116,7 @@ class _MyAccountState extends State<MyAccount> {
                   Container(
                     padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
                     child: Text(
-                      "${email()}",
+                      "${_auth.email}",
                     ),
                   ),
                   Divider(
@@ -110,20 +131,23 @@ class _MyAccountState extends State<MyAccount> {
             MaterialButton(
               minWidth: MediaQuery.of(context).size.width,
               shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(25.0),
+                borderRadius: BorderRadius.circular(25.0),
               ),
               child: ListTile(
                 title: Center(
                   child: Text(
                     "LogOut",
-                    style: _btnStyle(),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
               onPressed: () {
-                firebaseAuth.signOut().then((user) {
+                _auth.signOut().then((_) {
                   Navigator.of(context).pop();
-                  Navigator.of(context).pop();
+                  //                 Navigator.of(context).pop();
 
                   Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => Login()));
@@ -134,13 +158,6 @@ class _MyAccountState extends State<MyAccount> {
           ],
         ),
       ),
-    );
-  }
-
-  TextStyle _btnStyle() {
-    return TextStyle(
-      color: Colors.white,
-      fontWeight: FontWeight.bold,
     );
   }
 }

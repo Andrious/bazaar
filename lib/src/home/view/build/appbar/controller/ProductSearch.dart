@@ -1,29 +1,32 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        AnimatedIcon,
+        AnimatedIcons,
+        BuildContext,
+        Center,
+        CircularProgressIndicator,
+        Colors,
+        FontWeight,
+        Icon,
+        IconButton,
+        Icons,
+        ListTile,
+        ListView,
+        RichText,
+        SearchDelegate,
+        TextSpan,
+        TextStyle,
+        Widget;
+
+import 'package:bazaar/src/model.dart' show recentSearchProd, searchProd;
+
+import 'package:bazaar/src/view.dart' show RecentProducts;
 
 
 // SearchBar
 
 class ProductSearch extends SearchDelegate<String> {
-  // final List searchProd = ["arr", "allow", "Blazer", "ramu", "haz"];
-  final List searchProd = [
-    'Blazer',
-    'Red-Blazer',
-    'Dress',
-    'Jeans',
-    'Green-T-Shirt',
-    'T-Shirt',
-    'Skirt1',
-    'Skirt2',
-    'Shoe1',
-    'Shoe2',
-    'Heel1',
-    'Heel2',
-  ];
-  final List recentSearchProd = [
-    'Blazer',
-    'Jeans',
-    'Skirt1',
-  ];
+
   @override
   List<Widget> buildActions(BuildContext context) {
     // Actions for appbar
@@ -53,8 +56,8 @@ class ProductSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(
-      BuildContext context,
-      ) {
+    BuildContext context,
+  ) {
     // show results for given keyword
 
     return Center(
@@ -67,20 +70,23 @@ class ProductSearch extends SearchDelegate<String> {
     final suggestionList = query.isEmpty
         ? recentSearchProd
         : searchProd.where((s) => s.toLowerCase().startsWith(query)).toList();
+    RecentProducts.clear();
     // contains,startswith,endswith and so on
     return ListView.builder(
       itemCount: suggestionList.length,
       itemBuilder: (_, int i) {
         return ListTile(
           onTap: () {
-            showResults(context);
+//            showResults(context);
+            RecentProducts.search(suggestionList[i]);
+            close(context, null);
           },
           leading: Icon(Icons.shopping_basket),
           title: RichText(
             text: TextSpan(
               text: suggestionList[i].substring(0, query.length),
               style:
-              TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               children: [
                 TextSpan(
                     text: suggestionList[i].substring(query.length),
@@ -92,4 +98,6 @@ class ProductSearch extends SearchDelegate<String> {
       },
     );
   }
+
+
 }

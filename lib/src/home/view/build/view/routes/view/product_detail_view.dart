@@ -1,7 +1,38 @@
-import 'package:flutter/material.dart';
-import 'package:shopping_cart/src/home/view/similar_products.dart';
+import 'package:flutter/material.dart'
+    show
+        AlertDialog,
+        AppBar,
+        BuildContext,
+        Color,
+        Colors,
+        Container,
+        EdgeInsets,
+        Expanded,
+        FlatButton,
+        FontWeight,
+        Icon,
+        IconButton,
+        Icons,
+        Image,
+        ListTile,
+        ListView,
+        MainAxisAlignment,
+        MaterialButton,
+        Navigator,
+        Padding,
+        Row,
+        Scaffold,
+        StatefulWidget,
+        Text,
+        TextDecoration,
+        TextStyle,
+        Widget,
+        showDialog;
 
-import '../build/appbar/view/cart.dart';
+import 'package:bazaar/src/view.dart'
+    show SimilarProducts, StateMVC;
+
+import 'package:bazaar/src/controller.dart' as c;
 
 class ProductDetails extends StatefulWidget {
   final productDetailsName;
@@ -18,10 +49,15 @@ class ProductDetails extends StatefulWidget {
       this.productDetailsDesc});
 
   @override
-  _ProductDetailsState createState() => _ProductDetailsState();
+  ProductDetailsState createState() => ProductDetailsState();
 }
 
-class _ProductDetailsState extends State<ProductDetails> {
+class ProductDetailsState extends StateMVC<ProductDetails> {
+  ProductDetailsState() : super(c.ProductDetails()) {
+    con = controller;
+  }
+  c.ProductDetails con;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +66,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         backgroundColor: Color(0xFFB33771),
         title: Text("e-Bazaar"),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Cart()));
-            },
-          ),
+          con.shopping,
         ],
       ),
       body: ListView(
@@ -56,11 +86,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0, left: 20.0),
-                child: IconButton(
-                  color: Color(0xFFB33771),
-                  icon: Icon(Icons.favorite_border),
-                  onPressed: () {},
-                ),
+                child: con.iconButton,
               ),
             ],
           ),

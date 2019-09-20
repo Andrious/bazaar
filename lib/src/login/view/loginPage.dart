@@ -1,9 +1,66 @@
-// ========================== LoginPage ===============================
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        AlertDialog,
+        Alignment,
+        AlwaysStoppedAnimation,
+        AnimatedBuilder,
+        Animation,
+        AnimationController,
+        BorderRadius,
+        BoxDecoration,
+        BuildContext,
+        Center,
+        CircularProgressIndicator,
+        Color,
+        Colors,
+        Column,
+        Container,
+        CurvedAnimation,
+        Curves,
+        EdgeInsets,
+        FlatButton,
+        FontWeight,
+        Form,
+        FormState,
+        GlobalKey,
+        Icon,
+        IconButton,
+        Icons,
+        InkWell,
+        InputDecoration,
+        Interval,
+        LinearGradient,
+        ListTile,
+        ListView,
+        MainAxisAlignment,
+        MaterialButton,
+        MaterialPageRoute,
+        Matrix4,
+        MediaQuery,
+        Navigator,
+        RoundedRectangleBorder,
+        Row,
+        Scaffold,
+        SingleTickerProviderStateMixin,
+        SizedBox,
+        StatefulWidget,
+        Text,
+        TextDecoration,
+        TextEditingController,
+        TextFormField,
+        TextInputType,
+        TextStyle,
+        Transform,
+        Tween,
+        Visibility,
+        Widget,
+        showDialog;
 
-import 'package:shopping_cart/src/view.dart';
+import 'package:flutter/services.dart' show TextInputType;
 
-import 'package:shopping_cart/src/controller.dart' show LoginPage;
+import 'package:bazaar/src/view.dart' show HomePage, SignUp, StateMVC;
+
+import 'package:bazaar/src/controller.dart' show LoginPage;
 
 class Login extends StatefulWidget {
   @override
@@ -13,6 +70,7 @@ class Login extends StatefulWidget {
 class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
   _LoginState() : super(LoginPage()) {
     con = controller;
+    isLoggedin = con.loggedIn;
   }
   LoginPage con;
 
@@ -27,7 +85,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
 
   bool loading = false;
   bool hidePass = true;
-  bool isLogedin = false;
+  bool isLoggedin = false;
 
   void initState() {
     super.initState();
@@ -50,23 +108,6 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
         curve: Interval(0.7, 1.0, curve: Curves.fastOutSlowIn),
       ),
     );
-    isSignedIn();
-    con.loadCurrentUser();
-  }
-
-  void isSignedIn() async {
-    setState(() {
-      loading = true;
-    });
-    bool signIn = await con.isSignedIn();
-    if (signIn) setState(() => isLogedin = true);
-    if (isLogedin) {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
-    }
-    setState(() {
-      loading = false;
-    });
   }
 
   @override
@@ -77,6 +118,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    if(isLoggedin) return HomePage();
     final width = MediaQuery.of(context).size.width;
     animationController.forward();
     return AnimatedBuilder(
@@ -255,8 +297,6 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                               onPressed: () async {
-                                print("login btn clicked!");
-
                                 signIn();
                               },
                               color: Color(0xFFB33771),
@@ -334,10 +374,19 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
 
       bool signIn =
           await con.signIn(_emailController.text, _passwordController.text);
+      Navigator.of(context).pop();
 
-      if (signIn)
+      if (signIn) {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HomePage()));
+      } else {
+        if (con.inError) {
+          con.msgError(con.getError()).then((_) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => SignUp()));
+          });
+        }
+      }
     }
   }
 

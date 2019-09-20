@@ -1,4 +1,32 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        Axis,
+        BorderRadius,
+        BoxDecoration,
+        BuildContext,
+        Card,
+        Center,
+        Colors,
+        Column,
+        Container,
+        Dismissible,
+        EdgeInsets,
+        Expanded,
+        Icon,
+        IconButton,
+        Icons,
+        Image,
+        Key,
+        ListTile,
+        ListView,
+        MainAxisAlignment,
+        Padding,
+        Row,
+        State,
+        StatefulWidget,
+        Text,
+        TextStyle,
+        Widget;
 
 class CartProductDetails extends StatefulWidget {
   final cartProductName;

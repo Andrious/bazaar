@@ -1,5 +1,34 @@
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart'
+    show
+        AlertDialog,
+        AppBar,
+        BorderRadius,
+        BuildContext,
+        Center,
+        Color,
+        Colors,
+        Column,
+        Container,
+        EdgeInsets,
+        FontWeight,
+        ListTile,
+        MainAxisAlignment,
+        MaterialButton,
+        MediaQuery,
+        Padding,
+        RoundedRectangleBorder,
+        Scaffold,
+        SizedBox,
+        State,
+        StatefulWidget,
+        Text,
+        TextStyle,
+        Widget,
+        showDialog;
+
+import 'package:auth/auth.dart' show Auth;
+
+import 'package:bazaar/src/controller.dart' show BazaarApp, Controllers;
 
 class Settings extends StatefulWidget {
   @override
@@ -7,29 +36,14 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  FirebaseUser currentUser;
+  @override
   void initState() {
     super.initState();
-    _loadCurrentUser();
+    BazaarApp con = Controllers.of<BazaarApp>();
+    _auth = con.auth;
   }
 
-  void _loadCurrentUser() {
-    firebaseAuth.currentUser().then((FirebaseUser user) {
-      setState(() {
-        // call setState to rebuild the view
-        this.currentUser = user;
-      });
-    });
-  }
-
-  String email() {
-    if (currentUser != null) {
-      return currentUser.email;
-    } else {
-      return "Guest User";
-    }
-  }
+  Auth _auth;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +79,7 @@ class _SettingsState extends State<Settings> {
                   ),
                 ),
                 onPressed: () async {
-                  await firebaseAuth.sendPasswordResetEmail(email: email());
+                  await _auth.sendPasswordResetEmail(email: _auth.email);
                   passwordResetDialog();
                 }),
           ],
@@ -86,7 +100,7 @@ class _SettingsState extends State<Settings> {
       content: Container(
         padding: const EdgeInsets.all(10.0),
         child: Text(
-            "Password Reset Link Has Been Sent To Your EmailID: ${email()}"),
+            "Password Reset Link Has Been Sent To Your EmailID: ${_auth.email}"),
       ),
     );
     showDialog(context: context, builder: (_) => alert);

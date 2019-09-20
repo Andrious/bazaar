@@ -1,5 +1,28 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        AppBar,
+        BuildContext,
+        Color,
+        Colors,
+        Column,
+        Container,
+        Divider,
+        EdgeInsets,
+        Expanded,
+        FontWeight,
+        Icon,
+        Icons,
+        Padding,
+        Row,
+        Scaffold,
+        StatelessWidget,
+        Text,
+        TextStyle,
+        Widget;
+
+import 'package:flutter/painting.dart'
+    show Alignment, Color, EdgeInsets, FontWeight, TextStyle;
 
 class About extends StatelessWidget {
   @override

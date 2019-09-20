@@ -1,7 +1,7 @@
-name: shopping_cart
-description: A new Flutter project.
+name: bazaar
+description: A sample app demonstrating functions and features implemented by the author.
 
-version: 0.1.0
+version: 1.0.0
 
 environment:
   sdk: ">=2.3.0 <3.0.0"
@@ -12,26 +12,43 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: #^0.1.2
-  carousel_pro: #^0.0.13
-  firebase_core: ^0.4.0+6
-  firebase_auth: ^0.11.1+6
-  google_sign_in: #^4.0.2
-  cloud_firestore: #^0.12.5
-  shared_preferences: #^0.4.3
-  firebase_storage:
-  firebase_database:
-  loader_search_bar: #^1.0.3+3
-  url_launcher: #^5.0.3
-  provider:
 
-  mvc_application:
+  # https://pub.dev/packages/cupertino_icons#-changelog-tab-
+  cupertino_icons: ^0.1.0
+  # https://pub:dev/packages/carousel_pro#-changelog-tab-:
+  carousel_pro: ^1.0.0
+  # https://pub.dev/packages/cloud_firestore#-changelog-tab-
+  cloud_firestore: ^0.12.0
+  # https://pub.dev/packages/firebase_auth#-changelog-tab-
+  firebase_auth: ^0.14.0
+  # https://pub.dev/packages/firebase_core#-changelog-tab-
+  firebase_core: ^0.4.0
+  # https://pub.dev/packages/firebase_database#-changelog-tab-
+  firebase_database: ^3.0.0
+  # https://pub.dev/packages/firebase_storage#-changelog-tab-
+  firebase_storage: ^3.0.0
+  # https://pub.dev/packages/google_sign_in#-changelog-tab-
+  google_sign_in: ^4.0.0
+  # https://pub.dev/packages/loader_search_bar#-changelog-tab-
+  loader_search_bar: ^1.0.0
+  # https://pub.dev/packages/url_launcher#-changelog-tab-
+  url_launcher: ^5.0.0
+
+#  provider:
+
+  mvc_application: #^1.0.0
     path: ../../../packages/mvc_application
+
+  # https://pub.dev/packages/auth#-changelog-tab-
+  auth: ^3.0.0
+  # https://pub.dev/packages/ads#-changelog-tab-
+  ads: #^1.0.0
+    path: ../../../packages/ads
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: "^0.6.1"
+  flutter_launcher_icons: "^0.6.0"
 
 flutter_icons:
   android: "launcher_icon"
@@ -39,7 +56,7 @@ flutter_icons:
   image_path: "images/icon/icon1.jpg"
 
 dependency_overrides:
-  image: ^2.1.4 #2.0.7
+  image: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
@@ -81,6 +98,7 @@ flutter:
     - images/products/tshirt2.jpg
     - images/recentImages/blazer1.jpeg
     - images/recentImages/dress1.jpeg
+    - images/recentImages/dress2.jpeg
     - images/recentImages/hills1.jpeg
     - images/recentImages/skt1.jpeg
     - images/sunny.png

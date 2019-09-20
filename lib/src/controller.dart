@@ -21,18 +21,20 @@
 ///
 ///
 
-export 'package:mvc_application/mvc.dart' show ControllerMVC;
+export 'package:mvc_application/controller.dart';
 
-export 'package:shopping_cart/src/blocs/themeChanger.dart';
+export 'package:bazaar/src/app/controller/themeChanger.dart';
 
-export 'package:shopping_cart/src/login/controller/LoginPage.dart';
+export 'package:bazaar/src/app/controller/BazaarApp.dart';
 
-export 'package:shopping_cart/src/login/controller/SignUpPage.dart';
+export 'package:bazaar/src/login/controller/LoginPage.dart';
 
-export 'package:shopping_cart/src/home/build/drawer/controller/homeDrawer.dart';
+export 'package:bazaar/src/login/controller/SignUpPage.dart';
 
-export 'package:shopping_cart/src/home/build/appbar/controller/HomeAppBar.dart';
+export 'package:bazaar/src/home/view/build/drawer/controller/homeDrawer.dart';
 
-export 'package:shopping_cart/src/home/build/appbar/controller/ProductSearch.dart';
+export 'package:bazaar/src/home/view/build/appbar/controller/HomeAppBar.dart';
 
+export 'package:bazaar/src/home/view/build/appbar/controller/ProductSearch.dart';
 
+export 'package:bazaar/src/home/view/build/view/routes/controller/product_detail_controller.dart';

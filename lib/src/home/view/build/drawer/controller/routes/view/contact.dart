@@ -1,5 +1,29 @@
-import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        AppBar,
+        BuildContext,
+        Center,
+        Color,
+        Colors,
+        Column,
+        Container,
+        EdgeInsets,
+        Expanded,
+        FontWeight,
+        GestureDetector,
+        Image,
+        ListTile,
+        Padding,
+        Row,
+        Scaffold,
+        SizedBox,
+        StatelessWidget,
+        Text,
+        TextStyle,
+        Widget;
+
+import 'package:url_launcher/url_launcher.dart' show canLaunch, launch;
 
 class Contact extends StatelessWidget {
   @override

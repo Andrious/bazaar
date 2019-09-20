@@ -1,31 +1,37 @@
-//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        AppBar,
+        AssetImage,
+        BoxFit,
+        BuildContext,
+        Color,
+        Colors,
+        Column,
+        Container,
+        Curves,
+        EdgeInsets,
+        Flexible,
+        FontWeight,
+        Icon,
+        IconData,
+        ListTile,
+        Padding,
+        Scaffold,
+        StatefulWidget,
+        Text,
+        TextStyle,
+        ThemeData,
+        Widget;
 
-import 'package:flutter/material.dart';
-import 'package:carousel_pro/carousel_pro.dart';
+import 'package:carousel_pro/carousel_pro.dart' show Carousel;
 
-import 'package:provider/provider.dart';
-import 'package:shopping_cart/src/blocs/themeChanger.dart';
+import 'package:bazaar/src/model.dart' show FirebaseAuth, FirebaseUser;
 
-import 'package:shopping_cart/src/home/build/drawer/view/about.dart';
+import 'package:bazaar/src/view.dart'
+    show HomeDrawer, RecentProducts, StateMVC;
 
-import 'package:shopping_cart/src/home/build/appbar/view/cart.dart';
-import 'package:shopping_cart/src/home/build/drawer/view/contact.dart';
-
-import 'package:shopping_cart/src/login/view/loginPage.dart';
-
-import 'package:shopping_cart/src/home/build/drawer/view/myAccount.dart';
-import 'package:shopping_cart/src/home/build/drawer/view/myOrders.dart';
-import 'package:shopping_cart/src/home/build/drawer/view/settings.dart';
-
-import 'package:shopping_cart/src/home/view/recent_products.dart';
-
-import 'package:shopping_cart/src/model.dart';
-
-import 'package:shopping_cart/src/view.dart';
-
-import 'package:shopping_cart/src/controller.dart' as c;
-
-
+import 'package:bazaar/src/controller.dart' as c;
 
 class HomePage extends StatefulWidget {
   final searchProdName;
@@ -43,13 +49,10 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends StateMVC<HomePage> {
-
-  HomePageState():super(ThemeChanger(ThemeData.light())){
+  HomePageState() : super(c.ThemeChanger()) {
     add(c.HomeDrawer());
     add(c.HomeAppBar());
   }
-
-  bool darkmode = false;
 
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   FirebaseUser currentUser;
@@ -169,5 +172,4 @@ class HomePageState extends StateMVC<HomePage> {
       title: Text(s),
     );
   }
-
 }

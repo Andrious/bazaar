@@ -1,72 +1,47 @@
-///
-/// Copyright (C) 2019 Andrious Solutions
-///
-/// This program is free software; you can redistribute it and/or
-/// modify it under the terms of the GNU General Public License
-/// as published by the Free Software Foundation; either version 3
-/// of the License, or any later version.
-///
-/// You may obtain a copy of the License at
-///
-///  http://www.apache.org/licenses/LICENSE-2.0
-///
-///
-/// Unless required by applicable law or agreed to in writing, software
-/// distributed under the License is distributed on an "AS IS" BASIS,
-/// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-/// See the License for the specific language governing permissions and
-/// limitations under the License.
-///
-///          Created  07 Sep 2019
-///
-///
+import 'package:bazaar/src/controller.dart'
+    show BazaarApp, ControllerMVC, Controllers;
 
-import 'package:mvc_application/mvc.dart';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:auth/auth.dart' show Auth;
 
 class LoginPage extends ControllerMVC {
   factory LoginPage() {
     return _this ??= LoginPage._();
   }
-  LoginPage._();
   static LoginPage _this;
+  LoginPage._(){
+    con = Controllers.of<BazaarApp>();
+    loggedIn = con.loggedIn;
+    _auth = con.auth;
+  }
+  BazaarApp con;
+  Auth _auth;
+  bool loggedIn;
 
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  FirebaseDatabase database = FirebaseDatabase.instance;
-  FirebaseUser currentUser;
-
-  Future<bool> isSignedIn() async {
-    FirebaseUser user = await firebaseAuth.currentUser();
-    return user != null;
+  void initState() {
+//    con.ads.showBannerAd(state: this.stateMVC);
   }
 
-  void loadCurrentUser() {
-    firebaseAuth.currentUser().then((FirebaseUser user) {
-      setState(() {
-        // call setState to rebuild the view
-        this.currentUser = user;
-      });
-    });
+  void deactivate() {
+//    con.ads.closeBannerAd();
+  }
+
+  Future<bool> isSignedIn() async {
+    bool isIn = await _auth?.isLoggedIn() ?? false;
+    return isIn;
   }
 
   String email() {
-    if (currentUser != null) {
-      return currentUser.email;
-    } else {
-      return "Guest User";
-    }
+    String email = _auth.email;
+    if (email.isEmpty) email = "Guest User";
+    return email;
   }
 
-  Future<bool> signIn(String email, String password) async {
-    FirebaseUser user;
-    try {
-      user = await firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
-    } catch (ex) {
-      user = null;
-    }
-    return user != null;
-  }
+  Future<bool> signIn(String email, String password) =>
+      _auth.signInWithEmailAndPassword(email: email, password: password);
+
+  bool get inError => _auth.message.isNotEmpty;
+
+  Exception getError() => _auth.getError();
+
+  Future<void> msgError(Exception ex) => con.msgError(ex, context: stateMVC.context);
 }

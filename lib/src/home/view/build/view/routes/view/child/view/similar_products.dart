@@ -1,4 +1,27 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        BoxFit,
+        BuildContext,
+        Card,
+        Colors,
+        Container,
+        EdgeInsets,
+        FontWeight,
+        GridTile,
+        GridView,
+        Hero,
+        Image,
+        InkWell,
+        MainAxisAlignment,
+        Material,
+        Padding,
+        Row,
+        SliverGridDelegateWithFixedCrossAxisCount,
+        State,
+        StatefulWidget,
+        Text,
+        TextStyle,
+        Widget;
 
 class SimilarProducts extends StatefulWidget {
   @override

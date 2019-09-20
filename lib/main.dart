@@ -1,12 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show runApp;
 
-import 'package:provider/provider.dart';
+import 'package:mvc_application/mvc.dart' show App;
 
-import 'package:shopping_cart/src/blocs/themeChanger.dart';
-
-import 'package:shopping_cart/src/login/view/loginPage.dart';
-
-import 'package:mvc_application/mvc.dart' show App, AppView, Controllers;
+import 'package:bazaar/src/view.dart' show App, BazaarApp;
 
 void main() {
   runApp(MyApp());
@@ -17,17 +13,5 @@ class MyApp extends App {
   createView() => BazaarApp();
 }
 
-class BazaarApp extends AppView {
-  BazaarApp()
-      : super(
-          title: "e-Bazaar",
-          debugShowCheckedModeBanner: false,
-          home: Login(),
-          controllers: [
-            ThemeChanger(ThemeData.light()),
-          ],
-        );
 
-  ThemeData onTheme() => Controllers.of<ThemeChanger>()?.getTheme();
-}
 

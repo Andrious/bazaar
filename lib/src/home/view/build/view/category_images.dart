@@ -1,4 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        Axis,
+        BuildContext,
+        Container,
+        Image,
+        InkWell,
+        ListTile,
+        ListView,
+        StatelessWidget,
+        Text,
+        TextStyle,
+        Widget;
 
 class CategoryImages extends StatelessWidget {
   final TextStyle _textStyle = TextStyle(fontSize: 12.0);
