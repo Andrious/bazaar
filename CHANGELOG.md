@@ -1,3 +1,7 @@
+## 1.1.1
+ September 23, 2019
+- Formatting and created directory, showSearch
+
 ## 1.1.0
  September 20, 2019
 - Adjusted Contact page

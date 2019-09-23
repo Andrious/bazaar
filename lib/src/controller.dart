@@ -35,6 +35,6 @@ export 'package:bazaar/src/home/view/build/drawer/controller/homeDrawer.dart';
 
 export 'package:bazaar/src/home/view/build/appbar/controller/HomeAppBar.dart';
 
-export 'package:bazaar/src/home/view/build/appbar/controller/ProductSearch.dart';
+export 'package:bazaar/src/home/view/build/appbar/controller/showSearch/ProductSearch.dart';
 
 export 'package:bazaar/src/home/view/build/view/routes/controller/product_detail_controller.dart';

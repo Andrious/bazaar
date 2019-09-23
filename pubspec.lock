@@ -4,9 +4,9 @@ packages:
   ads:
     dependency: "direct main"
     description:
-      path: "..\\..\\..\\packages\\ads"
-      relative: true
-    source: path
+      name: ads
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "1.2.0"
   archive:
     dependency: transitive
@@ -240,17 +240,17 @@ packages:
   mvc_application:
     dependency: "direct main"
     description:
-      path: "..\\..\\..\\packages\\mvc_application"
-      relative: true
-    source: path
-    version: "1.1.1"
+      name: mvc_application
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0"
   mvc_pattern:
     dependency: transitive
     description:
-      path: "..\\..\\..\\packages\\mvc_pattern"
-      relative: true
-    source: path
-    version: "3.4.3"
+      name: mvc_pattern
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.5.0"
   package_info:
     dependency: transitive
     description:
@@ -332,7 +332,7 @@ packages:
       name: sqflite
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.6+4"
+    version: "1.1.6+5"
   stack_trace:
     dependency: transitive
     description:

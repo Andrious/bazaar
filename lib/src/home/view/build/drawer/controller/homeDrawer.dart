@@ -15,7 +15,6 @@ import 'package:flutter/material.dart'
         Switch,
         Text,
         TextStyle,
-        ThemeData,
         UserAccountsDrawerHeader,
         Widget;
 

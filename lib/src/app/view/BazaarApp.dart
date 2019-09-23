@@ -16,6 +16,8 @@ class BazaarApp extends AppView {
           controllers: [
             c.ThemeChanger(),
           ],
+ //         debugPaintSizeEnabled: true,
+ //         debugPaintLayerBordersEnabled: true,
         );
 
   ThemeData onTheme() => Controllers.of<c.ThemeChanger>()?.getTheme();

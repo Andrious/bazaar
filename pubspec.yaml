@@ -1,7 +1,7 @@
 name: bazaar
 description: A sample app demonstrating functions and features implemented by the author.
 
-version: 1.1.0
+version: 1.1.1
 
 environment:
   sdk: ">=2.3.0 <3.0.0"
@@ -36,14 +36,14 @@ dependencies:
 
 #  provider:
 
-  mvc_application: #^1.0.0
-    path: ../../../packages/mvc_application
+  mvc_application: ^1.0.0
+  #  path: ../../../packages/mvc_application
 
   # https://pub.dev/packages/auth#-changelog-tab-
   auth: ^3.0.0
   # https://pub.dev/packages/ads#-changelog-tab-
-  ads: #^1.0.0
-    path: ../../../packages/ads
+  ads: ^1.0.0
+    #path: ../../../packages/ads
 
 dev_dependencies:
   flutter_test:
