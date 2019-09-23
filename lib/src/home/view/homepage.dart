@@ -25,8 +25,6 @@ import 'package:flutter/material.dart'
 
 import 'package:carousel_pro/carousel_pro.dart' show Carousel;
 
-import 'package:bazaar/src/model.dart' show FirebaseAuth, FirebaseUser;
-
 import 'package:bazaar/src/view.dart'
     show HomeDrawer, RecentProducts, StateMVC;
 
@@ -51,50 +49,6 @@ class HomePageState extends StateMVC<HomePage> {
   HomePageState() : super(c.ThemeChanger()) {
     add(c.HomeDrawer());
     add(c.HomeAppBar());
-  }
-
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  FirebaseUser currentUser;
-  @override
-  void initState() {
-    super.initState();
-    _loadCurrentUser();
-  }
-
-  void _loadCurrentUser() {
-    firebaseAuth.currentUser().then((FirebaseUser user) {
-      setState(() {
-        // call setState to rebuild the view
-        this.currentUser = user;
-      });
-    });
-  }
-
-  String userName() {
-    if (currentUser != null) {
-      if (currentUser.displayName == null) {
-        return currentUser.email.replaceAll('@gmail.com', '');
-      }
-      return currentUser.displayName;
-    } else {
-      return "";
-    }
-  }
-
-  String email() {
-    if (currentUser != null) {
-      return currentUser.email;
-    } else {
-      return "No Email Address";
-    }
-  }
-
-  String photoUrl() {
-    if (currentUser != null) {
-      return currentUser.email[0].toUpperCase();
-    } else {
-      return "A";
-    }
   }
 
   @override

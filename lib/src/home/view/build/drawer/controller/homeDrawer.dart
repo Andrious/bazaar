@@ -44,6 +44,30 @@ class HomeDrawer extends ControllerMVC {
     con.ads.setBannerAd();
   }
 
+  String userName() {
+    String name = _auth?.displayName?.trim() ?? "";
+    if (name.isEmpty) {
+      name = _auth?.email ?? "";
+      List<String> parts = name.split("@");
+      if(parts.isNotEmpty) name = parts[0];
+    }
+    return name;
+  }
+
+  String email() {
+    String email = _auth?.email ?? "";
+    if (email.isEmpty) email = "No Email Address";
+    return email;
+  }
+
+  String photoUrl() {
+    if (_auth?.photoUrl != null && _auth.photoUrl.isNotEmpty) {
+      return _auth.photoUrl;
+    } else {
+      return "A";
+    }
+  }
+
   void onTap(Widget widget) {
     con.ads.showBannerAd(state: this.stateMVC);
     Navigator.of(state.context)
@@ -57,12 +81,12 @@ class HomeDrawer extends ControllerMVC {
         decoration: BoxDecoration(
           color: Color(0xFFB33771),
         ),
-        accountName: Text("${state.userName()}"),
-        accountEmail: Text("${state.email()}"),
+        accountName: Text("${userName()}"),
+        accountEmail: Text("${email()}"),
         currentAccountPicture: GestureDetector(
           child: CircleAvatar(
             backgroundColor: Colors.blueAccent,
-            child: Text("${state.photoUrl()}",
+            child: Text("${photoUrl()}",
                 style: TextStyle(
                   fontSize: 35.0,
                   color: Colors.white,

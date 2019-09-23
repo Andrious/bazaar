@@ -1,3 +1,8 @@
+## 1.1.2
+ September 23, 2019
+- Removed FirebaseAuth, FirebaseUser from view, homepage.dart. 
+- Using controller, homeDrawer.dart
+
 ## 1.1.1
  September 23, 2019
 - Formatting and created directory, showSearch
