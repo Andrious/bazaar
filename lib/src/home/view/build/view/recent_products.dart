@@ -20,7 +20,6 @@ import 'package:flutter/material.dart'
         Padding,
         Row,
         SliverGridDelegateWithFixedCrossAxisCount,
-        State,
         StatefulWidget,
         Text,
         TextStyle,
@@ -33,7 +32,7 @@ import 'package:bazaar/src/view.dart' show ProductDetails, StateMVC;
 import 'package:bazaar/src/controller.dart' as c;
 
 class RecentProducts extends StatefulWidget {
-  RecentProducts({Key key}) : super(key: key);
+  const RecentProducts({Key key}) : super(key: key);
 
   @override
   _RecentProductsState createState() => _RecentProductsState();
@@ -100,13 +99,13 @@ class _RecentProductsState extends StateMVC<RecentProducts> {
                         children: <Widget>[
                           Text(
                             "${itemsList[i]['name']}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
                           Text(
                             "\$ ${itemsList[i]['price']}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),

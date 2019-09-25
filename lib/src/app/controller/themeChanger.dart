@@ -9,6 +9,7 @@ class ThemeChanger01 extends ChangeNotifier {
   ThemeChanger01(this.themeData);
 
   getTheme() => themeData;
+  
   setTheme(ThemeData theme) {
     themeData = theme;
     notifyListeners();
@@ -16,6 +17,11 @@ class ThemeChanger01 extends ChangeNotifier {
 }
 
 class ThemeChanger extends ControllerMVC {
+
+  factory ThemeChanger() => _this ??= ThemeChanger._();
+  static ThemeChanger _this;
+  ThemeChanger._();
+
   ThemeData themeData;
   bool _darkmode;
 

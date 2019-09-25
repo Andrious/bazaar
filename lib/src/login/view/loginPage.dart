@@ -141,25 +141,25 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
             child: Center(
               child: ListView(
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
                   Transform(
                     transform: Matrix4.translationValues(
                         animation.value * width, 0.0, 0.0),
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                       alignment: Alignment.center,
-                      child: Text(
+                      child: const Text(
                         "e-Bazaar",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
                   Transform(
@@ -167,13 +167,13 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                         animation.value * width, 0.0, 0.0),
                     child: Container(
                       // alignment: Alignment.center,
-                      child: Text(
+                      child: const Text(
                         "Welcome Back. I am Very Much Excited About Your Next Shopping",
-                        style: TextStyle(),
+                        style: const TextStyle(),
                       ),
                     ),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
@@ -197,7 +197,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                           transform: Matrix4.translationValues(
                               animation.value * width, 0.0, 0.0),
                           child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
                             alignment: Alignment.center,
                             child: Text(
                               "Register",
@@ -220,10 +220,10 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                             controller: _emailController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.alternate_email,
+                                prefixIcon: const Icon(Icons.alternate_email,
                                     color: Colors.blueGrey),
                                 hintText: "Email",
-                                labelStyle: TextStyle(
+                                labelStyle: const TextStyle(
                                     // color: Colors.white,
                                     ),
                                 labelText: "Email"),
@@ -246,18 +246,15 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                             // obscureText:hidepass we toggle when user clicks the icon
                             obscureText: hidePass,
                             decoration: InputDecoration(
-                                prefixIcon: Icon(
+                                prefixIcon: const Icon(
                                   Icons.lock,
                                   color: Colors.blueGrey,
                                 ),
                                 suffixIcon: IconButton(
-                                  icon: Icon(
-                                    Icons.remove_red_eye,
-                                    color: Colors.blueGrey,
-                                  ),
+                                  icon: hidePass ? const Icon(Icons.visibility_off, color: Colors.blueGrey) : const Icon(Icons.visibility, color: Colors.blueGrey),
                                   onPressed: () {
                                     setState(() {
-                                      hidePass = false;
+                                      hidePass = !hidePass;
                                     });
                                   },
                                 ),
@@ -276,7 +273,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                             },
                             autocorrect: true,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20.0,
                           ),
                           //  ================== Login Btn =======================
@@ -286,7 +283,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                             child: MaterialButton(
                               shape: RoundedRectangleBorder(
                                   borderRadius:
-                                      new BorderRadius.circular(25.0)),
+                                      BorderRadius.circular(25.0)),
                               minWidth: MediaQuery.of(context).size.width,
                               child: ListTile(
                                 title: Center(
@@ -299,10 +296,10 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                               onPressed: () async {
                                 signIn();
                               },
-                              color: Color(0xFFB33771),
+                              color: const Color(0xFFB33771),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5.0,
                           ),
                           Transform(
@@ -313,21 +310,20 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                                 onTap: () async {
                                   _showFormDialog();
                                 },
-                                child: Text(
+                                child: const Text(
                                   "Forgot Password",
                                   style: TextStyle(
                                     decoration: TextDecoration.underline,
-                                    color: Color(0xFFB33771),
+                                    color: const Color(0xFFB33771),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5.0,
                           ),
-
-                          SizedBox(
+                          const SizedBox(
                             height: 15.0,
                           ),
                         ],
@@ -336,9 +332,9 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                   ),
                   Visibility(
                     visible: loading ?? true,
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                    child: const Center(
+                      child: const CircularProgressIndicator(
+                        valueColor: const AlwaysStoppedAnimation<Color>(Colors.red),
                       ),
                     ),
                   ),
@@ -363,7 +359,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
       fontWeight: FontWeight.w800,
       fontSize: 18.0,
       letterSpacing: 0.8,
-      color: Color(0xFFB33771),
+      color: const Color(0xFFB33771),
     );
   }
 
@@ -402,8 +398,8 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
             controller: _emailController,
             autocorrect: true,
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.alternate_email, color: Colors.blueGrey),
+            decoration: const InputDecoration(
+              prefixIcon: const Icon(Icons.alternate_email, color: Colors.blueGrey),
               hintText: "Enter Your Email",
               labelText: "Email",
             ),
@@ -421,13 +417,13 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
       ),
       actions: <Widget>[
         FlatButton(
-          child: Text("Cancel"),
+          child: const Text("Cancel"),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         FlatButton(
-          child: Text("Send"),
+          child: const Text("Send"),
           onPressed: () async {
             // if (_resetKey.currentState.validate()) {
             //   _resetKey.currentState.save();
@@ -452,11 +448,11 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
         return AlertDialog(
           content: Row(
             children: <Widget>[
-              CircularProgressIndicator(),
-              SizedBox(
+              const CircularProgressIndicator(),
+              const SizedBox(
                 width: 20.0,
               ),
-              Text("Loading!")
+              const Text("Loading!")
             ],
           ),
         );

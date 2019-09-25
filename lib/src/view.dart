@@ -21,10 +21,10 @@
 ///
 ///
 
-//export 'package:mvc_application/mvc.dart' show StateMVC;
 export 'package:mvc_application/view.dart';
 
 export 'package:bazaar/src/home/view/homepage.dart';
+
 export 'package:bazaar/src/login/view/signupPage.dart';
 export 'package:bazaar/src/login/view/loginPage.dart';
 

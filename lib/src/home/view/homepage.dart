@@ -61,8 +61,8 @@ class HomePageState extends StateMVC<HomePage> {
       appBar: AppBar(
         titleSpacing: 2.0,
         elevation: 0,
-        backgroundColor: Color(0xFFB33771),
-        title: Text("e-Bazaar"),
+        backgroundColor: const Color(0xFFB33771),
+        title: const Text("e-Bazaar"),
         actions: <Widget>[
           con.search,
           con.cart,
@@ -75,15 +75,15 @@ class HomePageState extends StateMVC<HomePage> {
           // CategoryImages(),
           Container(
             alignment: Alignment.centerLeft,
-            child: Text(
+            child: const Text(
               "Recent Products",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
             ),
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
           ),
           //grid view
-          Flexible(
-            child: Padding(
+          const Flexible(
+            child: const Padding(
               padding: const EdgeInsets.only(bottom: 20.0),
               child: RecentProducts(),
             ),
@@ -105,12 +105,12 @@ class HomePageState extends StateMVC<HomePage> {
         dotBgColor: Colors.transparent,
         boxFit: BoxFit.cover,
         images: [
-          AssetImage('images/c1.jpg'),
-          AssetImage('images/c5.jpg'),
-          AssetImage('images/c2.jpg'),
-          AssetImage('images/c3.jpg'),
-          AssetImage('images/c4.jpg'),
-          AssetImage('images/c6.jpg'),
+          const AssetImage('images/c1.jpg'),
+          const AssetImage('images/c5.jpg'),
+          const AssetImage('images/c2.jpg'),
+          const AssetImage('images/c3.jpg'),
+          const AssetImage('images/c4.jpg'),
+          const AssetImage('images/c6.jpg'),
         ],
       ),
     );

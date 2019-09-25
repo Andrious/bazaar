@@ -26,6 +26,11 @@ import 'package:bazaar/src/controller.dart'
     show BazaarApp, ControllerMVC, Controllers, ThemeChanger;
 
 class HomeDrawer extends ControllerMVC {
+
+  factory HomeDrawer() => _this ?? HomeDrawer._();
+  static HomeDrawer _this;
+  HomeDrawer._();
+
   HomePageState state;
   ThemeChanger theme;
   Auth _auth;
@@ -79,7 +84,7 @@ class HomeDrawer extends ControllerMVC {
 
   Widget get header => UserAccountsDrawerHeader(
         decoration: BoxDecoration(
-          color: Color(0xFFB33771),
+          color: const Color(0xFFB33771),
         ),
         accountName: Text("${userName()}"),
         accountEmail: Text("${email()}"),
@@ -108,7 +113,7 @@ class HomeDrawer extends ControllerMVC {
                 height: 30.0,
                 width: 26.0,
               ),
-        title: Text("DarkMode"),
+        title: const Text("DarkMode"),
         trailing: Switch(
           value: _darkmode,
           onChanged: (val) {
@@ -175,6 +180,7 @@ class HomeDrawer extends ControllerMVC {
             Navigator.of(state.context).pop();
             Navigator.pushReplacement(state.context,
                 MaterialPageRoute(builder: (context) => Login()));
+            state.refresh();
           });
         },
         child: state.showList(

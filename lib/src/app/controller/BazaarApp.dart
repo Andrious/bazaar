@@ -13,18 +13,20 @@ import 'package:bazaar/src/view.dart' show MsgBox;
 
 import 'package:bazaar/src/controller.dart' show AppController;
 
+class BazaarApp extends AppController {
 
-class BazaarApp extends AppController{
-
-  BazaarApp():super(){
+  factory BazaarApp() => _this ??= BazaarApp._();
+  static BazaarApp _this;
+  BazaarApp._() {
     auth = Auth.init();
   }
+
   Auth auth;
   Ads ads;
   bool loggedIn;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     ads = Ads(
       Platform.isAndroid
@@ -44,7 +46,6 @@ class BazaarApp extends AppController{
     );
   }
 
-
   @override
   Future<bool> init() async {
     bool init = await super.init();
@@ -53,21 +54,21 @@ class BazaarApp extends AppController{
   }
 
   @override
-  void dispose(){
+  void dispose() {
     auth.dispose();
     ads.dispose();
     super.dispose();
   }
 
-  Future<void> msgError(Exception ex,{BuildContext context}){
+  Future<void> msgError(Exception ex, {BuildContext context}) {
     String msg, title;
     if (ex is PlatformException) {
       PlatformException px = ex;
       if (px.code.contains("NOT_FOUND")) {
         title = "Sign Up Required";
         msg =
-        "Looks like you need to register first.\nYou're not found in the system.";
-      }else{
+            "Looks like you need to register first.\nYou're not found in the system.";
+      } else {
         title = px.code;
         msg = px.message;
       }
@@ -78,5 +79,3 @@ class BazaarApp extends AppController{
     return MsgBox(context: context, title: title, msg: msg).show();
   }
 }
-
-

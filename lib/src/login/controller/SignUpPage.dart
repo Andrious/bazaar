@@ -12,6 +12,11 @@ import 'package:bazaar/src/controller.dart'
 import 'package:bazaar/src/login/model/firebaseDB/userManagement.dart';
 
 class SignUpPage extends ControllerMVC {
+
+  factory SignUpPage() => _this ??= SignUpPage._();
+  static SignUpPage _this;
+  SignUpPage._();
+
   Auth _auth;
   BazaarApp con;
 
@@ -56,13 +61,14 @@ class SignUpPage extends ControllerMVC {
           email: email, password: password);
       if (signUp) {
         user = await _auth.currentUser();
-        userManagement.createUser(user.uid.toString(), {
-          'userId': user.uid,
+        userManagement.createUser(user?.uid?.toString(), {
+          'userId': user?.uid,
           'username': userName.toString(),
           'email': email,
-        }).CatchError((ex) {
-          print("signUpUser(): ${ex.toString()}");
         });
+//        .CatchError((ex) {
+//          print("signUpUser(): ${ex.toString()}");
+//        });
       }
     }
     return signUp;

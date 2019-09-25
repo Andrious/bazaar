@@ -4,26 +4,18 @@ import 'package:bazaar/src/controller.dart'
 import 'package:auth/auth.dart' show Auth;
 
 class LoginPage extends ControllerMVC {
-  factory LoginPage() {
-    return _this ??= LoginPage._();
-  }
+
+  factory LoginPage() => _this ??= LoginPage._();
   static LoginPage _this;
-  LoginPage._(){
+  LoginPage._() {
     con = Controllers.of<BazaarApp>();
     loggedIn = con.loggedIn;
     _auth = con.auth;
   }
+
   BazaarApp con;
   Auth _auth;
   bool loggedIn;
-
-  void initState() {
-//    con.ads.showBannerAd(state: this.stateMVC);
-  }
-
-  void deactivate() {
-//    con.ads.closeBannerAd();
-  }
 
   Future<bool> isSignedIn() async {
     bool isIn = await _auth?.isLoggedIn() ?? false;
@@ -43,5 +35,6 @@ class LoginPage extends ControllerMVC {
 
   Exception getError() => _auth.getError();
 
-  Future<void> msgError(Exception ex) => con.msgError(ex, context: stateMVC.context);
+  Future<void> msgError(Exception ex) =>
+      con.msgError(ex, context: stateMVC.context);
 }

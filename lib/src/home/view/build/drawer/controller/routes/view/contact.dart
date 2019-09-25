@@ -5,7 +5,6 @@ import 'package:flutter/material.dart'
         BuildContext,
         Center,
         Color,
-        Colors,
         Column,
         Container,
         EdgeInsets,
@@ -31,8 +30,8 @@ class Contact extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color(0xFFB33771),
-        title: Text("Contact"),
+        backgroundColor: const Color(0xFFB33771),
+        title: const Text("Contact"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -41,13 +40,13 @@ class Contact extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(left: 8.0),
               alignment: Alignment.topLeft,
-              child: Text(
+              child: const Text(
                 "Questions about an issue?",
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
               ),
             ),
-            Text("Feel free to Ask!"),
-            SizedBox(height: 50.0),
+            const Text("Feel free to Ask!"),
+            const SizedBox(height: 50.0),
             Row(
               children: <Widget>[
                 Expanded(
@@ -62,9 +61,9 @@ class Contact extends StatelessWidget {
                         width: 70.0,
                       ),
                       subtitle: Center(
-                        child: Text(
+                        child: const Text(
                           "Twitter",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -84,9 +83,9 @@ class Contact extends StatelessWidget {
                         width: 70.0,
                       ),
                       subtitle: Center(
-                        child: Text(
+                        child: const Text(
                           "Github",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -105,10 +104,10 @@ class Contact extends StatelessWidget {
                         height: 70.0,
                         width: 70.0,
                       ),
-                      subtitle: Center(
-                        child: Text(
+                      subtitle: const Center(
+                        child: const Text(
                           "LinkedIn",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w400,
                           ),
                         ),

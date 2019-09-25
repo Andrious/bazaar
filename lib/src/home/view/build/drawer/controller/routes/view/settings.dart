@@ -50,8 +50,8 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color(0xFFB33771),
-        title: Text("Settings"),
+        backgroundColor: const Color(0xFFB33771),
+        title: const Text("Settings"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -59,16 +59,16 @@ class _SettingsState extends State<Settings> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              child: Text(
+              child: const Text(
                 "If you want to reset your password click the button",
-                style: TextStyle(fontSize: 18.0),
+                style: const TextStyle(fontSize: 18.0),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             MaterialButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0)),
-                color: Color(0xFFB33771),
+                color: const Color(0xFFB33771),
                 minWidth: MediaQuery.of(context).size.width,
                 child: ListTile(
                   title: Center(

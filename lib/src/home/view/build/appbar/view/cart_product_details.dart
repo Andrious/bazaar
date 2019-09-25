@@ -106,11 +106,11 @@ class _CartProductDetailsState extends State<CartProductDetails> {
               ),
               child: Center(
                 child: ListTile(
-                  leading: Text(
+                  leading: const Text(
                     "Archive",
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
-                  trailing: Icon(
+                  trailing: const Icon(
                     Icons.delete_outline,
                     color: Colors.white,
                   ),
@@ -136,12 +136,12 @@ class _CartProductDetailsState extends State<CartProductDetails> {
                               child: Text(
                                   "\$ ${_productsAddedInTheCart[i]['price']}")),
                           IconButton(
-                            icon: Icon(Icons.arrow_drop_down),
+                            icon: const Icon(Icons.arrow_drop_down),
                             onPressed: () => decrementInQty(i),
                           ),
                           Text("${_productsAddedInTheCart[i]['qty']}"),
                           IconButton(
-                            icon: Icon(Icons.arrow_drop_up),
+                            icon: const Icon(Icons.arrow_drop_up),
                             onPressed: () => incrementInQty(i),
                           )
                         ],

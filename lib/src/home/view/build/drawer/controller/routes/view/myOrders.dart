@@ -9,7 +9,7 @@ import 'package:flutter/material.dart'
         Text,
         Widget;
 
-import 'package:bazaar/src/view.dart' show CartProductDetails, MyOrders;
+import 'package:bazaar/src/view.dart' show CartProductDetails;
 
 class MyOrders extends StatelessWidget {
   @override
@@ -17,8 +17,8 @@ class MyOrders extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color(0xFFB33771),
-        title: Text("My Orders"),
+        backgroundColor: const Color(0xFFB33771),
+        title: const Text("My Orders"),
       ),
       body: Container(
         height: 400.0,

@@ -132,7 +132,7 @@ class _SignUpState extends StateMVC<SignUp>
   }
 
   @override
-  Widget build(BuildContext context) {
+    Widget build(BuildContext context) {
     animationController.forward();
     final width = MediaQuery.of(context).size.width;
 
@@ -160,7 +160,7 @@ class _SignUpState extends StateMVC<SignUp>
                     child: Container(
                       alignment: Alignment.topLeft,
                       child: IconButton(
-                        icon: Icon(Icons.arrow_back),
+                        icon: const Icon(Icons.arrow_back),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
@@ -210,11 +210,11 @@ class _SignUpState extends StateMVC<SignUp>
                               return null;
                             },
                             onSaved: (val) {
-                              _emailController.text = val;
+                              _nameController.text = val;
                             },
                             autocorrect: true,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10.0,
                           ),
                           TextFormField(
@@ -239,7 +239,7 @@ class _SignUpState extends StateMVC<SignUp>
                             },
                             autocorrect: true,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10.0,
                           ),
 
@@ -248,17 +248,14 @@ class _SignUpState extends StateMVC<SignUp>
                             obscureText: hidePass,
                             decoration: InputDecoration(
                                 suffixIcon: IconButton(
-                                  icon: Icon(
-                                    Icons.remove_red_eye,
-                                    color: Colors.blueGrey,
-                                  ),
+                                  icon: hidePass ? const Icon(Icons.visibility_off, color: Colors.blueGrey) : const Icon(Icons.visibility, color: Colors.blueGrey),
                                   onPressed: () {
                                     setState(() {
-                                      hidePass = false;
+                                      hidePass = !hidePass;
                                     });
                                   },
                                 ),
-                                prefixIcon: Icon(
+                                prefixIcon: const Icon(
                                   Icons.lock,
                                   color: Colors.blueGrey,
                                 ),
@@ -275,7 +272,7 @@ class _SignUpState extends StateMVC<SignUp>
                             },
                             autocorrect: true,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10.0,
                           ),
                           TextFormField(
@@ -283,13 +280,10 @@ class _SignUpState extends StateMVC<SignUp>
                             obscureText: hidePass,
                             decoration: InputDecoration(
                                 suffixIcon: IconButton(
-                                  icon: Icon(
-                                    Icons.remove_red_eye,
-                                    color: Colors.blueGrey,
-                                  ),
+                                  icon: hidePass ? const Icon(Icons.visibility_off, color: Colors.blueGrey) : const Icon(Icons.visibility, color: Colors.blueGrey),
                                   onPressed: () {
                                     setState(() {
-                                      hidePass = false;
+                                      hidePass = !hidePass;
                                     });
                                   },
                                 ),
@@ -315,7 +309,7 @@ class _SignUpState extends StateMVC<SignUp>
                             autocorrect: true,
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 20.0,
                           ),
                           //  ================== Login Btn =======================
@@ -324,7 +318,7 @@ class _SignUpState extends StateMVC<SignUp>
                                 muchDelayedAnimation.value * width, 0.0, 0.0),
                             child: MaterialButton(
                               shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(25.0),
+                                borderRadius: BorderRadius.circular(25.0),
                               ),
                               minWidth: MediaQuery.of(context).size.width,
                               child: ListTile(
@@ -336,20 +330,20 @@ class _SignUpState extends StateMVC<SignUp>
                                 ),
                               ),
                               onPressed: () async {
+                                await signUpUser(context);
                                 Navigator.of(context).pop();
-                                signUpUser();
                               },
-                              color: Color(0xFFB33771),
+                              color: const Color(0xFFB33771),
                             ),
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 5.0,
                           ),
                           Container(
-                            child: Text("OR"),
+                            child: const Text("OR"),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5.0,
                           ),
 
@@ -399,7 +393,7 @@ class _SignUpState extends StateMVC<SignUp>
                   Visibility(
                     visible: isLoading ?? true,
                     child: Center(
-                      child: CircularProgressIndicator(),
+                      child: const CircularProgressIndicator(),
                     ),
                   ),
                 ],
@@ -423,32 +417,32 @@ class _SignUpState extends StateMVC<SignUp>
       fontWeight: FontWeight.w800,
       fontSize: 18.0,
       letterSpacing: 0.8,
-      color: Color(0xFFB33771),
+      color: const Color(0xFFB33771),
     );
   }
 
-  Future signUpUser() async {
+  Future<bool> signUpUser(BuildContext context) async {
+//      formState.reset();
+//      _loadingDialog();
     FormState formState = _formKey.currentState;
-    if (formState.validate()) {
-      formState.reset();
-      _loadingDialog();
-      if (_formKey.currentState.validate()) {
-        _formKey.currentState.save();
-        final signIn = await con.signUpUser(_nameController.text,
-            _emailController.text, _passwordController.text);
-        if (signIn) {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => HomePage()));
-        } else {
-          if (con.inError) con.msgError(context);
-        }
+    bool signUp = formState.validate();
+    if (signUp) {
+      formState.save();
+      signUp = await con.signUpUser(_nameController.text,
+          _emailController.text, _passwordController.text);
+      if (signUp) {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HomePage()));
+      } else {
+        if (con.inError) con.msgError(context);
       }
     }
+    return signUp;
   }
 
   _loadingDialog() => _showDialogue(
           content: Row(
-        children: [CircularProgressIndicator(), Text("Loading!")],
+        children: [const CircularProgressIndicator(), const Text("Loading!")],
       ));
 
   _showDialogue({
@@ -461,8 +455,8 @@ class _SignUpState extends StateMVC<SignUp>
     } else {
       content ??= Row(
         children: [
-          CircularProgressIndicator(),
-          SizedBox(
+          const CircularProgressIndicator(),
+          const SizedBox(
             width: 20.0,
           ),
         ],

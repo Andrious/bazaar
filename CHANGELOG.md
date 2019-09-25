@@ -1,3 +1,10 @@
+## 1.1.3
+ September 25, 2019
+- const keyword for 'unchanging' parameters
+- factory constructor for Controllers
+- Refresh UI when logging out
+- Icons.visibility_off for password field
+
 ## 1.1.2
  September 23, 2019
 - Removed FirebaseAuth, FirebaseUser from view, homepage.dart. 

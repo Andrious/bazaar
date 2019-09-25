@@ -31,7 +31,7 @@ class About extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Color(0xFFB33771),
-        title: Text("About"),
+        title: const Text("About"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -44,18 +44,18 @@ class About extends StatelessWidget {
                 style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
               ),
             ),
-            Text("Version 1.0.0"),
-            Padding(
+            const Text("Version 1.0.0"),
+            const Padding(
               padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
             ),
             Row(
               children: <Widget>[
-                Icon(Icons.copyright),
+                const Icon(Icons.copyright),
                 Expanded(
                     child: Text(" 2019, eBazaar.com, Inc or its affiliates.")),
               ],
             ),
-            Padding(
+            const Padding(
               padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
             ),
             Divider(
@@ -65,27 +65,27 @@ class About extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(left: 8.0),
               alignment: Alignment.topLeft,
-              child: Text(
+              child: const Text(
                 "About eBazzar",
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
+              child: const Text(
                   "E-commerce is the activity of buying or selling of products on online services or over the Internet. Electronic commerce draws on technologies such as mobile commerce, electronic funds transfer, supply chain management, Internet marketing, online transaction processing, electronic data interchange (EDI), inventory management systems, and automated data collection systems."),
             ),
             Container(
               padding: const EdgeInsets.only(left: 8.0),
               alignment: Alignment.topLeft,
-              child: Text(
+              child: const Text(
                 "Privacy & Policy",
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
+              child: const Text(
                   "E-commerce is the activity of buying or selling of products on online services or over the Internet. Electronic commerce draws on technologies such as mobile commerce, electronic funds transfer, supply chain management, Internet marketing, online transaction processing, electronic data interchange (EDI), inventory management systems, and automated data collection systems."),
             )
           ],

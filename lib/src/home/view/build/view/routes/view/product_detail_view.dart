@@ -63,8 +63,8 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color(0xFFB33771),
-        title: Text("e-Bazaar"),
+        backgroundColor: const Color(0xFFB33771),
+        title: const Text("e-Bazaar"),
         actions: <Widget>[
           con.shopping,
         ],
@@ -79,7 +79,7 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
                 child: Text(
                   "${widget.productDetailsName}",
                   style: TextStyle(
-                      color: Color(0xFFB33771),
+                      color: const Color(0xFFB33771),
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0),
                 ),
@@ -105,7 +105,7 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
                   onPressed: () {},
                   child: Row(
                     children: <Widget>[
-                      Text("Size"),
+                      const Text("Size"),
                       IconButton(
                         onPressed: () {
                           _showDialog("Size", "Choose Size");
@@ -121,7 +121,7 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
                   onPressed: () {},
                   child: Row(
                     children: <Widget>[
-                      Text("Color"),
+                      const Text("Color"),
                       IconButton(
                         onPressed: () {
                           _showDialog("Color", "Choose Color");
@@ -137,7 +137,7 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
                   onPressed: () {},
                   child: Row(
                     children: <Widget>[
-                      Text("Qty"),
+                      const Text("Qty"),
                       IconButton(
                         onPressed: () {
                           _showDialog("Quantity", "Choose Quantity");
@@ -157,10 +157,10 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
             padding: const EdgeInsets.only(top: 20.0, left: 20.0),
             child: Row(
               children: <Widget>[
-                Text("M.R.P. :  "),
+                const Text("M.R.P. :  "),
                 Text(
                   " \$ ${widget.productDetailsoldPrice}",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.lineThrough),
                 ),
@@ -171,7 +171,7 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
             padding: const EdgeInsets.only(top: 20.0, left: 20.0),
             child: Row(
               children: <Widget>[
-                Text("Price :  "),
+                const Text("Price :  "),
                 Text(
                   " \$ ${widget.productDetailsPrice}",
                   style: TextStyle(
@@ -185,7 +185,7 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
             padding: const EdgeInsets.only(top: 20.0, left: 20.0),
             child: Row(
               children: <Widget>[
-                Text("You Save :  "),
+                const Text("You Save :  "),
                 Text(
                   " \$ ${widget.productDetailsoldPrice - widget.productDetailsPrice} Inclusive all taxes",
                   style: TextStyle(
@@ -201,10 +201,10 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
             padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
             child: MaterialButton(
               textColor: Colors.white,
-              padding: EdgeInsets.all(15.0),
-              child: Text("Buy Now"),
+              padding: const EdgeInsets.all(15.0),
+              child: const Text("Buy Now"),
               onPressed: () {},
-              color: Color(0xFFB33771),
+              color: const Color(0xFFB33771),
             ),
           ),
           Padding(
@@ -212,7 +212,7 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
             child: MaterialButton(
               textColor: Colors.white,
               padding: EdgeInsets.all(15.0),
-              child: Text("Add to Cart"),
+              child: const Text("Add to Cart"),
               onPressed: () {
                 showDialog(
                     context: context,
@@ -221,14 +221,14 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
                         content: Text("Product added to the Cart"),
                         actions: <Widget>[
                           FlatButton(
-                            child: Text("OK"),
+                            child: const Text("OK"),
                             onPressed: () => Navigator.of(context).pop(),
                           ),
                         ],
                       );
                     });
               },
-              color: Color(0xFFB33771),
+              color: const Color(0xFFB33771),
             ),
           ),
 
@@ -236,9 +236,9 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
           Padding(
             padding: const EdgeInsets.only(left: 5.0, top: 20.0, bottom: 20.0),
             child: ListTile(
-              title: Text(
+              title: const Text(
                 "About this Item",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 5.0),
@@ -247,11 +247,11 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
             ),
           ),
           Padding(
-            child: Text(
+            child: const Text(
               "Similar Products",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
             ),
-            padding: EdgeInsets.only(left: 20.0, bottom: 10.0),
+            padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
           ),
           Container(
             height: 400.0,
@@ -269,7 +269,7 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
       content: Text(c),
       actions: <Widget>[
         FlatButton(
-          child: Text("Close"),
+          child: const Text("Close"),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ],

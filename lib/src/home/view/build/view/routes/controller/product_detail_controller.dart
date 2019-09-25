@@ -7,6 +7,11 @@ import 'package:bazaar/src/controller.dart'
     show ControllerMVC, Prefs;
 
 class ProductDetails extends ControllerMVC {
+
+  factory ProductDetails() => _this ??= ProductDetails._();
+  static ProductDetails _this;
+  ProductDetails._();
+
   bool selected;
   v.ProductDetailsState state;
 

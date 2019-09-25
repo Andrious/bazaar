@@ -71,8 +71,8 @@ class _MyAccountState extends State<MyAccount> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color(0xFFB33771),
-        title: Text("MyAccount"),
+        backgroundColor: const Color(0xFFB33771),
+        title: const Text("MyAccount"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -80,9 +80,9 @@ class _MyAccountState extends State<MyAccount> {
           children: <Widget>[
             Container(
               padding: const EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 20.0),
-              child: Text(
+              child: const Text(
                 "Login & Security",
-                style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
               ),
             ),
             Card(
@@ -92,9 +92,9 @@ class _MyAccountState extends State<MyAccount> {
                 children: <Widget>[
                   Container(
                     padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
-                    child: Text(
+                    child: const Text(
                       "Name:",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -103,14 +103,14 @@ class _MyAccountState extends State<MyAccount> {
                       "$userName",
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     height: 2.0,
                   ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
-                    child: Text(
+                    child: const Text(
                       "Email:",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -119,13 +119,13 @@ class _MyAccountState extends State<MyAccount> {
                       "${_auth.email}",
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     height: 2.0,
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             MaterialButton(
@@ -134,10 +134,10 @@ class _MyAccountState extends State<MyAccount> {
                 borderRadius: BorderRadius.circular(25.0),
               ),
               child: ListTile(
-                title: Center(
-                  child: Text(
+                title: const Center(
+                  child: const Text(
                     "LogOut",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -153,7 +153,7 @@ class _MyAccountState extends State<MyAccount> {
                       MaterialPageRoute(builder: (context) => Login()));
                 }).catchError((e) => print(e.toString()));
               },
-              color: Color(0xFFB33771),
+              color: const Color(0xFFB33771),
             ),
           ],
         ),

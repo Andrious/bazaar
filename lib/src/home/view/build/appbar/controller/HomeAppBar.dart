@@ -15,14 +15,12 @@ import 'package:bazaar/src/controller.dart'
 
 class HomeAppBar extends ControllerMVC {
 
-  factory HomeAppBar(){
-    return _this ??= HomeAppBar._();
-  }
+  factory HomeAppBar() => _this ??= HomeAppBar._();
   static HomeAppBar _this;
   HomeAppBar._();
 
   Widget get search => IconButton(
-        icon: Icon(Icons.search),
+        icon: const Icon(Icons.search),
         onPressed: () async {
           await showSearch(context: stateMVC.context, delegate: ProductSearch());
           refresh();
@@ -30,7 +28,7 @@ class HomeAppBar extends ControllerMVC {
       );
 
   Widget get cart => IconButton(
-        icon: Icon(Icons.shopping_cart),
+        icon: const Icon(Icons.shopping_cart),
         onPressed: () {
           Navigator.of(stateMVC.context)
               .push(MaterialPageRoute(builder: (context) => Cart()));

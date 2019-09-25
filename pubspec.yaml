@@ -1,7 +1,7 @@
 name: bazaar
 description: A sample app demonstrating functions and features implemented by the author.
 
-version: 1.1.2
+version: 1.1.3
 
 environment:
   sdk: ">=2.3.0 <3.0.0"
