@@ -1,3 +1,7 @@
+## 1.1.4
+ September 25, 2019
+- deactivate() calls Prefs.setBool()
+
 ## 1.1.3
  September 25, 2019
 - const keyword for 'unchanging' parameters

@@ -22,9 +22,8 @@ class ProductDetails extends ControllerMVC {
   }
 
   @override
-  void dispose() {
+  void deactivate() {
     Prefs.setBool(state.widget.productDetailsName, selected);
-    super.dispose();
   }
 
   Widget get shopping => IconButton(
@@ -36,7 +35,7 @@ class ProductDetails extends ControllerMVC {
       );
 
   Widget get iconButton => IconButton(
-        color: Color(0xFFB33771),
+        color: const Color(0xFFB33771),
         icon: Icon(selected ? Icons.favorite : Icons.favorite_border),
         onPressed: () {
           selected = !selected;
