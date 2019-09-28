@@ -1,3 +1,7 @@
+## 1.1.6
+ September 28, 2019
+- Updated README.md
+
 ## 1.1.5
  September 28, 2019
 - Contacts page
