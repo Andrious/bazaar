@@ -1,3 +1,7 @@
+## 1.1.5
+ September 28, 2019
+- Contacts page
+
 ## 1.1.4
  September 25, 2019
 - deactivate() calls Prefs.setBool()

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart' show BuildContext;
 
+import 'dart:async' show Future;
+
 import 'dart:io' show Platform;
 
 import 'package:auth/auth.dart' show Auth;
 
 import 'package:ads/ads.dart' show Ads;
-import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart' show PlatformException;
 
@@ -41,7 +42,7 @@ class BazaarApp extends AppController {
       videoUnitId: Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/5224354917'
           : 'ca-app-pub-3940256099942544/1712485313',
-      keywords: <String>['bazaar', 'clothing'],
+      keywords: ['bazaar', 'clothing'],
       testing: false,
     );
   }

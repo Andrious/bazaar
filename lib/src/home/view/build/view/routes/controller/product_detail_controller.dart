@@ -3,11 +3,9 @@ import 'package:flutter/material.dart'
 
 import 'package:bazaar/src/view.dart' as v;
 
-import 'package:bazaar/src/controller.dart'
-    show ControllerMVC, Prefs;
+import 'package:bazaar/src/controller.dart' show ControllerMVC, Prefs;
 
 class ProductDetails extends ControllerMVC {
-
   factory ProductDetails() => _this ??= ProductDetails._();
   static ProductDetails _this;
   ProductDetails._();
@@ -29,7 +27,7 @@ class ProductDetails extends ControllerMVC {
   Widget get shopping => IconButton(
         icon: Icon(Icons.shopping_cart),
         onPressed: () {
-          Navigator.of(stateMVC.context)
+          Navigator.of(state.context)
               .push(MaterialPageRoute(builder: (context) => v.Cart()));
         },
       );
@@ -38,8 +36,8 @@ class ProductDetails extends ControllerMVC {
         color: const Color(0xFFB33771),
         icon: Icon(selected ? Icons.favorite : Icons.favorite_border),
         onPressed: () {
-          selected = !selected;
-          refresh();
+            selected = !selected;
+            refresh();
         },
       );
 }

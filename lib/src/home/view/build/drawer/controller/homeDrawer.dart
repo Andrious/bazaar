@@ -74,7 +74,7 @@ class HomeDrawer extends ControllerMVC {
   }
 
   void onTap(Widget widget) {
-    con.ads.showBannerAd(state: this.stateMVC);
+    con.ads.showBannerAd(state: state);
     Navigator.of(state.context)
         .push(MaterialPageRoute(builder: (context) => widget))
         .then((_) {

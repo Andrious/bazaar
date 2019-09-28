@@ -5,6 +5,7 @@ import 'package:flutter/material.dart'
         BuildContext,
         Center,
         Color,
+        Colors,
         Column,
         Container,
         EdgeInsets,
@@ -116,6 +117,18 @@ class Contact extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Text("OR Email me at :"),
+                  Text("ramubugudi4@gmail.com",
+                      style: TextStyle(color: Colors.blueGrey))
+                ],
+              ),
             ),
           ],
         ),
