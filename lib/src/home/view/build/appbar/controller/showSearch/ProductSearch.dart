@@ -22,11 +22,9 @@ import 'package:bazaar/src/model.dart' show recentSearchProd, searchProd;
 
 import 'package:bazaar/src/view.dart' show RecentProducts;
 
-
 // SearchBar
 
 class ProductSearch extends SearchDelegate<String> {
-
   @override
   List<Widget> buildActions(BuildContext context) {
     // Actions for appbar
@@ -98,6 +96,4 @@ class ProductSearch extends SearchDelegate<String> {
       },
     );
   }
-
-
 }

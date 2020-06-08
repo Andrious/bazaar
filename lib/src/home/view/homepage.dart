@@ -25,8 +25,7 @@ import 'package:flutter/material.dart'
 
 import 'package:carousel_pro/carousel_pro.dart' show Carousel;
 
-import 'package:bazaar/src/view.dart'
-    show HomeDrawer, RecentProducts, StateMVC;
+import 'package:bazaar/src/view.dart' show HomeDrawer, RecentProducts, StateMVC;
 
 import 'package:bazaar/src/controller.dart' as c;
 
@@ -53,11 +52,10 @@ class HomePageState extends StateMVC<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    c.HomeAppBar con = controllerByType<c.HomeAppBar>(context);
+    c.HomeAppBar con = c.HomeAppBar();
     return Scaffold(
       // Drawer Start
       drawer: HomeDrawer(this),
-      // Drawer ends
       appBar: AppBar(
         titleSpacing: 2.0,
         elevation: 0,
@@ -77,7 +75,8 @@ class HomePageState extends StateMVC<HomePage> {
             alignment: Alignment.centerLeft,
             child: const Text(
               "Recent Products",
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
             ),
             padding: const EdgeInsets.all(10.0),
           ),

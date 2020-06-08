@@ -42,7 +42,7 @@ import 'package:auth/auth.dart' show Auth;
 
 import 'package:bazaar/src/view.dart' hide BazaarApp;
 
-import 'package:bazaar/src/controller.dart' show BazaarApp, Controllers;
+import 'package:bazaar/src/controller.dart' show BazaarApp;
 
 class MyAccount extends StatefulWidget {
   @override
@@ -54,7 +54,7 @@ class _MyAccountState extends State<MyAccount> {
 
   @override
   void initState() {
-    BazaarApp con = Controllers.of<BazaarApp>();
+    BazaarApp con = BazaarApp();
     _auth = con.auth;
     super.initState();
   }
@@ -82,7 +82,8 @@ class _MyAccountState extends State<MyAccount> {
               padding: const EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 20.0),
               child: const Text(
                 "Login & Security",
-                style: const TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 28.0, fontWeight: FontWeight.bold),
               ),
             ),
             Card(

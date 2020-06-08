@@ -36,8 +36,8 @@ class ProductDetails extends ControllerMVC {
         color: const Color(0xFFB33771),
         icon: Icon(selected ? Icons.favorite : Icons.favorite_border),
         onPressed: () {
-            selected = !selected;
-            refresh();
+          selected = !selected;
+          refresh();
         },
       );
 }

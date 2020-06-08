@@ -4,11 +4,10 @@ import 'package:bazaar/src/controller.dart'
 import 'package:auth/auth.dart' show Auth;
 
 class LoginPage extends ControllerMVC {
-
   factory LoginPage() => _this ??= LoginPage._();
   static LoginPage _this;
   LoginPage._() {
-    con = Controllers.of<BazaarApp>();
+    con = BazaarApp();
     loggedIn = con.loggedIn;
     _auth = con.auth;
   }
@@ -33,7 +32,8 @@ class LoginPage extends ControllerMVC {
 
   bool get inError => _auth.message.isNotEmpty;
 
-  Exception getError() => _auth.getError();
+  @override
+  Exception getError([dynamic error]) => _auth.getError();
 
   Future<void> msgError(Exception ex) =>
       con.msgError(ex, context: stateMVC.context);

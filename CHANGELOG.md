@@ -1,3 +1,11 @@
+## 1.2.0
+ June 08, 2020
+- Updated to mvc_application: ^5.0.0
+- Removed all Controllers.of<>();
+- state.controllerByType<>(state.context);
+- sdk: ">=2.7.0 <3.0.0"
+- Exclude android, iOS and google-services.json from .gitignore
+
 ## 1.1.6
  September 28, 2019
 - Updated README.md

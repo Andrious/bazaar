@@ -39,7 +39,7 @@ class _SettingsState extends State<Settings> {
   @override
   void initState() {
     super.initState();
-    BazaarApp con = Controllers.of<BazaarApp>();
+    BazaarApp con = BazaarApp();
     _auth = con.auth;
   }
 

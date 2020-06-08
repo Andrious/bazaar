@@ -23,30 +23,29 @@ import 'package:auth/auth.dart' show Auth;
 import 'package:bazaar/src/view.dart' hide BazaarApp;
 
 import 'package:bazaar/src/controller.dart'
-    show BazaarApp, ControllerMVC, Controllers, ThemeChanger;
+    show BazaarApp, ControllerMVC, ThemeChanger;
 
 class HomeDrawer extends ControllerMVC {
-
   factory HomeDrawer() => _this ?? HomeDrawer._();
   static HomeDrawer _this;
   HomeDrawer._();
 
-  HomePageState state;
-  ThemeChanger theme;
+  HomePageState _state;
+  ThemeChanger _theme;
   Auth _auth;
-  BazaarApp con;
+  BazaarApp _con;
 
   bool _darkmode;
 
   @override
   void initState() {
-    con = Controllers.of<BazaarApp>();
-    _auth = con.auth;
-    state = stateMVC;
-    theme = state.controllerByType<ThemeChanger>(state.context);
-    _darkmode = theme.darkMode;
+    _con = BazaarApp();
+    _auth = _con.auth;
+    _state = stateMVC;
+    _theme = ThemeChanger();
+    _darkmode = _theme.darkMode;
     // Load the Ad into memory.
-    con.ads.setBannerAd();
+    _con.ads.setBannerAd();
   }
 
   String userName() {
@@ -54,7 +53,7 @@ class HomeDrawer extends ControllerMVC {
     if (name.isEmpty) {
       name = _auth?.email ?? "";
       List<String> parts = name.split("@");
-      if(parts.isNotEmpty) name = parts[0];
+      if (parts.isNotEmpty) name = parts[0];
     }
     return name;
   }
@@ -74,11 +73,11 @@ class HomeDrawer extends ControllerMVC {
   }
 
   void onTap(Widget widget) {
-    con.ads.showBannerAd(state: state);
-    Navigator.of(state.context)
+    _con.ads.showBannerAd(state: _state);
+    Navigator.of(_state.context)
         .push(MaterialPageRoute(builder: (context) => widget))
         .then((_) {
-      con.ads.closeBannerAd(load: true);
+      _con.ads.closeBannerAd(load: true);
     });
   }
 
@@ -118,7 +117,7 @@ class HomeDrawer extends ControllerMVC {
           value: _darkmode,
           onChanged: (val) {
             _darkmode = val;
-            theme.setDarkMode(_darkmode);
+            _theme.setDarkMode(_darkmode);
             refresh();
           },
         ),
@@ -128,7 +127,7 @@ class HomeDrawer extends ControllerMVC {
         onTap: () {
           onTap(MyAccount());
         },
-        child: state.showList(
+        child: _state.showList(
           "My Account",
           (Icons.account_box),
         ),
@@ -138,7 +137,7 @@ class HomeDrawer extends ControllerMVC {
         onTap: () {
           onTap(MyOrders());
         },
-        child: state.showList(
+        child: _state.showList(
           "My Orders",
           (Icons.shopping_basket),
         ),
@@ -148,7 +147,7 @@ class HomeDrawer extends ControllerMVC {
         onTap: () {
           onTap(Settings());
         },
-        child: state.showList(
+        child: _state.showList(
           "Settings",
           (Icons.settings),
         ),
@@ -158,7 +157,7 @@ class HomeDrawer extends ControllerMVC {
         onTap: () {
           onTap(About());
         },
-        child: state.showList(
+        child: _state.showList(
           "About",
           (Icons.adjust),
         ),
@@ -168,7 +167,7 @@ class HomeDrawer extends ControllerMVC {
         onTap: () {
           onTap(Contact());
         },
-        child: state.showList(
+        child: _state.showList(
           "Contact",
           (Icons.contact_phone),
         ),
@@ -177,13 +176,13 @@ class HomeDrawer extends ControllerMVC {
   Widget get logout => InkWell(
         onTap: () {
           _auth.signOut().then((value) {
-            Navigator.of(state.context).pop();
-            Navigator.pushReplacement(state.context,
+            Navigator.of(_state.context).pop();
+            Navigator.pushReplacement(_state.context,
                 MaterialPageRoute(builder: (context) => Login()));
-            state.refresh();
+            _state.refresh();
           });
         },
-        child: state.showList(
+        child: _state.showList(
           "LogOut",
           (Icons.exit_to_app),
         ),

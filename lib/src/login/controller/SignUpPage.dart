@@ -2,17 +2,13 @@ import 'package:flutter/cupertino.dart' show BuildContext;
 
 import 'package:auth/auth.dart';
 
-import 'package:mvc_application/view.dart' show Controllers;
-
-import 'package:bazaar/src/controller.dart'
-    show BazaarApp, ControllerMVC, Controllers;
+import 'package:bazaar/src/controller.dart' show BazaarApp, ControllerMVC;
 
 //import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:shopping_cart/src/login/model/firebaseDB/googleSignIn.dart';
 import 'package:bazaar/src/login/model/firebaseDB/userManagement.dart';
 
 class SignUpPage extends ControllerMVC {
-
   factory SignUpPage() => _this ??= SignUpPage._();
   static SignUpPage _this;
   SignUpPage._();
@@ -21,7 +17,7 @@ class SignUpPage extends ControllerMVC {
   BazaarApp con;
 
   void initState() {
-    con = Controllers.of<BazaarApp>();
+    con = BazaarApp();
     _auth = con.auth;
     con.ads.closeBannerAd();
   }
@@ -105,7 +101,8 @@ class SignUpPage extends ControllerMVC {
 
   bool get inError => _auth.message.isNotEmpty;
 
-  Exception getError() => _auth.getError();
+  @override
+  Exception getError([dynamic error]) => _auth.getError();
 
   Future<void> msgError(BuildContext context) =>
       con.msgError(getError(), context: context);

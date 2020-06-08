@@ -118,7 +118,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    if(isLoggedin) return HomePage();
+    if (isLoggedin) return HomePage();
     final width = MediaQuery.of(context).size.width;
     animationController.forward();
     return AnimatedBuilder(
@@ -251,7 +251,11 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                                   color: Colors.blueGrey,
                                 ),
                                 suffixIcon: IconButton(
-                                  icon: hidePass ? const Icon(Icons.visibility_off, color: Colors.blueGrey) : const Icon(Icons.visibility, color: Colors.blueGrey),
+                                  icon: hidePass
+                                      ? const Icon(Icons.visibility_off,
+                                          color: Colors.blueGrey)
+                                      : const Icon(Icons.visibility,
+                                          color: Colors.blueGrey),
                                   onPressed: () {
                                     setState(() {
                                       hidePass = !hidePass;
@@ -282,8 +286,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                                 muchDelayedAnimation.value * width, 0.0, 0.0),
                             child: MaterialButton(
                               shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(25.0)),
+                                  borderRadius: BorderRadius.circular(25.0)),
                               minWidth: MediaQuery.of(context).size.width,
                               child: ListTile(
                                 title: Center(
@@ -334,7 +337,8 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                     visible: loading ?? true,
                     child: const Center(
                       child: const CircularProgressIndicator(
-                        valueColor: const AlwaysStoppedAnimation<Color>(Colors.red),
+                        valueColor:
+                            const AlwaysStoppedAnimation<Color>(Colors.red),
                       ),
                     ),
                   ),
@@ -399,7 +403,8 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
             autocorrect: true,
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
-              prefixIcon: const Icon(Icons.alternate_email, color: Colors.blueGrey),
+              prefixIcon:
+                  const Icon(Icons.alternate_email, color: Colors.blueGrey),
               hintText: "Enter Your Email",
               labelText: "Email",
             ),

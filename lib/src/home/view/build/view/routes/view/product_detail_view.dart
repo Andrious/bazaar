@@ -29,8 +29,7 @@ import 'package:flutter/material.dart'
         Widget,
         showDialog;
 
-import 'package:bazaar/src/view.dart'
-    show SimilarProducts, StateMVC;
+import 'package:bazaar/src/view.dart' show SimilarProducts, StateMVC;
 
 import 'package:bazaar/src/controller.dart' as c;
 
@@ -249,7 +248,8 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
           Padding(
             child: const Text(
               "Similar Products",
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
             ),
             padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
           ),

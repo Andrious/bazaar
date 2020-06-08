@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' show ThemeData;
 
-import 'package:mvc_application/mvc.dart' show AppView, Controllers;
+import 'package:mvc_application/view.dart' show AppView;
 
 import 'package:bazaar/src/view.dart' show Login;
 
@@ -18,5 +18,5 @@ class BazaarApp extends AppView {
           ],
         );
 
-  ThemeData onTheme() => Controllers.of<c.ThemeChanger>()?.getTheme();
+  ThemeData onTheme() => c.ThemeChanger()?.getTheme();
 }

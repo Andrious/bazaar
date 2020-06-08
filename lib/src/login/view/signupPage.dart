@@ -90,7 +90,7 @@ class _SignUpState extends StateMVC<SignUp>
   @override
   void initState() {
     super.initState();
-    final ad = Controllers.of<c.BazaarApp>()?.ads;
+    final ad = c.BazaarApp()?.ads;
     if (ad != null) {
       ad?.closeBannerAd();
     }
@@ -132,7 +132,7 @@ class _SignUpState extends StateMVC<SignUp>
   }
 
   @override
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     animationController.forward();
     final width = MediaQuery.of(context).size.width;
 
@@ -248,7 +248,11 @@ class _SignUpState extends StateMVC<SignUp>
                             obscureText: hidePass,
                             decoration: InputDecoration(
                                 suffixIcon: IconButton(
-                                  icon: hidePass ? const Icon(Icons.visibility_off, color: Colors.blueGrey) : const Icon(Icons.visibility, color: Colors.blueGrey),
+                                  icon: hidePass
+                                      ? const Icon(Icons.visibility_off,
+                                          color: Colors.blueGrey)
+                                      : const Icon(Icons.visibility,
+                                          color: Colors.blueGrey),
                                   onPressed: () {
                                     setState(() {
                                       hidePass = !hidePass;
@@ -280,7 +284,11 @@ class _SignUpState extends StateMVC<SignUp>
                             obscureText: hidePass,
                             decoration: InputDecoration(
                                 suffixIcon: IconButton(
-                                  icon: hidePass ? const Icon(Icons.visibility_off, color: Colors.blueGrey) : const Icon(Icons.visibility, color: Colors.blueGrey),
+                                  icon: hidePass
+                                      ? const Icon(Icons.visibility_off,
+                                          color: Colors.blueGrey)
+                                      : const Icon(Icons.visibility,
+                                          color: Colors.blueGrey),
                                   onPressed: () {
                                     setState(() {
                                       hidePass = !hidePass;
@@ -428,8 +436,8 @@ class _SignUpState extends StateMVC<SignUp>
     bool signUp = formState.validate();
     if (signUp) {
       formState.save();
-      signUp = await con.signUpUser(_nameController.text,
-          _emailController.text, _passwordController.text);
+      signUp = await con.signUpUser(_nameController.text, _emailController.text,
+          _passwordController.text);
       if (signUp) {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => HomePage()));

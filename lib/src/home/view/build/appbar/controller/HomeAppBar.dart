@@ -10,19 +10,18 @@ import 'package:flutter/material.dart'
 
 import 'package:bazaar/src/view.dart' show Cart;
 
-import 'package:bazaar/src/controller.dart'
-    show ControllerMVC, ProductSearch;
+import 'package:bazaar/src/controller.dart' show ControllerMVC, ProductSearch;
 
 class HomeAppBar extends ControllerMVC {
-
-  factory HomeAppBar() => _this ??= HomeAppBar._();
-  static HomeAppBar _this;
+  factory HomeAppBar() => _this;
+  static final HomeAppBar _this = HomeAppBar._();
   HomeAppBar._();
 
   Widget get search => IconButton(
         icon: const Icon(Icons.search),
         onPressed: () async {
-          await showSearch(context: stateMVC.context, delegate: ProductSearch());
+          await showSearch(
+              context: stateMVC.context, delegate: ProductSearch());
           refresh();
         },
       );

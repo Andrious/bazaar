@@ -10,6 +10,3 @@ class MyApp extends App {
   @override
   createView() => BazaarApp();
 }
-
-
-

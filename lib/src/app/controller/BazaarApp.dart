@@ -15,13 +15,11 @@ import 'package:bazaar/src/view.dart' show MsgBox;
 import 'package:bazaar/src/controller.dart' show AppController;
 
 class BazaarApp extends AppController {
-
-  factory BazaarApp() => _this ??= BazaarApp._();
-  static BazaarApp _this;
+  factory BazaarApp() => _this;
+  static final BazaarApp _this = BazaarApp._();
   BazaarApp._() {
     auth = Auth.init();
   }
-
   Auth auth;
   Ads ads;
   bool loggedIn;
@@ -48,8 +46,8 @@ class BazaarApp extends AppController {
   }
 
   @override
-  Future<bool> init() async {
-    bool init = await super.init();
+  Future<bool> initAsync() async {
+    bool init = await super.initAsync();
     loggedIn = await auth?.isLoggedIn() ?? false;
     return init;
   }

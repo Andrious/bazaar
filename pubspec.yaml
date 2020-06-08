@@ -1,10 +1,10 @@
 name: bazaar
 description: A sample app demonstrating functions and features implemented by the author.
 
-version: 1.1.6
+version: 1.2.0
 
 environment:
-  sdk: ">=2.3.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -13,37 +13,34 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
 
-  # https://pub.dev/packages/cupertino_icons#-changelog-tab-
+  # https://pub.dev/packages/cupertino_icons
   cupertino_icons: ^0.1.0
-  # https://pub:dev/packages/carousel_pro#-changelog-tab-:
+  # https://pub:dev/packages/carousel_pro
   carousel_pro: ^1.0.0
-  # https://pub.dev/packages/cloud_firestore#-changelog-tab-
-  cloud_firestore: ^0.12.0
-  # https://pub.dev/packages/firebase_auth#-changelog-tab-
+  # https://pub.dev/packages/cloud_firestore
+  cloud_firestore: ^0.13.0
+  # https://pub.dev/packages/firebase_auth
   firebase_auth: ^0.14.0
-  # https://pub.dev/packages/firebase_core#-changelog-tab-
+  # https://pub.dev/packages/firebase_core
   firebase_core: ^0.4.0
-  # https://pub.dev/packages/firebase_database#-changelog-tab-
+  # https://pub.dev/packages/firebase_database
   firebase_database: ^3.0.0
-  # https://pub.dev/packages/firebase_storage#-changelog-tab-
+  # https://pub.dev/packages/firebase_storage
   firebase_storage: ^3.0.0
-  # https://pub.dev/packages/google_sign_in#-changelog-tab-
+  # https://pub.dev/packages/google_sign_in
   google_sign_in: ^4.0.0
-  # https://pub.dev/packages/loader_search_bar#-changelog-tab-
+  # https://pub.dev/packages/loader_search_bar [DISCONTINUED]
   loader_search_bar: ^1.0.0
-  # https://pub.dev/packages/url_launcher#-changelog-tab-
+  # https://pub.dev/packages/url_launcher
   url_launcher: ^5.0.0
-
-#  provider:
-
-  mvc_application: ^1.0.0
-    #path: ../../../packages/mvc_application
-
-  # https://pub.dev/packages/auth#-changelog-tab-
+  # https://pub.dev/packages/auth
   auth: ^3.0.0
-  # https://pub.dev/packages/ads#-changelog-tab-
+  # https://pub.dev/packages/ads
   ads: ^1.0.0
-    #path: ../../../packages/ads
+#  path: ../../../packages/ads
+  
+  mvc_application: ^5.0.0
+#    path: ../../packages/mvc_application
 
 dev_dependencies:
   flutter_test:

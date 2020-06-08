@@ -67,7 +67,8 @@ class About extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: const Text(
                 "About eBazzar",
-                style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 18.0, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
@@ -80,7 +81,8 @@ class About extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: const Text(
                 "Privacy & Policy",
-                style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 18.0, fontWeight: FontWeight.bold),
               ),
             ),
             Container(

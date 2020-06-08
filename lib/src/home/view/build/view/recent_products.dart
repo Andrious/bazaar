@@ -43,7 +43,7 @@ class RecentProducts extends StatefulWidget {
 }
 
 class _RecentProductsState extends StateMVC<RecentProducts> {
-  _RecentProductsState(): super(c.HomeAppBar());
+  _RecentProductsState() : super(c.HomeAppBar());
   List<Map<String, dynamic>> itemsList;
 
   static search(String word) {

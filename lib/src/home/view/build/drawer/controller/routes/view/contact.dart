@@ -43,7 +43,8 @@ class Contact extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: const Text(
                 "Questions about an issue?",
-                style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 18.0, fontWeight: FontWeight.bold),
               ),
             ),
             const Text("Feel free to Ask!"),
