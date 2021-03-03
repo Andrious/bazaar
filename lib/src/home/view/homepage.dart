@@ -3,7 +3,6 @@ import 'package:flutter/material.dart'
         Alignment,
         AppBar,
         AssetImage,
-        BoxFit,
         BuildContext,
         Color,
         Colors,
@@ -15,6 +14,7 @@ import 'package:flutter/material.dart'
         FontWeight,
         Icon,
         IconData,
+        Key,
         ListTile,
         Padding,
         Scaffold,
@@ -30,15 +30,16 @@ import 'package:bazaar/src/view.dart' show HomeDrawer, RecentProducts, StateMVC;
 import 'package:bazaar/src/controller.dart' as c;
 
 class HomePage extends StatefulWidget {
-  final searchProdName;
-  final searchProdImage;
-  final searchProdPrice;
-
-  HomePage({
+  const HomePage({
+    Key key,
     this.searchProdName,
     this.searchProdImage,
     this.searchProdPrice,
-  });
+  }) : super(key: key);
+
+  final searchProdName;
+  final searchProdImage;
+  final searchProdPrice;
 
   @override
   HomePageState createState() => HomePageState();
@@ -52,15 +53,15 @@ class HomePageState extends StateMVC<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    c.HomeAppBar con = c.HomeAppBar();
+    final c.HomeAppBar con = c.HomeAppBar();
     return Scaffold(
       // Drawer Start
-      drawer: HomeDrawer(this),
+      drawer: HomeDrawer(state: this),
       appBar: AppBar(
-        titleSpacing: 2.0,
+        titleSpacing: 2,
         elevation: 0,
         backgroundColor: const Color(0xFFB33771),
-        title: const Text("e-Bazaar"),
+        title: const Text('e-Bazaar'),
         actions: <Widget>[
           con.search,
           con.cart,
@@ -73,17 +74,16 @@ class HomePageState extends StateMVC<HomePage> {
           // CategoryImages(),
           Container(
             alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.all(10),
             child: const Text(
-              "Recent Products",
-              style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+              'Recent Products',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
-            padding: const EdgeInsets.all(10.0),
           ),
           //grid view
           const Flexible(
-            child: const Padding(
-              padding: const EdgeInsets.only(bottom: 20.0),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 20),
               child: RecentProducts(),
             ),
           ),
@@ -94,22 +94,20 @@ class HomePageState extends StateMVC<HomePage> {
 
   Widget _imgCarousel() {
     return Container(
-      height: 200.0,
+      height: 200,
       child: Carousel(
         overlayShadow: true,
         overlayShadowColors: Colors.black45,
-        dotSize: 5.0,
-        autoplay: true,
+        dotSize: 5,
         animationCurve: Curves.bounceInOut,
         dotBgColor: Colors.transparent,
-        boxFit: BoxFit.cover,
-        images: [
-          const AssetImage('images/c1.jpg'),
-          const AssetImage('images/c5.jpg'),
-          const AssetImage('images/c2.jpg'),
-          const AssetImage('images/c3.jpg'),
-          const AssetImage('images/c4.jpg'),
-          const AssetImage('images/c6.jpg'),
+        images: const [
+          AssetImage('images/c1.jpg'),
+          AssetImage('images/c5.jpg'),
+          AssetImage('images/c2.jpg'),
+          AssetImage('images/c3.jpg'),
+          AssetImage('images/c4.jpg'),
+          AssetImage('images/c6.jpg'),
         ],
       ),
     );

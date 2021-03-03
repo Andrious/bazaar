@@ -6,10 +6,10 @@ class UserManagement {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseDatabase database = FirebaseDatabase.instance;
 
-  createUser(String uid, Map data) {
+  void createUser(String uid, Map data) {
     database
         .reference()
-        .child("users/$uid")
+        .child('users/$uid')
         .push()
         .set(data)
         .catchError((e) => print(e.toString()));

@@ -27,8 +27,8 @@ import 'package:bazaar/src/controller.dart'
 
 class HomeDrawer extends ControllerMVC {
   factory HomeDrawer() => _this ?? HomeDrawer._();
-  static HomeDrawer _this;
   HomeDrawer._();
+  static HomeDrawer _this;
 
   HomePageState _state;
   ThemeChanger _theme;
@@ -49,18 +49,22 @@ class HomeDrawer extends ControllerMVC {
   }
 
   String userName() {
-    String name = _auth?.displayName?.trim() ?? "";
+    String name = _auth?.displayName?.trim() ?? '';
     if (name.isEmpty) {
-      name = _auth?.email ?? "";
-      List<String> parts = name.split("@");
-      if (parts.isNotEmpty) name = parts[0];
+      name = _auth?.email ?? '';
+      final List<String> parts = name.split('@');
+      if (parts.isNotEmpty) {
+        name = parts[0];
+      }
     }
     return name;
   }
 
   String email() {
-    String email = _auth?.email ?? "";
-    if (email.isEmpty) email = "No Email Address";
+    String email = _auth?.email ?? '';
+    if (email.isEmpty) {
+      email = 'No Email Address';
+    }
     return email;
   }
 
@@ -68,31 +72,31 @@ class HomeDrawer extends ControllerMVC {
     if (_auth?.photoUrl != null && _auth.photoUrl.isNotEmpty) {
       return _auth.photoUrl;
     } else {
-      return "A";
+      return 'A';
     }
   }
 
   void onTap(Widget widget) {
     _con.ads.showBannerAd(state: _state);
     Navigator.of(_state.context)
-        .push(MaterialPageRoute(builder: (context) => widget))
+        .push(MaterialPageRoute<void>(builder: (context) => widget))
         .then((_) {
-      _con.ads.closeBannerAd(load: true);
+      _con.ads.closeBannerAd();
     });
   }
 
   Widget get header => UserAccountsDrawerHeader(
-        decoration: BoxDecoration(
-          color: const Color(0xFFB33771),
+        decoration: const BoxDecoration(
+          color: Color(0xFFB33771),
         ),
-        accountName: Text("${userName()}"),
-        accountEmail: Text("${email()}"),
+        accountName: Text(userName()),
+        accountEmail: Text(email()),
         currentAccountPicture: GestureDetector(
           child: CircleAvatar(
             backgroundColor: Colors.blueAccent,
-            child: Text("${photoUrl()}",
-                style: TextStyle(
-                  fontSize: 35.0,
+            child: Text(photoUrl(),
+                style: const TextStyle(
+                  fontSize: 35,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 )),
@@ -104,15 +108,15 @@ class HomeDrawer extends ControllerMVC {
         leading: _darkmode
             ? Image.asset(
                 'images/moon.png',
-                height: 30.0,
-                width: 26.0,
+                height: 30,
+                width: 26,
               )
             : Image.asset(
                 'images/sunny.png',
-                height: 30.0,
-                width: 26.0,
+                height: 30,
+                width: 26,
               ),
-        title: const Text("DarkMode"),
+        title: const Text('DarkMode'),
         trailing: Switch(
           value: _darkmode,
           onChanged: (val) {
@@ -125,21 +129,21 @@ class HomeDrawer extends ControllerMVC {
 
   Widget get account => InkWell(
         onTap: () {
-          onTap(MyAccount());
+          onTap(const MyAccount());
         },
         child: _state.showList(
-          "My Account",
-          (Icons.account_box),
+          'My Account',
+          Icons.account_box,
         ),
       );
 
   Widget get orders => InkWell(
         onTap: () {
-          onTap(MyOrders());
+          onTap(const MyOrders());
         },
         child: _state.showList(
-          "My Orders",
-          (Icons.shopping_basket),
+          'My Orders',
+          Icons.shopping_basket,
         ),
       );
 
@@ -148,18 +152,18 @@ class HomeDrawer extends ControllerMVC {
           onTap(Settings());
         },
         child: _state.showList(
-          "Settings",
-          (Icons.settings),
+          'Settings',
+          Icons.settings,
         ),
       );
 
   Widget get about => InkWell(
         onTap: () {
-          onTap(About());
+          onTap(const About());
         },
         child: _state.showList(
-          "About",
-          (Icons.adjust),
+          'About',
+          Icons.adjust,
         ),
       );
 
@@ -168,8 +172,8 @@ class HomeDrawer extends ControllerMVC {
           onTap(Contact());
         },
         child: _state.showList(
-          "Contact",
-          (Icons.contact_phone),
+          'Contact',
+          Icons.contact_phone,
         ),
       );
 
@@ -178,13 +182,13 @@ class HomeDrawer extends ControllerMVC {
           _auth.signOut().then((value) {
             Navigator.of(_state.context).pop();
             Navigator.pushReplacement(_state.context,
-                MaterialPageRoute(builder: (context) => Login()));
+                MaterialPageRoute<void>(builder: (context) => const Login()));
             _state.refresh();
           });
         },
         child: _state.showList(
-          "LogOut",
-          (Icons.exit_to_app),
+          'LogOut',
+          Icons.exit_to_app,
         ),
       );
 }

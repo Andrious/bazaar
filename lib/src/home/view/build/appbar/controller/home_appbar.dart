@@ -13,9 +13,9 @@ import 'package:bazaar/src/view.dart' show Cart;
 import 'package:bazaar/src/controller.dart' show ControllerMVC, ProductSearch;
 
 class HomeAppBar extends ControllerMVC {
-  factory HomeAppBar() => _this;
-  static final HomeAppBar _this = HomeAppBar._();
+  factory HomeAppBar() => _this ??= HomeAppBar._();
   HomeAppBar._();
+  static HomeAppBar _this;
 
   Widget get search => IconButton(
         icon: const Icon(Icons.search),
@@ -29,8 +29,8 @@ class HomeAppBar extends ControllerMVC {
   Widget get cart => IconButton(
         icon: const Icon(Icons.shopping_cart),
         onPressed: () {
-          Navigator.of(stateMVC.context)
-              .push(MaterialPageRoute(builder: (context) => Cart()));
+          Navigator.of(stateMVC.context).push(
+              MaterialPageRoute<void>(builder: (context) => const Cart()));
         },
       );
 }

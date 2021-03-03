@@ -4,6 +4,7 @@ import 'package:flutter/material.dart'
         BuildContext,
         Color,
         Container,
+        Key,
         Scaffold,
         StatelessWidget,
         Text,
@@ -12,17 +13,18 @@ import 'package:flutter/material.dart'
 import 'package:bazaar/src/view.dart' show CartProductDetails;
 
 class MyOrders extends StatelessWidget {
+  const MyOrders({Key key}):super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color(0xFFB33771),
-        title: const Text("My Orders"),
+        title: const Text('My Orders'),
       ),
       body: Container(
-        height: 400.0,
-        child: CartProductDetails(),
+        height: 400,
+        child: const CartProductDetails(),
       ),
     );
   }

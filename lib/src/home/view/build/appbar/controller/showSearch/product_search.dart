@@ -30,9 +30,9 @@ class ProductSearch extends SearchDelegate<String> {
     // Actions for appbar
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
         onPressed: () {
-          query = "";
+          query = '';
         },
       )
     ];
@@ -58,7 +58,7 @@ class ProductSearch extends SearchDelegate<String> {
   ) {
     // show results for given keyword
 
-    return Center(
+    return const Center(
         child: CircularProgressIndicator(backgroundColor: Colors.redAccent));
   }
 
@@ -79,16 +79,16 @@ class ProductSearch extends SearchDelegate<String> {
             RecentProducts.search(suggestionList[i]);
             close(context, null);
           },
-          leading: Icon(Icons.shopping_basket),
+          leading: const Icon(Icons.shopping_basket),
           title: RichText(
             text: TextSpan(
               text: suggestionList[i].substring(0, query.length),
               style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               children: [
                 TextSpan(
                     text: suggestionList[i].substring(query.length),
-                    style: TextStyle(color: Colors.grey)),
+                    style: const TextStyle(color: Colors.grey)),
               ],
             ),
           ),

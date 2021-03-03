@@ -1,35 +1,34 @@
-import 'package:bazaar/src/controller.dart'
-    show BazaarApp, ControllerMVC, Controllers;
+import 'package:bazaar/src/controller.dart' show BazaarApp, ControllerMVC;
 
 import 'package:auth/auth.dart' show Auth;
 
 class LoginPage extends ControllerMVC {
   factory LoginPage() => _this ??= LoginPage._();
-  static LoginPage _this;
   LoginPage._() {
     con = BazaarApp();
     loggedIn = con.loggedIn;
     _auth = con.auth;
   }
+  static LoginPage _this;
 
   BazaarApp con;
   Auth _auth;
   bool loggedIn;
 
-  Future<bool> isSignedIn() async {
-    bool isIn = await _auth?.isLoggedIn() ?? false;
-    return isIn;
-  }
+  bool isSignedIn() => _auth?.isLoggedIn() ?? false;
 
   String email() {
     String email = _auth.email;
-    if (email.isEmpty) email = "Guest User";
+    if (email.isEmpty) {
+      email = 'Guest User';
+    }
     return email;
   }
 
   Future<bool> signIn(String email, String password) =>
       _auth.signInWithEmailAndPassword(email: email, password: password);
 
+  @override
   bool get inError => _auth.message.isNotEmpty;
 
   @override

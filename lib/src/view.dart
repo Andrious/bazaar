@@ -33,10 +33,10 @@ export 'package:bazaar/src/app/view/BazaarApp.dart';
 export 'package:bazaar/src/home/view/build/view/recent_products.dart';
 export 'package:bazaar/src/home/view/build/view/routes/view/child/view/similar_products.dart';
 
-export 'package:bazaar/src/home/view/build/drawer/view/homeDrawer.dart';
+export 'package:bazaar/src/home/view/build/drawer/view/home_drawer.dart';
 
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/myAccount.dart';
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/myOrders.dart';
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/my_account.dart';
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/my_orders.dart';
 export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/settings.dart';
 export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/about.dart';
 export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/contact.dart';

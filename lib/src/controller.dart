@@ -27,14 +27,14 @@ export 'package:bazaar/src/app/controller/themeChanger.dart';
 
 export 'package:bazaar/src/app/controller/BazaarApp.dart';
 
-export 'package:bazaar/src/login/controller/LoginPage.dart';
+export 'package:bazaar/src/login/controller/login_page.dart';
 
-export 'package:bazaar/src/login/controller/SignUpPage.dart';
+export 'package:bazaar/src/login/controller/signup_page.dart';
 
-export 'package:bazaar/src/home/view/build/drawer/controller/homeDrawer.dart';
+export 'package:bazaar/src/home/view/build/drawer/controller/home_drawer.dart';
 
-export 'package:bazaar/src/home/view/build/appbar/controller/HomeAppBar.dart';
+export 'package:bazaar/src/home/view/build/appbar/controller/home_appbar.dart';
 
-export 'package:bazaar/src/home/view/build/appbar/controller/showSearch/ProductSearch.dart';
+export 'package:bazaar/src/home/view/build/appbar/controller/showSearch/product_search.dart';
 
 export 'package:bazaar/src/home/view/build/view/routes/controller/product_detail_controller.dart';

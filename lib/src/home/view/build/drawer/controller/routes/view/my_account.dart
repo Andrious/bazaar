@@ -12,9 +12,9 @@ import 'package:flutter/material.dart'
         Divider,
         EdgeInsets,
         FontWeight,
+        Key,
         ListTile,
         ListView,
-        MainAxisAlignment,
         MaterialButton,
         MaterialPageRoute,
         MediaQuery,
@@ -45,6 +45,7 @@ import 'package:bazaar/src/view.dart' hide BazaarApp;
 import 'package:bazaar/src/controller.dart' show BazaarApp;
 
 class MyAccount extends StatefulWidget {
+  const MyAccount({Key key}) : super(key: key);
   @override
   _MyAccountState createState() => _MyAccountState();
 }
@@ -54,7 +55,7 @@ class _MyAccountState extends State<MyAccount> {
 
   @override
   void initState() {
-    BazaarApp con = BazaarApp();
+    final BazaarApp con = BazaarApp();
     _auth = con.auth;
     super.initState();
   }
@@ -72,89 +73,88 @@ class _MyAccountState extends State<MyAccount> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color(0xFFB33771),
-        title: const Text("MyAccount"),
+        title: const Text('MyAccount'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(15),
         child: ListView(
           children: <Widget>[
             Container(
-              padding: const EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 20.0),
+              padding: const EdgeInsets.fromLTRB(20, 10, 0, 20),
               child: const Text(
-                "Login & Security",
-                style: const TextStyle(
-                    fontSize: 28.0, fontWeight: FontWeight.bold),
+                'Login & Security',
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
             ),
             Card(
-              elevation: 5.0,
+              elevation: 5,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: const Text(
-                      "Name:",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      'Name:',
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: Text(
-                      "$userName",
+                      userName,
                     ),
                   ),
                   const Divider(
-                    height: 2.0,
+                    height: 2,
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: const Text(
-                      "Email:",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      'Email:',
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: Text(
-                      "${_auth.email}",
+                      _auth.email,
                     ),
                   ),
                   const Divider(
-                    height: 2.0,
+                    height: 2,
                   ),
                 ],
               ),
             ),
             const SizedBox(
-              height: 20.0,
+              height: 20,
             ),
             MaterialButton(
               minWidth: MediaQuery.of(context).size.width,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25.0),
+                borderRadius: BorderRadius.circular(25),
               ),
-              child: ListTile(
-                title: const Center(
-                  child: const Text(
-                    "LogOut",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+
               onPressed: () {
                 _auth.signOut().then((_) {
                   Navigator.of(context).pop();
                   //                 Navigator.of(context).pop();
 
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => Login()));
+                      MaterialPageRoute<void>(builder: (context) => Login()));
                 }).catchError((e) => print(e.toString()));
               },
               color: const Color(0xFFB33771),
+              child: const ListTile(
+                title: Center(
+                  child: Text(
+                    'LogOut',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
