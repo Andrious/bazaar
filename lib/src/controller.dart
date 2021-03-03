@@ -23,9 +23,9 @@
 
 export 'package:mvc_application/controller.dart';
 
-export 'package:bazaar/src/app/controller/themeChanger.dart';
+export 'package:bazaar/src/app/controller/theme_changer.dart';
 
-export 'package:bazaar/src/app/controller/BazaarApp.dart';
+export 'package:bazaar/src/app/controller/bazaar_app.dart';
 
 export 'package:bazaar/src/login/controller/login_page.dart';
 

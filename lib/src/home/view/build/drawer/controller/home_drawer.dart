@@ -121,7 +121,7 @@ class HomeDrawer extends ControllerMVC {
           value: _darkmode,
           onChanged: (val) {
             _darkmode = val;
-            _theme.setDarkMode(_darkmode);
+            _theme.setDarkMode(dark: _darkmode);
             refresh();
           },
         ),

@@ -5,12 +5,12 @@ import 'package:bazaar/src/controller.dart' show ControllerMVC, Prefs;
 // Provider State management to change between themes(Light and Dark).
 
 class ThemeChanger01 extends ChangeNotifier {
-  ThemeData themeData;
   ThemeChanger01(this.themeData);
+  ThemeData themeData;
 
-  getTheme() => themeData;
+  ThemeData getTheme() => themeData;
 
-  setTheme(ThemeData theme) {
+  void setTheme(ThemeData theme) {
     themeData = theme;
     notifyListeners();
   }
@@ -18,30 +18,33 @@ class ThemeChanger01 extends ChangeNotifier {
 
 class ThemeChanger extends ControllerMVC {
   factory ThemeChanger() => _this ??= ThemeChanger._();
-  static ThemeChanger _this;
   ThemeChanger._();
+  static ThemeChanger _this;
 
   ThemeData themeData;
   bool _darkmode;
 
+  @override
   void initState() {
-    _darkmode = Prefs.getBool("darkmode");
-    setDarkMode(darkMode);
+    _darkmode = Prefs.getBool('darkmode');
+    setDarkMode(dark: darkMode);
   }
 
   bool get darkMode => _darkmode;
 
-  bool setDarkMode(bool darkMode) {
-    if (darkMode == null) return false;
-    _darkmode = darkMode;
-    Prefs.setBool("darkmode", _darkmode);
+  bool setDarkMode({bool dark}) {
+    if (dark == null) {
+      return false;
+    }
+    _darkmode = dark;
+    Prefs.setBool('darkmode', _darkmode);
     setTheme();
     return true;
   }
 
-  getTheme() => themeData;
+  ThemeData getTheme() => themeData;
 
-  setTheme([ThemeData theme]) {
+  void setTheme([ThemeData theme]) {
     if (theme != null) {
       themeData = theme;
     } else {
