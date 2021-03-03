@@ -5,6 +5,7 @@ import 'package:flutter/material.dart'
         AnimatedBuilder,
         Animation,
         AnimationController,
+        AutovalidateMode,
         BorderRadius,
         BoxDecoration,
         BuildContext,
@@ -29,6 +30,7 @@ import 'package:flutter/material.dart'
         InkWell,
         InputDecoration,
         Interval,
+        Key,
         LinearGradient,
         ListTile,
         ListView,
@@ -56,14 +58,14 @@ import 'package:flutter/material.dart'
 
 import 'package:bazaar/src/controller.dart' as c;
 
-import 'package:bazaar/src/view.dart'
-    show Controllers, HomePage, Login, StateMVC;
+import 'package:bazaar/src/view.dart' show HomePage, Login, StateMVC;
 
-import 'package:bazaar/src/login/view/loginPage.dart' show Login;
+import 'package:bazaar/src/login/view/login_page.dart' show Login;
 
 import 'package:bazaar/src/home/view/homepage.dart' show HomePage;
 
 class SignUp extends StatefulWidget {
+  const SignUp({Key key}) : super(key: key);
   @override
   _SignUpState createState() => _SignUpState();
 }
@@ -75,12 +77,13 @@ class _SignUpState extends StateMVC<SignUp>
   }
   c.SignUpPage con;
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _confirmPasswordController = TextEditingController();
-  TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   Animation animation, delayAnimation, muchDelayedAnimation;
   AnimationController animationController;
   bool hidePass = true;
@@ -96,35 +99,35 @@ class _SignUpState extends StateMVC<SignUp>
     }
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 2000),
     );
-    animation = Tween(begin: -1.0, end: 0.0).animate(
+    animation = Tween(begin: -1, end: 0.0).animate(
       CurvedAnimation(curve: Curves.fastOutSlowIn, parent: animationController),
     );
-    delayAnimation = Tween(begin: -1.0, end: 0.0).animate(
+    delayAnimation = Tween(begin: -1, end: 0.0).animate(
       CurvedAnimation(
         parent: animationController,
-        curve: Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
+        curve: const Interval(0.5, 1, curve: Curves.fastOutSlowIn),
       ),
     );
-    muchDelayedAnimation = Tween(begin: -1.0, end: 0.0).animate(
+    muchDelayedAnimation = Tween(begin: -1, end: 0.0).animate(
       CurvedAnimation(
         parent: animationController,
-        curve: Interval(0.7, 1.0, curve: Curves.fastOutSlowIn),
+        curve: const Interval(0.7, 1, curve: Curves.fastOutSlowIn),
       ),
     );
 
     isSignedIn();
   }
 
-  void isSignedIn() async {
+  void isSignedIn() {
     setState(() {
       isLoading = true;
     });
 
     if (isLoggedIn) {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute<void>(builder: (context) => HomePage()));
     }
     setState(() {
       isLoading = false;
@@ -141,7 +144,7 @@ class _SignUpState extends StateMVC<SignUp>
       builder: (BuildContext context, Widget child) {
         return Scaffold(
           body: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.bottomRight,
                 end: Alignment.topLeft,
@@ -152,7 +155,7 @@ class _SignUpState extends StateMVC<SignUp>
                 ],
               ),
             ),
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15),
             child: Center(
               child: ListView(
                 children: <Widget>[
@@ -167,80 +170,77 @@ class _SignUpState extends StateMVC<SignUp>
                       ),
                     ),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Login()));
+                      Navigator.of(context).push(MaterialPageRoute<void>(
+                          builder: (context) => const Login()));
                     },
                     child: Transform(
                       transform: Matrix4.translationValues(
-                          animation.value * width, 0.0, 0.0),
+                          animation.value * width, 0, 0),
                       child: Container(
                         alignment: Alignment.center,
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                         child: Text(
-                          "SignUp",
+                          'SignUp',
                           style: _loginRegStyles(),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  const SizedBox(height: 30),
                   Transform(
                     transform: Matrix4.translationValues(
-                        delayAnimation.value * width, 0.0, 0.0),
+                        delayAnimation.value * width, 0, 0),
                     child: Form(
                       key: _formKey,
-                      autovalidate: true,
-                      child: Column(
+                      autovalidateMode: AutovalidateMode.always,                      child: Column(
                         children: <Widget>[
                           TextFormField(
                             controller: _nameController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               prefixIcon: Icon(Icons.supervised_user_circle,
                                   color: Colors.blueGrey),
-                              hintText: "Username",
-                              labelText: "Username",
+                              hintText: 'Username',
+                              labelText: 'Username',
                             ),
                             validator: (val) {
                               if (val.isEmpty) {
-                                return "Please Provide Username";
+                                return 'Please Provide Username';
                               }
                               return null;
                             },
                             onSaved: (val) {
                               _nameController.text = val;
                             },
-                            autocorrect: true,
                           ),
                           const SizedBox(
-                            height: 10.0,
+                            height: 10,
                           ),
                           TextFormField(
                             controller: _emailController,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 prefixIcon: Icon(Icons.alternate_email,
                                     color: Colors.blueGrey),
-                                hintText: "Email",
+                                hintText: 'Email',
                                 labelStyle: TextStyle(
                                     // color: Colors.white,
                                     ),
-                                labelText: "Email"),
+                                labelText: 'Email'),
                             validator: (val) {
                               if (val.isEmpty) {
-                                return "Please Provide Email";
+                                return 'Please Provide Email';
                               }
                               return null;
                             },
                             onSaved: (val) {
                               _emailController.text = val;
                             },
-                            autocorrect: true,
                           ),
                           const SizedBox(
-                            height: 10.0,
+                            height: 10,
                           ),
 
                           TextFormField(
@@ -263,21 +263,20 @@ class _SignUpState extends StateMVC<SignUp>
                                   Icons.lock,
                                   color: Colors.blueGrey,
                                 ),
-                                hintText: "Password",
-                                labelText: "Password"),
+                                hintText: 'Password',
+                                labelText: 'Password'),
                             validator: (val) {
                               if (val.length < 6) {
-                                return "Passsword must contain atleast 6 characters";
+                                return 'Passsword must contain atleast 6 characters';
                               }
                               return null;
                             },
                             onSaved: (val) {
                               _passwordController.text = val;
                             },
-                            autocorrect: true,
                           ),
                           const SizedBox(
-                            height: 10.0,
+                            height: 10,
                           ),
                           TextFormField(
                             controller: _confirmPasswordController,
@@ -295,15 +294,15 @@ class _SignUpState extends StateMVC<SignUp>
                                     });
                                   },
                                 ),
-                                prefixIcon: Icon(
+                                prefixIcon: const Icon(
                                   Icons.lock,
                                   color: Colors.blueGrey,
                                 ),
-                                hintText: "Confirm Password",
-                                labelText: "Confirm Password"),
+                                hintText: 'Confirm Password',
+                                labelText: 'Confirm Password'),
                             validator: (val) {
                               if (val.length < 6) {
-                                return "Passsword must contain atleast 6 characters";
+                                return 'Password must contain at least 6 characters';
                               } else if (val.isEmpty) {
                                 return "Password field can't be empty";
                               } else if (_passwordController.text != val) {
@@ -314,84 +313,80 @@ class _SignUpState extends StateMVC<SignUp>
                             onSaved: (val) {
                               _passwordController.text = val;
                             },
-                            autocorrect: true,
                           ),
 
                           const SizedBox(
-                            height: 20.0,
+                            height: 20,
                           ),
                           //  ================== Login Btn =======================
                           Transform(
                             transform: Matrix4.translationValues(
-                                muchDelayedAnimation.value * width, 0.0, 0.0),
+                                muchDelayedAnimation.value * width, 0, 0),
                             child: MaterialButton(
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25.0),
+                                borderRadius: BorderRadius.circular(25),
                               ),
                               minWidth: MediaQuery.of(context).size.width,
-                              child: ListTile(
-                                title: Center(
-                                  child: Text(
-                                    "Signup For Free",
-                                    style: _btnStyle(),
-                                  ),
-                                ),
-                              ),
                               onPressed: () async {
                                 await signUpUser(context);
                                 Navigator.of(context).pop();
                               },
                               color: const Color(0xFFB33771),
+                              child: ListTile(
+                                title: Center(
+                                  child: Text(
+                                    'Signup For Free',
+                                    style: _btnStyle(),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
 
                           const SizedBox(
-                            height: 5.0,
+                            height: 5,
                           ),
-                          Container(
-                            child: const Text("OR"),
-                          ),
+                          const Text('OR'),
                           const SizedBox(
-                            height: 5.0,
+                            height: 5,
                           ),
 
                           //  ================== Signin with Google Btn =======================
 
                           Transform(
                             transform: Matrix4.translationValues(
-                                muchDelayedAnimation.value * width, 0.0, 0.0),
+                                muchDelayedAnimation.value * width, 0, 0),
                             child: MaterialButton(
                               shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      new BorderRadius.circular(25.0)),
+                                  borderRadius: BorderRadius.circular(25)),
                               minWidth: MediaQuery.of(context).size.width,
-                              child: ListTile(
-                                leading: Image.asset(
-                                  "images/google.png",
-                                  height: 30.0,
-                                ),
-                                title: Text(
-                                  "SignIn With Google",
-                                  style: _btnStyle(),
-                                ),
-                              ),
                               onPressed: () async {
                                 _showDialogue();
                                 final signIn = await con.googleSignIn();
                                 Navigator.pop(context);
                                 if (signIn) {
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
+                                  await Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute<void>(
                                           builder: (context) => HomePage()));
                                 } else {
                                   if (con.inError) {
-                                    con.msgError(context);
+                                    await con.msgError(context);
                                   } else {
                                     Navigator.pop(context);
                                   }
                                 }
                               },
                               color: Colors.redAccent,
+                              child: ListTile(
+                                leading: Image.asset(
+                                  'images/google.png',
+                                  height: 30,
+                                ),
+                                title: Text(
+                                  'SignIn With Google',
+                                  style: _btnStyle(),
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -400,8 +395,8 @@ class _SignUpState extends StateMVC<SignUp>
                   ),
                   Visibility(
                     visible: isLoading ?? true,
-                    child: Center(
-                      child: const CircularProgressIndicator(),
+                    child: const Center(
+                      child: CircularProgressIndicator(),
                     ),
                   ),
                 ],
@@ -414,46 +409,48 @@ class _SignUpState extends StateMVC<SignUp>
   }
 
   TextStyle _btnStyle() {
-    return TextStyle(
+    return const TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.bold,
     );
   }
 
   TextStyle _loginRegStyles() {
-    return TextStyle(
+    return const TextStyle(
       fontWeight: FontWeight.w800,
-      fontSize: 18.0,
+      fontSize: 18,
       letterSpacing: 0.8,
-      color: const Color(0xFFB33771),
+      color: Color(0xFFB33771),
     );
   }
 
   Future<bool> signUpUser(BuildContext context) async {
 //      formState.reset();
 //      _loadingDialog();
-    FormState formState = _formKey.currentState;
+    final FormState formState = _formKey.currentState;
     bool signUp = formState.validate();
     if (signUp) {
       formState.save();
       signUp = await con.signUpUser(_nameController.text, _emailController.text,
           _passwordController.text);
       if (signUp) {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => HomePage()));
+        await Navigator.of(context)
+            .push(MaterialPageRoute<void>(builder: (context) => HomePage()));
       } else {
-        if (con.inError) con.msgError(context);
+        if (con.inError) {
+          await con.msgError(context);
+        }
       }
     }
     return signUp;
   }
 
-  _loadingDialog() => _showDialogue(
+  dynamic _loadingDialog() => _showDialogue(
           content: Row(
-        children: [const CircularProgressIndicator(), const Text("Loading!")],
+        children: const [CircularProgressIndicator(), Text('Loading!')],
       ));
 
-  _showDialogue({
+  void _showDialogue({
     String text,
     Widget content,
     List<Widget> buttons,
@@ -462,10 +459,10 @@ class _SignUpState extends StateMVC<SignUp>
       content = Text(text.trim());
     } else {
       content ??= Row(
-        children: [
-          const CircularProgressIndicator(),
-          const SizedBox(
-            width: 20.0,
+        children: const [
+          CircularProgressIndicator(),
+          SizedBox(
+            width: 20,
           ),
         ],
       );
@@ -473,10 +470,10 @@ class _SignUpState extends StateMVC<SignUp>
 
     buttons ??= [
       FlatButton(
-        child: Text("OK"),
         onPressed: () {
           Navigator.pop(context);
         },
+        child: const Text('OK'),
       )
     ];
 

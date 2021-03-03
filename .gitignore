@@ -88,6 +88,10 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+mapping.txt
+seeds.txt
+unused.txt
+obfuscate/
 
 # Android related
 #google-services.json # Give the user access to the Firebase account.

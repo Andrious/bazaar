@@ -7,6 +7,7 @@ import 'package:flutter/material.dart'
         Container,
         Divider,
         EdgeInsets,
+        Key,
         ListView,
         MaterialButton,
         Padding,
@@ -20,6 +21,7 @@ import 'package:bazaar/src/home/view/build/appbar/view/cart_product_details.dart
     show CartProductDetails;
 
 class Cart extends StatefulWidget {
+  const Cart({Key key}) : super(key: key);
   @override
   _CartState createState() => _CartState();
 }
@@ -31,30 +33,30 @@ class _CartState extends State<Cart> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color(0xFFB33771),
-        title: const Text("Cart"),
+        title: const Text('Cart'),
       ),
       body: ListView(
         children: <Widget>[
           Container(
-            padding: const EdgeInsets.all(20.0),
-            child: const Text("Cart Subtotal (1 item): \$ 1100"),
+            padding: const EdgeInsets.all(20),
+            child: const Text(r'Cart Subtotal (1 item): $ 1100'),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-                left: 20.0, right: 20.0, top: 12.0, bottom: 20.0),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 12, bottom: 20),
             child: MaterialButton(
               textColor: Colors.white,
-              padding: const EdgeInsets.all(15.0),
-              child: const Text("Proceed to Buy"),
+              padding: const EdgeInsets.all(15),
               onPressed: () {},
               color: const Color(0xFFB33771),
+              child: const Text('Proceed to Buy'),
             ),
           ),
           const Divider(
-            height: 5.0,
+            height: 5,
             color: Colors.grey,
           ),
-          Container(height: 400.0, child: CartProductDetails()),
+          Container(height: 400, child: CartProductDetails()),
         ],
       ),
     );

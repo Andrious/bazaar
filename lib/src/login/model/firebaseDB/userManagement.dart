@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart' show Firestore;
+import 'package:cloud_firestore/cloud_firestore.dart' show FirebaseFirestore;
 
 import 'package:firebase_database/firebase_database.dart' show FirebaseDatabase;
 
 class UserManagement {
-  Firestore firestore = Firestore.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseDatabase database = FirebaseDatabase.instance;
 
   createUser(String uid, Map data) {

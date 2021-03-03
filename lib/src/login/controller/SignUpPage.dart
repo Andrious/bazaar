@@ -88,11 +88,10 @@ class SignUpPage extends ControllerMVC {
   Future<bool> googleSignIn() async {
     bool signIn = await _auth.signInGoogle();
     if (signIn) {
-      final user = await _auth.currentUser();
+      final user = _auth.currentUser();
       userManagement.createUser(user.uid, {
         "userId": user.uid,
         "username": user.displayName,
-        "photoUrl": user.photoUrl,
         "email": user.email,
       });
     }

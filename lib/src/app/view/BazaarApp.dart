@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart' show ThemeData;
-
-import 'package:mvc_application/view.dart' show AppView;
+import 'package:mvc_application/view.dart';
 
 import 'package:bazaar/src/view.dart' show Login;
 
 import 'package:bazaar/src/controller.dart' as c;
 
-class BazaarApp extends AppView {
+class BazaarApp extends AppState {
   BazaarApp()
       : super(
           con: c.BazaarApp(),

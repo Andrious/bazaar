@@ -1,3 +1,19 @@
+
+## 1.4.0
+ March 03, 2021
+- analysis_options.yaml
+- mvc_application: ^6.0.0
+- minifyEnabled true
+
+## 1.3.0
+ September 18, 2020
+- Update plugins:
+-                cloud_firestore: ^0.13.0 to ^0.14.0
+-                firebase_auth: ^0.14.0 to ^0.18.0
+-                firebase_database: ^3.0.0 to ^4.0.0
+-                firebase_storage: ^3.0.0 to ^4.0.0
+- Update SDK to ">=2.9.0 <3.0.0"
+
 ## 1.2.0
  June 08, 2020
 - Updated to mvc_application: ^5.0.0

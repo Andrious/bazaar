@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart'
     show
-        Axis,
         BorderRadius,
         BoxDecoration,
         BuildContext,
@@ -29,6 +28,16 @@ import 'package:flutter/material.dart'
         Widget;
 
 class CartProductDetails extends StatefulWidget {
+  const CartProductDetails({
+    Key key,
+    this.cartProductName,
+    this.cartProductImage,
+    this.cartProductPrice,
+    this.cartProductSize,
+    this.cartProductColor,
+    this.cartProductQty,
+  }) : super(key: key);
+
   final cartProductName;
   final cartProductImage;
   final cartProductPrice;
@@ -36,46 +45,36 @@ class CartProductDetails extends StatefulWidget {
   final cartProductColor;
   final cartProductQty;
 
-  CartProductDetails({
-    this.cartProductName,
-    this.cartProductImage,
-    this.cartProductPrice,
-    this.cartProductSize,
-    this.cartProductColor,
-    this.cartProductQty,
-  });
-
   @override
   _CartProductDetailsState createState() => _CartProductDetailsState();
 }
 
 class _CartProductDetailsState extends State<CartProductDetails> {
-  List _productsAddedInTheCart = [
+  final List<Map<String, dynamic>> _productsAddedInTheCart = [
     {
       'name': 'Blazer',
       'image': 'images/recentImages/blazer1.jpeg',
       'price': 900,
-      'size': "M",
-      'color': "Blue",
+      'size': 'M',
+      'color': 'Blue',
       'qty': 1,
     },
     {
       'name': 'Dress',
       'image': 'images/recentImages/dress2.jpeg',
       'price': 200,
-      'size': "L",
-      'color': "Red",
+      'size': 'L',
+      'color': 'Red',
       'qty': 5,
     },
   ];
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      scrollDirection: Axis.vertical,
       itemCount: _productsAddedInTheCart.length,
       itemBuilder: (BuildContext context, int i) {
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
 
           // --------------- Deletes the items in the cart by swiping ----------
           child: Dismissible(
@@ -101,16 +100,16 @@ class _CartProductDetailsState extends State<CartProductDetails> {
             },
             background: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(10),
                 color: Colors.red,
               ),
-              child: Center(
+              child: const Center(
                 child: ListTile(
-                  leading: const Text(
-                    "Archive",
-                    style: const TextStyle(color: Colors.white),
+                  leading: Text(
+                    'Archive',
+                    style: TextStyle(color: Colors.white),
                   ),
-                  trailing: const Icon(
+                  trailing: Icon(
                     Icons.delete_outline,
                     color: Colors.white,
                   ),
@@ -119,11 +118,11 @@ class _CartProductDetailsState extends State<CartProductDetails> {
               // color: Colors.red,
             ),
             child: Card(
-              elevation: 5.0,
+              elevation: 5,
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8),
                     child: ListTile(
                       leading: Image.asset(
                         _productsAddedInTheCart[i]['image'],
@@ -149,7 +148,7 @@ class _CartProductDetailsState extends State<CartProductDetails> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -182,7 +181,7 @@ class _CartProductDetailsState extends State<CartProductDetails> {
     });
   }
 
-  decrementInQty(int index) {
+  void decrementInQty(int index) {
     setState(() {
       _productsAddedInTheCart[index]['qty'] =
           _productsAddedInTheCart[index]['qty'] - 1;

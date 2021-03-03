@@ -18,7 +18,7 @@ class BazaarApp extends AppController {
   factory BazaarApp() => _this;
   static final BazaarApp _this = BazaarApp._();
   BazaarApp._() {
-    auth = Auth.init();
+    auth = Auth();
   }
   Auth auth;
   Ads ads;
@@ -48,7 +48,7 @@ class BazaarApp extends AppController {
   @override
   Future<bool> initAsync() async {
     bool init = await super.initAsync();
-    loggedIn = await auth?.isLoggedIn() ?? false;
+    loggedIn = auth?.isLoggedIn() ?? false;
     return init;
   }
 
