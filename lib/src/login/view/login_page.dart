@@ -1,3 +1,7 @@
+import 'package:bazaar/src/controller.dart' show LoginPage;
+
+import 'package:bazaar/src/view.dart' show HomePage, SignUp, StateMVC;
+
 import 'package:flutter/material.dart'
     show
         AlertDialog,
@@ -19,7 +23,6 @@ import 'package:flutter/material.dart'
         CurvedAnimation,
         Curves,
         EdgeInsets,
-        FlatButton,
         FontWeight,
         Form,
         FormState,
@@ -47,6 +50,7 @@ import 'package:flutter/material.dart'
         SizedBox,
         StatefulWidget,
         Text,
+        TextButton,
         TextDecoration,
         TextEditingController,
         TextFormField,
@@ -58,24 +62,22 @@ import 'package:flutter/material.dart'
         Widget,
         showDialog;
 
-import 'package:flutter/services.dart' show TextInputType;
+//import 'package:flutter/services.dart' show TextInputType;
 
-import 'package:bazaar/src/view.dart' show HomePage, SignUp, StateMVC;
-
-import 'package:bazaar/src/controller.dart' show LoginPage;
-
+///
 class Login extends StatefulWidget {
-  const Login({Key key}) : super(key: key);
+  ///
+  const Login({Key? key}) : super(key: key);
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
   _LoginState() : super(LoginPage()) {
-    con = controller;
+    con = controller as LoginPage;
     isLoggedin = con.loggedIn;
   }
-  LoginPage con;
+  late LoginPage con;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _resetKey = GlobalKey<FormState>();
@@ -83,8 +85,8 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  Animation animation, delayAnimation, muchDelayedAnimation;
-  AnimationController animationController;
+  late Animation animation, delayAnimation, muchDelayedAnimation;
+  late AnimationController animationController;
 
   bool loading = false;
   bool hidePass = true;
@@ -123,13 +125,13 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     if (isLoggedin) {
-      return HomePage();
+      return const HomePage();
     }
     final width = MediaQuery.of(context).size.width;
     animationController.forward();
     return AnimatedBuilder(
       animation: animationController,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return Scaffold(
           body: Container(
             decoration: const BoxDecoration(
@@ -194,7 +196,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                       InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute<void>(
-                              builder: (context) => SignUp()));
+                              builder: (context) => const SignUp()));
                         },
                         child: Transform(
                           transform: Matrix4.translationValues(
@@ -237,7 +239,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                             //   return null;
                             // },
                             onSaved: (val) {
-                              _emailController.text = val;
+                              _emailController.text = val!;
                             },
                           ),
                           const SizedBox(
@@ -267,7 +269,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                                 hintText: 'Password',
                                 labelText: 'Password'),
                             validator: (val) {
-                              if (val.isNotEmpty && val.length < 6) {
+                              if (val!.isNotEmpty && val.length < 6) {
                                 return 'Password must contain at least 6 characters';
                                 // } else if (val.isEmpty) {
                                 //   return "Password field can't be empty";
@@ -275,7 +277,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                               return null;
                             },
                             onSaved: (val) {
-                              _passwordController.text = val;
+                              _passwordController.text = val!;
                             },
                           ),
                           const SizedBox(
@@ -333,7 +335,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                     ),
                   ),
                   Visibility(
-                    visible: loading ?? true,
+                    visible: loading, // ?? true,
                     child: const Center(
                       child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
@@ -366,8 +368,8 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
   }
 
   Future<void> signIn() async {
-    if (_formKey.currentState.validate()) {
-      _formKey.currentState.save();
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
       _showLoadingIndicator();
       bool signIn;
       if (_emailController.text.isEmpty && _passwordController.text.isEmpty) {
@@ -379,13 +381,13 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
       Navigator.of(context).pop();
 
       if (signIn) {
-        await Navigator.pushReplacement(
-            context, MaterialPageRoute<void>(builder: (context) => HomePage()));
+        await Navigator.pushReplacement(context,
+            MaterialPageRoute<void>(builder: (context) => const HomePage()));
       } else {
         if (con.inError) {
-          await con.msgError(con.getError()).then((_) {
-            Navigator.of(context)
-                .push(MaterialPageRoute<void>(builder: (context) => SignUp()));
+          await con.msgError(con.getError()!).then((_) {
+            Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (context) => const SignUp()));
           });
         }
       }
@@ -409,25 +411,25 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
               labelText: 'Email',
             ),
             validator: (val) {
-              if (val.isEmpty) {
+              if (val!.isEmpty) {
                 return 'Please Provide Email';
               }
               return null;
             },
             onSaved: (val) {
-              _emailController.text = val;
+              _emailController.text = val!;
             },
           ),
         ),
       ),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           child: const Text('Cancel'),
         ),
-        FlatButton(
+        TextButton(
           onPressed: () async {
             // if (_resetKey.currentState.validate()) {
             //   _resetKey.currentState.save();
@@ -442,11 +444,11 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
         ),
       ],
     );
-    showDialog(context: context, builder: (_) => alert);
+    showDialog<void>(context: context, builder: (_) => alert);
   }
 
   void _showLoadingIndicator() {
-    showDialog(
+    showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (context) {

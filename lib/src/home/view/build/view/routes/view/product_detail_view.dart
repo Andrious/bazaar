@@ -1,3 +1,7 @@
+import 'package:bazaar/src/controller.dart' as c;
+
+import 'package:bazaar/src/view.dart' show Key, SimilarProducts, StateMVC;
+
 import 'package:flutter/material.dart'
     show
         AlertDialog,
@@ -8,7 +12,6 @@ import 'package:flutter/material.dart'
         Container,
         EdgeInsets,
         Expanded,
-        FlatButton,
         FontWeight,
         Icon,
         IconButton,
@@ -24,38 +27,52 @@ import 'package:flutter/material.dart'
         Scaffold,
         StatefulWidget,
         Text,
+        TextButton,
         TextDecoration,
         TextStyle,
         Widget,
         showDialog;
 
-import 'package:bazaar/src/view.dart' show SimilarProducts, StateMVC;
-
-import 'package:bazaar/src/controller.dart' as c;
-
+///
 class ProductDetails extends StatefulWidget {
-  final productDetailsName;
-  final productDetailsImage;
-  final productDetailsoldPrice;
-  final productDetailsPrice;
-  final productDetailsDesc;
-
-  ProductDetails(
-      {this.productDetailsName,
+  ///
+  const ProductDetails(
+      {Key? key,
+      this.productDetailsName,
       this.productDetailsImage,
       this.productDetailsoldPrice,
       this.productDetailsPrice,
-      this.productDetailsDesc});
+      this.productDetailsDesc})
+      : super(key: key);
+
+  ///
+  final productDetailsName;
+
+  ///
+  final productDetailsImage;
+
+  ///
+  final productDetailsoldPrice;
+
+  ///
+  final productDetailsPrice;
+
+  ///
+  final productDetailsDesc;
 
   @override
   ProductDetailsState createState() => ProductDetailsState();
 }
 
+///
 class ProductDetailsState extends StateMVC<ProductDetails> {
+  ///
   ProductDetailsState() : super(c.ProductDetails()) {
-    con = controller;
+    con = controller as c.ProductDetails;
   }
-  c.ProductDetails con;
+
+  ///
+  late c.ProductDetails con;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +80,7 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color(0xFFB33771),
-        title: const Text("e-Bazaar"),
+        title: const Text('e-Bazaar'),
         actions: <Widget>[
           con.shopping,
         ],
@@ -74,23 +91,23 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 20.0, left: 20.0),
+                padding: const EdgeInsets.only(top: 20, left: 20),
                 child: Text(
-                  "${widget.productDetailsName}",
-                  style: TextStyle(
-                      color: const Color(0xFFB33771),
+                  '${widget.productDetailsName}',
+                  style: const TextStyle(
+                      color: Color(0xFFB33771),
                       fontWeight: FontWeight.bold,
-                      fontSize: 20.0),
+                      fontSize: 20),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20.0, left: 20.0),
+                padding: const EdgeInsets.only(top: 20, left: 20),
                 child: con.iconButton,
               ),
             ],
           ),
           Container(
-            height: 300.0,
+            height: 300,
             child: Image.asset(
               widget.productDetailsImage,
               // fit: BoxFit.cover,
@@ -104,12 +121,12 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
                   onPressed: () {},
                   child: Row(
                     children: <Widget>[
-                      const Text("Size"),
+                      const Text('Size'),
                       IconButton(
                         onPressed: () {
-                          _showDialog("Size", "Choose Size");
+                          _showDialog('Size', 'Choose Size');
                         },
-                        icon: Icon(Icons.arrow_drop_down),
+                        icon: const Icon(Icons.arrow_drop_down),
                       ),
                     ],
                   ),
@@ -120,12 +137,12 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
                   onPressed: () {},
                   child: Row(
                     children: <Widget>[
-                      const Text("Color"),
+                      const Text('Color'),
                       IconButton(
                         onPressed: () {
-                          _showDialog("Color", "Choose Color");
+                          _showDialog('Color', 'Choose Color');
                         },
-                        icon: Icon(Icons.arrow_drop_down),
+                        icon: const Icon(Icons.arrow_drop_down),
                       ),
                     ],
                   ),
@@ -136,12 +153,12 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
                   onPressed: () {},
                   child: Row(
                     children: <Widget>[
-                      const Text("Qty"),
+                      const Text('Qty'),
                       IconButton(
                         onPressed: () {
-                          _showDialog("Quantity", "Choose Quantity");
+                          _showDialog('Quantity', 'Choose Quantity');
                         },
-                        icon: Icon(Icons.arrow_drop_down),
+                        icon: const Icon(Icons.arrow_drop_down),
                       ),
                     ],
                   ),
@@ -153,12 +170,12 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
           // ------------------- Price Details ------------------
 
           Padding(
-            padding: const EdgeInsets.only(top: 20.0, left: 20.0),
+            padding: const EdgeInsets.only(top: 20, left: 20),
             child: Row(
               children: <Widget>[
-                const Text("M.R.P. :  "),
+                const Text('M.R.P. :  '),
                 Text(
-                  " \$ ${widget.productDetailsoldPrice}",
+                  ' \$ ${widget.productDetailsoldPrice}',
                   style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.lineThrough),
@@ -167,13 +184,13 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20.0, left: 20.0),
+            padding: const EdgeInsets.only(top: 20, left: 20),
             child: Row(
               children: <Widget>[
-                const Text("Price :  "),
+                const Text('Price :  '),
                 Text(
-                  " \$ ${widget.productDetailsPrice}",
-                  style: TextStyle(
+                  ' \$ ${widget.productDetailsPrice}',
+                  style: const TextStyle(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -181,13 +198,13 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20.0, left: 20.0),
+            padding: const EdgeInsets.only(top: 20, left: 20),
             child: Row(
               children: <Widget>[
-                const Text("You Save :  "),
+                const Text('You Save :  '),
                 Text(
-                  " \$ ${widget.productDetailsoldPrice - widget.productDetailsPrice} Inclusive all taxes",
-                  style: TextStyle(
+                  ' \$ ${widget.productDetailsoldPrice - widget.productDetailsPrice} Inclusive all taxes',
+                  style: const TextStyle(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -197,30 +214,29 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
           //  ---------------------- Buy Now and Add to Cart Buttons ------------
 
           Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             child: MaterialButton(
               textColor: Colors.white,
-              padding: const EdgeInsets.all(15.0),
-              child: const Text("Buy Now"),
+              padding: const EdgeInsets.all(15),
               onPressed: () {},
               color: const Color(0xFFB33771),
+              child: const Text('Buy Now'),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 12.0),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 12),
             child: MaterialButton(
               textColor: Colors.white,
-              padding: EdgeInsets.all(15.0),
-              child: const Text("Add to Cart"),
+              padding: const EdgeInsets.all(15),
               onPressed: () {
                 showDialog(
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        content: Text("Product added to the Cart"),
+                        content: const Text('Product added to the Cart'),
                         actions: <Widget>[
-                          FlatButton(
-                            child: const Text("OK"),
+                          TextButton(
+                            child: const Text('OK'),
                             onPressed: () => Navigator.of(context).pop(),
                           ),
                         ],
@@ -228,52 +244,52 @@ class ProductDetailsState extends StateMVC<ProductDetails> {
                     });
               },
               color: const Color(0xFFB33771),
+              child: const Text('Add to Cart'),
             ),
           ),
 
           // -------- About this Item ------------
           Padding(
-            padding: const EdgeInsets.only(left: 5.0, top: 20.0, bottom: 20.0),
+            padding: const EdgeInsets.only(left: 5, top: 20, bottom: 20),
             child: ListTile(
               title: const Text(
-                "About this Item",
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                'About this Item',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Padding(
-                padding: const EdgeInsets.only(top: 5.0),
-                child: Text("${widget.productDetailsDesc}"),
+                padding: const EdgeInsets.only(top: 5),
+                child: Text('${widget.productDetailsDesc}'),
               ),
             ),
           ),
-          Padding(
-            child: const Text(
-              "Similar Products",
-              style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+          const Padding(
+            padding: EdgeInsets.only(left: 20, bottom: 10),
+            child: Text(
+              'Similar Products',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
-            padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
           ),
           Container(
-            height: 400.0,
-            padding: const EdgeInsets.only(bottom: 20.0),
-            child: SimilarProducts(),
+            height: 400,
+            padding: const EdgeInsets.only(bottom: 20),
+            child: const SimilarProducts(),
           ),
         ],
       ),
     );
   }
 
-  _showDialog(String s, String c) {
-    var _alert = AlertDialog(
+  void _showDialog(String s, String c) {
+    final _alert = AlertDialog(
       title: Text(s),
       content: Text(c),
       actions: <Widget>[
-        FlatButton(
-          child: const Text("Close"),
+        TextButton(
+          child: const Text('Close'),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ],
     );
-    showDialog(context: context, builder: (context) => _alert);
+    showDialog<void>(context: context, builder: (context) => _alert);
   }
 }

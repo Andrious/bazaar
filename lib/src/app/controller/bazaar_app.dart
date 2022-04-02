@@ -8,21 +8,31 @@ import 'package:bazaar/src/view.dart' show MsgBox;
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter/services.dart' show PlatformException;
 
+///
 class BazaarApp extends AppController {
+  ///
   factory BazaarApp() => _this ??= BazaarApp._();
   BazaarApp._() {
     auth = Auth();
   }
-  static BazaarApp _this;
-  Auth auth;
-  Ads ads;
-  bool loggedIn;
+
+  ///
+  static BazaarApp? _this;
+
+  ///
+  late Auth auth;
+
+  ///
+  late Ads ads;
+
+  ///
+  bool? loggedIn;
 
   @override
   void initState() {
     super.initState();
     ads = Ads(
-      Platform.isAndroid
+      trackingId: Platform.isAndroid
           ? 'ca-app-pub-3940256099942544~3347511713'
           : 'ca-app-pub-3940256099942544~1458002511',
       bannerUnitId: Platform.isAndroid
@@ -42,7 +52,7 @@ class BazaarApp extends AppController {
   @override
   Future<bool> initAsync() async {
     final bool init = await super.initAsync();
-    loggedIn = auth?.isLoggedIn() ?? false;
+    loggedIn = auth.isLoggedIn() ?? false;
     return init;
   }
 
@@ -53,17 +63,18 @@ class BazaarApp extends AppController {
     super.dispose();
   }
 
-  Future<void> msgError(Exception ex, {BuildContext context}) {
+  ///
+  Future<void> msgError(Exception ex, {required BuildContext context}) {
     String msg, title;
     if (ex is PlatformException) {
-      PlatformException px = ex;
+      final PlatformException px = ex;
       if (px.code.contains('NOT_FOUND')) {
         title = 'Sign Up Required';
         msg =
             "Looks like you need to register first.\nYou're not found in the system.";
       } else {
         title = px.code;
-        msg = px.message;
+        msg = px.message ?? '';
       }
     } else {
       title = 'Error';

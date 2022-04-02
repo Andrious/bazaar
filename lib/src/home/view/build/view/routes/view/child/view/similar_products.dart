@@ -12,6 +12,7 @@ import 'package:flutter/material.dart'
         Hero,
         Image,
         InkWell,
+        Key,
         MainAxisAlignment,
         Material,
         Padding,
@@ -23,13 +24,19 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget;
 
+//import 'package:flutter/src/foundation/key.dart';
+
+///
 class SimilarProducts extends StatefulWidget {
+  ///
+  const SimilarProducts({Key? key}) : super(key: key);
+
   @override
   _SimilarProductsState createState() => _SimilarProductsState();
 }
 
 class _SimilarProductsState extends State<SimilarProducts> {
-  var _products = [
+  final _products = [
     {
       'name': 'Blazer',
       'image': 'images/recentImages/blazer1.jpeg',
@@ -62,37 +69,37 @@ class _SimilarProductsState extends State<SimilarProducts> {
       itemBuilder: (BuildContext context, int i) {
         return Card(
           child: Hero(
-            tag: _products[i]['name'],
+            tag: _products[i]['name']!,
             child: Material(
               child: InkWell(
                 child: GridTile(
-                  child: Image.asset(
-                    _products[i]['image'],
-                    fit: BoxFit.cover,
-                  ),
                   footer: Container(
-                    height: 30.0,
+                    height: 30,
                     color: Colors.black54,
                     child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
                             "${_products[i]['name']}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
                           Text(
                             "\$ ${_products[i]['price']}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
                         ],
                       ),
                     ),
+                  ),
+                  child: Image.asset(
+                    _products[i]['image'] as String,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -101,7 +108,7 @@ class _SimilarProductsState extends State<SimilarProducts> {
         );
       },
       gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
     );
   }
 }

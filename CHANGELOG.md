@@ -1,4 +1,9 @@
 
+## 1.5.0
+ April 01, 2022
+- Overall upgrade
+- sdk: ^2.16.0
+
 ## 1.4.0+3
  March 03, 2021
 - analysis_options.yaml

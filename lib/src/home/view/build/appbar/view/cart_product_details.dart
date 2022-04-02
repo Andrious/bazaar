@@ -27,9 +27,11 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget;
 
+///
 class CartProductDetails extends StatefulWidget {
+  ///
   const CartProductDetails({
-    Key key,
+    Key? key,
     this.cartProductName,
     this.cartProductImage,
     this.cartProductPrice,
@@ -38,11 +40,17 @@ class CartProductDetails extends StatefulWidget {
     this.cartProductQty,
   }) : super(key: key);
 
+  ///
   final cartProductName;
+  ///
   final cartProductImage;
+  ///
   final cartProductPrice;
+  ///
   final cartProductSize;
+  ///
   final cartProductColor;
+  ///
   final cartProductQty;
 
   @override

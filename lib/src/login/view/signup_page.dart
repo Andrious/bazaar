@@ -1,3 +1,11 @@
+import 'package:bazaar/src/controller.dart' as c;
+
+import 'package:bazaar/src/home/view/homepage.dart' show HomePage;
+
+import 'package:bazaar/src/login/view/login_page.dart' show Login;
+
+import 'package:bazaar/src/view.dart' show HomePage, Login, StateMVC;
+
 import 'package:flutter/material.dart'
     show
         AlertDialog,
@@ -18,7 +26,6 @@ import 'package:flutter/material.dart'
         CurvedAnimation,
         Curves,
         EdgeInsets,
-        FlatButton,
         FontWeight,
         Form,
         FormState,
@@ -46,6 +53,7 @@ import 'package:flutter/material.dart'
         SizedBox,
         StatefulWidget,
         Text,
+        TextButton,
         TextEditingController,
         TextFormField,
         TextInputType,
@@ -56,16 +64,10 @@ import 'package:flutter/material.dart'
         Widget,
         showDialog;
 
-import 'package:bazaar/src/controller.dart' as c;
-
-import 'package:bazaar/src/view.dart' show HomePage, Login, StateMVC;
-
-import 'package:bazaar/src/login/view/login_page.dart' show Login;
-
-import 'package:bazaar/src/home/view/homepage.dart' show HomePage;
-
+///
 class SignUp extends StatefulWidget {
-  const SignUp({Key key}) : super(key: key);
+  ///
+  const SignUp({Key? key}) : super(key: key);
   @override
   _SignUpState createState() => _SignUpState();
 }
@@ -73,9 +75,10 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends StateMVC<SignUp>
     with SingleTickerProviderStateMixin {
   _SignUpState() : super(c.SignUpPage()) {
-    con = controller;
+    con = controller as c.SignUpPage;
   }
-  c.SignUpPage con;
+
+  late c.SignUpPage con;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -84,8 +87,8 @@ class _SignUpState extends StateMVC<SignUp>
   final TextEditingController _confirmPasswordController =
       TextEditingController();
   final TextEditingController _nameController = TextEditingController();
-  Animation animation, delayAnimation, muchDelayedAnimation;
-  AnimationController animationController;
+  late Animation animation, delayAnimation, muchDelayedAnimation;
+  late AnimationController animationController;
   bool hidePass = true;
   bool isLoading = false;
   bool isLoggedIn = false;
@@ -93,9 +96,9 @@ class _SignUpState extends StateMVC<SignUp>
   @override
   void initState() {
     super.initState();
-    final ad = c.BazaarApp()?.ads;
+    final ad = c.BazaarApp().ads;
     if (ad != null) {
-      ad?.closeBannerAd();
+      ad.closeBannerAd();
     }
     animationController = AnimationController(
       vsync: this,
@@ -141,7 +144,7 @@ class _SignUpState extends StateMVC<SignUp>
 
     return AnimatedBuilder(
       animation: animationController,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return Scaffold(
           body: Container(
             decoration: const BoxDecoration(
@@ -195,7 +198,8 @@ class _SignUpState extends StateMVC<SignUp>
                         delayAnimation.value * width, 0, 0),
                     child: Form(
                       key: _formKey,
-                      autovalidateMode: AutovalidateMode.always,                      child: Column(
+                      autovalidateMode: AutovalidateMode.always,
+                      child: Column(
                         children: <Widget>[
                           TextFormField(
                             controller: _nameController,
@@ -206,13 +210,13 @@ class _SignUpState extends StateMVC<SignUp>
                               labelText: 'Username',
                             ),
                             validator: (val) {
-                              if (val.isEmpty) {
+                              if (val!.isEmpty) {
                                 return 'Please Provide Username';
                               }
                               return null;
                             },
                             onSaved: (val) {
-                              _nameController.text = val;
+                              _nameController.text = val!;
                             },
                           ),
                           const SizedBox(
@@ -230,13 +234,13 @@ class _SignUpState extends StateMVC<SignUp>
                                     ),
                                 labelText: 'Email'),
                             validator: (val) {
-                              if (val.isEmpty) {
+                              if (val!.isEmpty) {
                                 return 'Please Provide Email';
                               }
                               return null;
                             },
                             onSaved: (val) {
-                              _emailController.text = val;
+                              _emailController.text = val!;
                             },
                           ),
                           const SizedBox(
@@ -266,13 +270,13 @@ class _SignUpState extends StateMVC<SignUp>
                                 hintText: 'Password',
                                 labelText: 'Password'),
                             validator: (val) {
-                              if (val.length < 6) {
+                              if (val!.length < 6) {
                                 return 'Passsword must contain atleast 6 characters';
                               }
                               return null;
                             },
                             onSaved: (val) {
-                              _passwordController.text = val;
+                              _passwordController.text = val!;
                             },
                           ),
                           const SizedBox(
@@ -301,7 +305,7 @@ class _SignUpState extends StateMVC<SignUp>
                                 hintText: 'Confirm Password',
                                 labelText: 'Confirm Password'),
                             validator: (val) {
-                              if (val.length < 6) {
+                              if (val!.length < 6) {
                                 return 'Password must contain at least 6 characters';
                               } else if (val.isEmpty) {
                                 return "Password field can't be empty";
@@ -311,7 +315,7 @@ class _SignUpState extends StateMVC<SignUp>
                               return null;
                             },
                             onSaved: (val) {
-                              _passwordController.text = val;
+                              _passwordController.text = val!;
                             },
                           ),
 
@@ -367,7 +371,8 @@ class _SignUpState extends StateMVC<SignUp>
                                 if (signIn) {
                                   await Navigator.of(context).pushReplacement(
                                       MaterialPageRoute<void>(
-                                          builder: (context) => HomePage()));
+                                          builder: (context) =>
+                                              const HomePage()));
                                 } else {
                                   if (con.inError) {
                                     await con.msgError(context);
@@ -427,15 +432,15 @@ class _SignUpState extends StateMVC<SignUp>
   Future<bool> signUpUser(BuildContext context) async {
 //      formState.reset();
 //      _loadingDialog();
-    final FormState formState = _formKey.currentState;
+    final c.FormState formState = _formKey.currentState!;
     bool signUp = formState.validate();
     if (signUp) {
       formState.save();
       signUp = await con.signUpUser(_nameController.text, _emailController.text,
           _passwordController.text);
       if (signUp) {
-        await Navigator.of(context)
-            .push(MaterialPageRoute<void>(builder: (context) => HomePage()));
+        await Navigator.of(context).push(
+            MaterialPageRoute<void>(builder: (context) => const HomePage()));
       } else {
         if (con.inError) {
           await con.msgError(context);
@@ -451,9 +456,9 @@ class _SignUpState extends StateMVC<SignUp>
       ));
 
   void _showDialogue({
-    String text,
-    Widget content,
-    List<Widget> buttons,
+    String? text,
+    Widget? content,
+    List<Widget>? buttons,
   }) {
     if (text != null && content == null) {
       content = Text(text.trim());
@@ -469,7 +474,7 @@ class _SignUpState extends StateMVC<SignUp>
     }
 
     buttons ??= [
-      FlatButton(
+      TextButton(
         onPressed: () {
           Navigator.pop(context);
         },
@@ -477,7 +482,7 @@ class _SignUpState extends StateMVC<SignUp>
       )
     ];
 
-    showDialog(
+    showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (context) {

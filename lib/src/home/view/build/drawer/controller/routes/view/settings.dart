@@ -1,3 +1,7 @@
+import 'package:auth/auth.dart' show Auth;
+
+import 'package:bazaar/src/controller.dart' show BazaarApp, Controllers;
+
 import 'package:flutter/material.dart'
     show
         AlertDialog,
@@ -25,12 +29,12 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget,
         showDialog;
+import 'package:flutter/src/foundation/key.dart';
 
-import 'package:auth/auth.dart' show Auth;
-
-import 'package:bazaar/src/controller.dart' show BazaarApp, Controllers;
-
+///
 class Settings extends StatefulWidget {
+  const Settings({Key? key}) : super(key: key);
+
   @override
   _SettingsState createState() => _SettingsState();
 }
@@ -39,11 +43,11 @@ class _SettingsState extends State<Settings> {
   @override
   void initState() {
     super.initState();
-    BazaarApp con = BazaarApp();
+    final BazaarApp con = BazaarApp();
     _auth = con.auth;
   }
 
-  Auth _auth;
+  late Auth _auth;
 
   @override
   Widget build(BuildContext context) {
@@ -51,29 +55,27 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color(0xFFB33771),
-        title: const Text("Settings"),
+        title: const Text('Settings'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              child: const Text(
-                "If you want to reset your password click the button",
-                style: const TextStyle(fontSize: 18.0),
-              ),
+            const Text(
+              'If you want to reset your password click the button',
+              style: TextStyle(fontSize: 18),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             MaterialButton(
                 shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(25.0)),
+                    borderRadius: BorderRadius.circular(25)),
                 color: const Color(0xFFB33771),
                 minWidth: MediaQuery.of(context).size.width,
                 child: ListTile(
                   title: Center(
                     child: Text(
-                      "Reset Password",
+                      'Reset Password',
                       style: _btnStyle(),
                     ),
                   ),
@@ -89,18 +91,18 @@ class _SettingsState extends State<Settings> {
   }
 
   TextStyle _btnStyle() {
-    return TextStyle(
+    return const TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.bold,
     );
   }
 
   void passwordResetDialog() {
-    var alert = AlertDialog(
+    final alert = AlertDialog(
       content: Container(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10),
         child: Text(
-            "Password Reset Link Has Been Sent To Your EmailID: ${_auth.email}"),
+            'Password Reset Link Has Been Sent To Your EmailID: ${_auth.email}'),
       ),
     );
     showDialog(context: context, builder: (_) => alert);

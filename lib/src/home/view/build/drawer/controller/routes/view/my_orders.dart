@@ -12,8 +12,10 @@ import 'package:flutter/material.dart'
 
 import 'package:bazaar/src/view.dart' show CartProductDetails;
 
+///
 class MyOrders extends StatelessWidget {
-  const MyOrders({Key key}):super(key: key);
+  ///
+  const MyOrders({Key? key}):super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

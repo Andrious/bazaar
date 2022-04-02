@@ -1,38 +1,51 @@
-import 'package:flutter/material.dart' show ChangeNotifier, ThemeData;
-
 import 'package:bazaar/src/controller.dart' show ControllerMVC, Prefs;
+
+import 'package:bazaar/src/view.dart' show App;
+
+import 'package:flutter/material.dart' show ChangeNotifier, ThemeData;
 
 // Provider State management to change between themes(Light and Dark).
 
+///
 class ThemeChanger01 extends ChangeNotifier {
+  ///
   ThemeChanger01(this.themeData);
+
+  ///
   ThemeData themeData;
 
+  ///
   ThemeData getTheme() => themeData;
 
+  ///
   void setTheme(ThemeData theme) {
     themeData = theme;
     notifyListeners();
   }
 }
 
+///
 class ThemeChanger extends ControllerMVC {
+  ///
   factory ThemeChanger() => _this ??= ThemeChanger._();
   ThemeChanger._();
-  static ThemeChanger _this;
+  static ThemeChanger? _this;
 
-  ThemeData themeData;
-  bool _darkmode;
+  ///
+  late bool _darkmode;
 
   @override
   void initState() {
+    super.initState();
     _darkmode = Prefs.getBool('darkmode');
     setDarkMode(dark: darkMode);
   }
 
+  ///
   bool get darkMode => _darkmode;
 
-  bool setDarkMode({bool dark}) {
+  ///
+  bool setDarkMode({bool? dark}) {
     if (dark == null) {
       return false;
     }
@@ -42,16 +55,18 @@ class ThemeChanger extends ControllerMVC {
     return true;
   }
 
-  ThemeData getTheme() => themeData;
+  ///
+  ThemeData getTheme() => App.themeData!;
 
-  void setTheme([ThemeData theme]) {
+  ///
+  void setTheme([ThemeData? theme]) {
     if (theme != null) {
-      themeData = theme;
+      App.themeData = theme;
     } else {
       if (_darkmode) {
-        themeData = ThemeData.dark();
+        App.themeData = ThemeData.dark();
       } else {
-        themeData = ThemeData.light();
+        App.themeData = ThemeData.light();
       }
     }
   }

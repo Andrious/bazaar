@@ -1,3 +1,9 @@
+import 'package:bazaar/src/controller.dart' as c;
+
+import 'package:bazaar/src/model.dart' show productsItems;
+
+import 'package:bazaar/src/view.dart' show ProductDetails, StateMVC;
+
 import 'package:flutter/material.dart'
     show
         BoxFit,
@@ -25,38 +31,36 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget;
 
-import 'package:bazaar/src/model.dart' show productsItems;
-
-import 'package:bazaar/src/view.dart' show ProductDetails, StateMVC;
-
-import 'package:bazaar/src/controller.dart' as c;
-
+///
 class RecentProducts extends StatefulWidget {
-  const RecentProducts({Key key}) : super(key: key);
+  ///
+  const RecentProducts({Key? key}) : super(key: key);
 
   @override
   _RecentProductsState createState() => _RecentProductsState();
 
-  static search(String word) => _RecentProductsState.search(word);
+  ///
+  static void search(String word) => _RecentProductsState.search(word);
 
-  static clear() => _RecentProductsState.clear();
+  ///
+  static void clear() => _RecentProductsState.clear();
 }
 
 class _RecentProductsState extends StateMVC<RecentProducts> {
   _RecentProductsState() : super(c.HomeAppBar());
-  List<Map<String, dynamic>> itemsList;
 
-  static search(String word) {
-    String search = word.toLowerCase();
+  static void search(String word) {
+    final String search = word.toLowerCase();
     items = productsItems.where((m) {
-      String name = m['name'];
-      return name.toLowerCase().indexOf(search) > -1;
+      final String name = m['name'];
+      return name.toLowerCase().contains(search);
     }).toList();
   }
 
-  static clear() => items = null;
+  static void clear() => items = null;
 
-  static List<Map<String, dynamic>> items;
+  static List<Map<String, dynamic>>? items;
+  List<Map<String, dynamic>>? itemsList;
 
   @override
   Widget build(BuildContext context) {
@@ -66,45 +70,41 @@ class _RecentProductsState extends StateMVC<RecentProducts> {
       itemsList = items;
     }
     return GridView.builder(
-      itemCount: itemsList.length,
+      itemCount: itemsList!.length,
       itemBuilder: (BuildContext context, int i) {
         return Card(
           child: Hero(
-            tag: itemsList[i]['name'],
+            tag: itemsList![i]['name'],
             child: Material(
               child: InkWell(
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
+                  MaterialPageRoute<void>(
                     builder: (context) => ProductDetails(
-                      productDetailsName: itemsList[i]['name'],
-                      productDetailsImage: itemsList[i]['image'],
-                      productDetailsoldPrice: itemsList[i]['oldPrice'],
-                      productDetailsPrice: itemsList[i]['price'],
-                      productDetailsDesc: itemsList[i]['prodDesc'],
+                      productDetailsName: itemsList![i]['name'],
+                      productDetailsImage: itemsList![i]['image'],
+                      productDetailsoldPrice: itemsList![i]['oldPrice'],
+                      productDetailsPrice: itemsList![i]['price'],
+                      productDetailsDesc: itemsList![i]['prodDesc'],
                     ),
                   ),
                 ),
                 child: GridTile(
-                  child: Image.asset(
-                    itemsList[i]['image'],
-                    fit: BoxFit.cover,
-                  ),
                   footer: Container(
-                    height: 30.0,
+                    height: 30,
                     color: Colors.black54,
                     child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            "${itemsList[i]['name']}",
+                            "${itemsList![i]['name']}",
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
                           Text(
-                            "\$ ${itemsList[i]['price']}",
+                            "\$ ${itemsList![i]['price']}",
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
@@ -113,6 +113,10 @@ class _RecentProductsState extends StateMVC<RecentProducts> {
                       ),
                     ),
                   ),
+                  child: Image.asset(
+                    itemsList![i]['image'],
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
@@ -120,7 +124,7 @@ class _RecentProductsState extends StateMVC<RecentProducts> {
         );
       },
       gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
     );
   }
 }

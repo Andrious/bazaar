@@ -1,23 +1,28 @@
-import 'package:flutter/cupertino.dart' show BuildContext;
-
 import 'package:auth/auth.dart';
 
 import 'package:bazaar/src/controller.dart' show BazaarApp, ControllerMVC;
-
 //import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:shopping_cart/src/login/model/firebaseDB/google_signin.dart';
+
 import 'package:bazaar/src/login/model/firebaseDB/user_management.dart';
 
+import 'package:flutter/cupertino.dart' show BuildContext;
+
+///
 class SignUpPage extends ControllerMVC {
+  ///
   factory SignUpPage() => _this ??= SignUpPage._();
   SignUpPage._();
-  static SignUpPage _this;
+  static SignUpPage? _this;
 
-  Auth _auth;
-  BazaarApp con;
+  late Auth _auth;
+
+  ///
+  late BazaarApp con;
 
   @override
   void initState() {
+    super.initState();
     con = BazaarApp();
     _auth = con.auth;
     con.ads.closeBannerAd();
@@ -25,6 +30,7 @@ class SignUpPage extends ControllerMVC {
 
 //  Auth auth = Auth();
 //  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  ///
   UserManagement userManagement = UserManagement();
 
 //  Future<bool> signUpUser(
@@ -49,6 +55,7 @@ class SignUpPage extends ControllerMVC {
 //    return signUp;
 //  }
 
+  ///
   Future<bool> signUpUser(
       String userName, String email, String password) async {
     var user = _auth.currentUser();
@@ -58,8 +65,8 @@ class SignUpPage extends ControllerMVC {
           email: email, password: password);
       if (signUp) {
         user = _auth.currentUser();
-        userManagement.createUser(user?.uid?.toString(), {
-          'userId': user?.uid,
+        userManagement.createUser(user!.uid.toString(), {
+          'userId': user.uid,
           'username': userName.toString(),
           'email': email,
         });
@@ -86,11 +93,12 @@ class SignUpPage extends ControllerMVC {
 //    return signIn;
 //  }
 
+  ///
   Future<bool> googleSignIn() async {
     final bool signIn = await _auth.signInGoogle();
     if (signIn) {
       final user = _auth.currentUser();
-      userManagement.createUser(user.uid, {
+      userManagement.createUser(user!.uid, {
         'userId': user.uid,
         'username': user.displayName,
         'email': user.email,
@@ -103,8 +111,9 @@ class SignUpPage extends ControllerMVC {
   bool get inError => _auth.message.isNotEmpty;
 
   @override
-  Exception getError([dynamic error]) => _auth.getError();
+  Exception? getError([dynamic error]) => _auth.getError();
 
+  ///
   Future<void> msgError(BuildContext context) =>
-      con.msgError(getError(), context: context);
+      con.msgError(getError()!, context: context);
 }

@@ -1,3 +1,5 @@
+import 'package:bazaar/src/home/view/build/appbar/view/cart_product_details.dart'
+    show CartProductDetails;
 import 'package:flutter/material.dart'
     show
         AppBar,
@@ -17,11 +19,10 @@ import 'package:flutter/material.dart'
         Text,
         Widget;
 
-import 'package:bazaar/src/home/view/build/appbar/view/cart_product_details.dart'
-    show CartProductDetails;
-
+///
 class Cart extends StatefulWidget {
-  const Cart({Key key}) : super(key: key);
+  ///
+  const Cart({Key? key}) : super(key: key);
   @override
   _CartState createState() => _CartState();
 }

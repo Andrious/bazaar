@@ -1,3 +1,7 @@
+import 'package:bazaar/src/model.dart' show recentSearchProd, searchProd;
+
+import 'package:bazaar/src/view.dart' show RecentProducts;
+
 import 'package:flutter/material.dart'
     show
         AnimatedIcon,
@@ -18,12 +22,9 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget;
 
-import 'package:bazaar/src/model.dart' show recentSearchProd, searchProd;
-
-import 'package:bazaar/src/view.dart' show RecentProducts;
-
 // SearchBar
 
+///
 class ProductSearch extends SearchDelegate<String> {
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -43,7 +44,7 @@ class ProductSearch extends SearchDelegate<String> {
     // Leading icon
     return IconButton(
       onPressed: () {
-        close(context, null);
+        close(context, '');
       },
       icon: AnimatedIcon(
         icon: AnimatedIcons.menu_arrow,
@@ -77,14 +78,14 @@ class ProductSearch extends SearchDelegate<String> {
           onTap: () {
 //            showResults(context);
             RecentProducts.search(suggestionList[i]);
-            close(context, null);
+            close(context, '');
           },
           leading: const Icon(Icons.shopping_basket),
           title: RichText(
             text: TextSpan(
               text: suggestionList[i].substring(0, query.length),
-              style:
-                  const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold),
               children: [
                 TextSpan(
                     text: suggestionList[i].substring(query.length),

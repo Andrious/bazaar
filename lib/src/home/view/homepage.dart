@@ -1,3 +1,12 @@
+import 'package:bazaar/src/controller.dart' as c;
+
+import 'package:bazaar/src/view.dart'
+    show HomeDrawer, Image, RecentProducts, StateMVC;
+
+// import 'package:carousel_pro/carousel_pro.dart' show Carousel;
+
+import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:flutter/material.dart'
     show
         Alignment,
@@ -23,29 +32,32 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget;
 
-import 'package:carousel_pro/carousel_pro.dart' show Carousel;
-
-import 'package:bazaar/src/view.dart' show HomeDrawer, RecentProducts, StateMVC;
-
-import 'package:bazaar/src/controller.dart' as c;
-
+///
 class HomePage extends StatefulWidget {
+  ///
   const HomePage({
-    Key key,
+    Key? key,
     this.searchProdName,
     this.searchProdImage,
     this.searchProdPrice,
   }) : super(key: key);
 
+  ///
   final searchProdName;
+
+  ///
   final searchProdImage;
+
+  ///
   final searchProdPrice;
 
   @override
   HomePageState createState() => HomePageState();
 }
 
+///
 class HomePageState extends StateMVC<HomePage> {
+  ///
   HomePageState() : super(c.ThemeChanger()) {
     add(c.HomeDrawer());
     add(c.HomeAppBar());
@@ -95,21 +107,35 @@ class HomePageState extends StateMVC<HomePage> {
   Widget _imgCarousel() {
     return Container(
       height: 200,
-      child: Carousel(
-        overlayShadow: true,
-        overlayShadowColors: Colors.black45,
-        dotSize: 5,
-        animationCurve: Curves.bounceInOut,
-        dotBgColor: Colors.transparent,
-        images: const [
-          AssetImage('images/c1.jpg'),
-          AssetImage('images/c5.jpg'),
-          AssetImage('images/c2.jpg'),
-          AssetImage('images/c3.jpg'),
-          AssetImage('images/c4.jpg'),
-          AssetImage('images/c6.jpg'),
+      child: CarouselSlider(
+        options: CarouselOptions(
+          autoPlay: true,
+        ),
+        carouselController: CarouselController(),
+        items: [
+          Image.asset('images/c1.jpg'),
+          Image.asset('images/c5.jpg'),
+          Image.asset('images/c2.jpg'),
+          Image.asset('images/c3.jpg'),
+          Image.asset('images/c4.jpg'),
+          Image.asset('images/c6.jpg'),
         ],
       ),
+      // child: Carousel(
+      //   overlayShadow: true,
+      //   overlayShadowColors: Colors.black45,
+      //   dotSize: 5,
+      //   animationCurve: Curves.bounceInOut,
+      //   dotBgColor: Colors.transparent,
+      //   images: const [
+      //     AssetImage('images/c1.jpg'),
+      //     AssetImage('images/c5.jpg'),
+      //     AssetImage('images/c2.jpg'),
+      //     AssetImage('images/c3.jpg'),
+      //     AssetImage('images/c4.jpg'),
+      //     AssetImage('images/c6.jpg'),
+      //   ],
+      // ),
     );
   }
 

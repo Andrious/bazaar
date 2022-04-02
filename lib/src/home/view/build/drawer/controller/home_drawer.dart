@@ -1,3 +1,10 @@
+import 'package:auth/auth.dart' show Auth;
+
+import 'package:bazaar/src/controller.dart'
+    show BazaarApp, ControllerMVC, ThemeChanger;
+
+import 'package:bazaar/src/view.dart' hide BazaarApp;
+
 import 'package:flutter/material.dart'
     show
         BoxDecoration,
@@ -18,40 +25,37 @@ import 'package:flutter/material.dart'
         UserAccountsDrawerHeader,
         Widget;
 
-import 'package:auth/auth.dart' show Auth;
-
-import 'package:bazaar/src/view.dart' hide BazaarApp;
-
-import 'package:bazaar/src/controller.dart'
-    show BazaarApp, ControllerMVC, ThemeChanger;
-
+///
 class HomeDrawer extends ControllerMVC {
+  ///
   factory HomeDrawer() => _this ?? HomeDrawer._();
   HomeDrawer._();
-  static HomeDrawer _this;
+  static HomeDrawer? _this;
 
-  HomePageState _state;
-  ThemeChanger _theme;
-  Auth _auth;
-  BazaarApp _con;
+  late HomePageState _state;
+  late ThemeChanger _theme;
+  late Auth _auth;
+  late BazaarApp _con;
 
-  bool _darkmode;
+  late bool _darkmode;
 
   @override
   void initState() {
+    super.initState();
     _con = BazaarApp();
     _auth = _con.auth;
-    _state = stateMVC;
+    _state = stateMVC as HomePageState;
     _theme = ThemeChanger();
     _darkmode = _theme.darkMode;
     // Load the Ad into memory.
     _con.ads.setBannerAd();
   }
 
+  ///
   String userName() {
-    String name = _auth?.displayName?.trim() ?? '';
+    String name = _auth.displayName.trim();
     if (name.isEmpty) {
-      name = _auth?.email ?? '';
+      name = _auth.email;
       final List<String> parts = name.split('@');
       if (parts.isNotEmpty) {
         name = parts[0];
@@ -60,24 +64,27 @@ class HomeDrawer extends ControllerMVC {
     return name;
   }
 
+  ///
   String email() {
-    String email = _auth?.email ?? '';
+    String email = _auth.email;
     if (email.isEmpty) {
       email = 'No Email Address';
     }
     return email;
   }
 
+  ///
   String photoUrl() {
-    if (_auth?.photoUrl != null && _auth.photoUrl.isNotEmpty) {
+    if (_auth.photoUrl != null && _auth.photoUrl.isNotEmpty) {
       return _auth.photoUrl;
     } else {
       return 'A';
     }
   }
 
+  ///
   void onTap(Widget widget) {
-    _con.ads.showBannerAd(state: _state);
+    _con.ads.bannerAd?.show();
     Navigator.of(_state.context)
         .push(MaterialPageRoute<void>(builder: (context) => widget))
         .then((_) {
@@ -85,6 +92,7 @@ class HomeDrawer extends ControllerMVC {
     });
   }
 
+  ///
   Widget get header => UserAccountsDrawerHeader(
         decoration: const BoxDecoration(
           color: Color(0xFFB33771),
@@ -104,6 +112,7 @@ class HomeDrawer extends ControllerMVC {
         ),
       );
 
+  ///
   Widget get darkmode => ListTile(
         leading: _darkmode
             ? Image.asset(
@@ -127,6 +136,7 @@ class HomeDrawer extends ControllerMVC {
         ),
       );
 
+  ///
   Widget get account => InkWell(
         onTap: () {
           onTap(const MyAccount());
@@ -137,6 +147,7 @@ class HomeDrawer extends ControllerMVC {
         ),
       );
 
+  ///
   Widget get orders => InkWell(
         onTap: () {
           onTap(const MyOrders());
@@ -147,9 +158,10 @@ class HomeDrawer extends ControllerMVC {
         ),
       );
 
+  ///
   Widget get settings => InkWell(
         onTap: () {
-          onTap(Settings());
+          onTap(const Settings());
         },
         child: _state.showList(
           'Settings',
@@ -157,6 +169,7 @@ class HomeDrawer extends ControllerMVC {
         ),
       );
 
+  ///
   Widget get about => InkWell(
         onTap: () {
           onTap(const About());
@@ -167,6 +180,7 @@ class HomeDrawer extends ControllerMVC {
         ),
       );
 
+  ///
   Widget get contact => InkWell(
         onTap: () {
           onTap(Contact());
@@ -177,6 +191,7 @@ class HomeDrawer extends ControllerMVC {
         ),
       );
 
+  ///
   Widget get logout => InkWell(
         onTap: () {
           _auth.signOut().then((value) {

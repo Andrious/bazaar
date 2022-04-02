@@ -1,20 +1,20 @@
-import 'package:mvc_application/view.dart';
+import 'package:bazaar/src/controller.dart' as c;
 
 import 'package:bazaar/src/view.dart' show Login;
 
-import 'package:bazaar/src/controller.dart' as c;
+import 'package:mvc_application/view.dart';
 
+///
 class BazaarApp extends AppState {
+  ///
   BazaarApp()
       : super(
           con: c.BazaarApp(),
-          title: "e-Bazaar",
+          title: 'e-Bazaar',
           debugShowCheckedModeBanner: false,
-          home: Login(),
+          home: const Login(),
           controllers: [
             c.ThemeChanger(),
           ],
         );
-
-  ThemeData onTheme() => c.ThemeChanger()?.getTheme();
 }

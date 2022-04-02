@@ -44,14 +44,16 @@ import 'package:bazaar/src/view.dart' hide BazaarApp;
 
 import 'package:bazaar/src/controller.dart' show BazaarApp;
 
+///
 class MyAccount extends StatefulWidget {
-  const MyAccount({Key key}) : super(key: key);
+  ///
+  const MyAccount({Key? key}) : super(key: key);
   @override
   _MyAccountState createState() => _MyAccountState();
 }
 
 class _MyAccountState extends State<MyAccount> {
-  Auth _auth;
+  late Auth _auth;
 
   @override
   void initState() {
@@ -133,7 +135,6 @@ class _MyAccountState extends State<MyAccount> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
               ),
-
               onPressed: () {
                 _auth.signOut().then((_) {
                   Navigator.of(context).pop();
