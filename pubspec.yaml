@@ -15,7 +15,7 @@ description: A sample app demonstrating functions and features implemented by th
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.5.0+01
+version: 1.6.0
 
 environment:
   sdk: ">=2.16.2 <3.0.0"
@@ -32,7 +32,7 @@ dependencies:
   #    path: ../../packages/ads
 
   # https://pub.dev/packages/auth
-  auth: ^8.0.0
+#  auth: ^8.0.0
   #    path: ../../packages/auth
 
   # https://pub:dev/packages/carousel_pro
@@ -47,13 +47,13 @@ dependencies:
   cupertino_icons: ^1.0.0 #'>=1.0.0 <2.0.0'
 
   #  # https://pub.dev/packages/cloud_firestore
-  cloud_firestore: ^3.0.0 #'>=0.16.0 <1.0.0'
+#  cloud_firestore: ^3.0.0 #'>=0.16.0 <1.0.0'
 
   flutter:
     sdk: flutter
 
   #  # https://pub.dev/packages/firebase_database
-  firebase_database: ^9.0.0 #'>=6.0.0 <7.0.0'
+#  firebase_database: ^9.0.0 #'>=6.0.0 <7.0.0'
 
   #  # https://pub.dev/packages/firebase_auth
   #  firebase_auth: '>=0.20.0 <1.0.0'

@@ -1,4 +1,4 @@
-import 'package:auth/auth.dart' show Auth;
+//import 'package:auth/auth.dart' show Auth;
 
 import 'package:bazaar/src/controller.dart' show BazaarApp, Controllers;
 
@@ -44,10 +44,10 @@ class _SettingsState extends State<Settings> {
   void initState() {
     super.initState();
     final BazaarApp con = BazaarApp();
-    _auth = con.auth;
+//    _auth = con.auth;
   }
 
-  late Auth _auth;
+//  late Auth _auth;
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,7 @@ class _SettingsState extends State<Settings> {
                   ),
                 ),
                 onPressed: () async {
-                  await _auth.sendPasswordResetEmail(email: _auth.email);
+//                  await _auth.sendPasswordResetEmail(email: _auth.email);
                   passwordResetDialog();
                 }),
           ],
@@ -101,8 +101,9 @@ class _SettingsState extends State<Settings> {
     final alert = AlertDialog(
       content: Container(
         padding: const EdgeInsets.all(10),
-        child: Text(
-            'Password Reset Link Has Been Sent To Your EmailID: ${_auth.email}'),
+        // child: Text(
+        //     'Password Reset Link Has Been Sent To Your EmailID: ${_auth.email}'),
+        child: Text('Password Reset Link Has Been Sent To Your EmailID: '),
       ),
     );
     showDialog(context: context, builder: (_) => alert);

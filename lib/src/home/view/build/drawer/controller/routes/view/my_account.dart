@@ -38,7 +38,7 @@ import 'package:flutter/painting.dart'
         RoundedRectangleBorder,
         TextStyle;
 
-import 'package:auth/auth.dart' show Auth;
+//import 'package:auth/auth.dart' show Auth;
 
 import 'package:bazaar/src/view.dart' hide BazaarApp;
 
@@ -53,20 +53,21 @@ class MyAccount extends StatefulWidget {
 }
 
 class _MyAccountState extends State<MyAccount> {
-  late Auth _auth;
+//  late Auth _auth;
 
   @override
   void initState() {
     final BazaarApp con = BazaarApp();
-    _auth = con.auth;
+//    _auth = con.auth;
     super.initState();
   }
 
   String get userName {
-    if (_auth.displayName == null || _auth.displayName.isEmpty) {
-      return _auth.email.replaceAll('@gmail.com', '');
-    }
-    return _auth.displayName;
+    // if (_auth.displayName == null || _auth.displayName.isEmpty) {
+    //   return _auth.email.replaceAll('@gmail.com', '');
+    // }
+    // return _auth.displayName;
+    return '';
   }
 
   @override
@@ -117,9 +118,9 @@ class _MyAccountState extends State<MyAccount> {
                   ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                    child: Text(
-                      _auth.email,
-                    ),
+                    child: Text(''
+                        //                     _auth.email,
+                        ),
                   ),
                   const Divider(
                     height: 2,
@@ -136,13 +137,13 @@ class _MyAccountState extends State<MyAccount> {
                 borderRadius: BorderRadius.circular(25),
               ),
               onPressed: () {
-                _auth.signOut().then((_) {
-                  Navigator.of(context).pop();
-                  //                 Navigator.of(context).pop();
-
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute<void>(builder: (context) => Login()));
-                }).catchError((e) => print(e.toString()));
+                // _auth.signOut().then((_) {
+                //   Navigator.of(context).pop();
+                //   //                 Navigator.of(context).pop();
+                //
+                //   Navigator.of(context).pushReplacement(
+                //       MaterialPageRoute<void>(builder: (context) => Login()));
+                // }).catchError((e) => print(e.toString()));
               },
               color: const Color(0xFFB33771),
               child: const ListTile(

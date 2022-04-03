@@ -1,4 +1,4 @@
-import 'package:auth/auth.dart' show Auth;
+//import 'package:auth/auth.dart' show Auth;
 
 import 'package:bazaar/src/controller.dart'
     show BazaarApp, ControllerMVC, ThemeChanger;
@@ -34,7 +34,7 @@ class HomeDrawer extends ControllerMVC {
 
   late HomePageState _state;
   late ThemeChanger _theme;
-  late Auth _auth;
+//  late Auth _auth;
   late BazaarApp _con;
 
   late bool _darkmode;
@@ -43,7 +43,7 @@ class HomeDrawer extends ControllerMVC {
   void initState() {
     super.initState();
     _con = BazaarApp();
-    _auth = _con.auth;
+//    _auth = _con.auth;
     _state = stateMVC as HomePageState;
     _theme = ThemeChanger();
     _darkmode = _theme.darkMode;
@@ -53,9 +53,9 @@ class HomeDrawer extends ControllerMVC {
 
   ///
   String userName() {
-    String name = _auth.displayName.trim();
+    String name = ''; //_auth.displayName.trim();
     if (name.isEmpty) {
-      name = _auth.email;
+      name = ''; //_auth.email;
       final List<String> parts = name.split('@');
       if (parts.isNotEmpty) {
         name = parts[0];
@@ -66,7 +66,7 @@ class HomeDrawer extends ControllerMVC {
 
   ///
   String email() {
-    String email = _auth.email;
+    String email = ''; //_auth.email;
     if (email.isEmpty) {
       email = 'No Email Address';
     }
@@ -75,11 +75,13 @@ class HomeDrawer extends ControllerMVC {
 
   ///
   String photoUrl() {
-    if (_auth.photoUrl != null && _auth.photoUrl.isNotEmpty) {
-      return _auth.photoUrl;
-    } else {
-      return 'A';
-    }
+    return 'A';
+
+    // if (_auth.photoUrl != null && _auth.photoUrl.isNotEmpty) {
+    //   return _auth.photoUrl;
+    // } else {
+    //   return 'A';
+    // }
   }
 
   ///
@@ -194,12 +196,12 @@ class HomeDrawer extends ControllerMVC {
   ///
   Widget get logout => InkWell(
         onTap: () {
-          _auth.signOut().then((value) {
-            Navigator.of(_state.context).pop();
-            Navigator.pushReplacement(_state.context,
-                MaterialPageRoute<void>(builder: (context) => const Login()));
-            _state.refresh();
-          });
+          // _auth.signOut().then((value) {
+          //   Navigator.of(_state.context).pop();
+          //   Navigator.pushReplacement(_state.context,
+          //       MaterialPageRoute<void>(builder: (context) => const Login()));
+          //   _state.refresh();
+          // });
         },
         child: _state.showList(
           'LogOut',

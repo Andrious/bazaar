@@ -26,6 +26,7 @@ export 'package:mvc_application/view.dart';
 export 'package:bazaar/src/home/view/homepage.dart';
 
 export 'package:bazaar/src/login/view/signup_page.dart';
+
 export 'package:bazaar/src/login/view/login_page.dart';
 
 export 'package:bazaar/src/app/view/BazaarApp.dart';

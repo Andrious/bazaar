@@ -195,8 +195,8 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute<void>(
-                              builder: (context) => const SignUp()));
+                          // Navigator.of(context).push(MaterialPageRoute<void>(
+                          //     builder: (context) => const SignUp()));
                         },
                         child: Transform(
                           transform: Matrix4.translationValues(
@@ -384,12 +384,12 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
         await Navigator.pushReplacement(context,
             MaterialPageRoute<void>(builder: (context) => const HomePage()));
       } else {
-        if (con.inError) {
-          await con.msgError(con.getError()!).then((_) {
-            Navigator.of(context).push(
-                MaterialPageRoute<void>(builder: (context) => const SignUp()));
-          });
-        }
+        // if (con.inError) {
+        //   await con.msgError(con.getError()!).then((_) {
+        //     Navigator.of(context).push(
+        //         MaterialPageRoute<void>(builder: (context) => const SignUp()));
+        //   });
+        // }
       }
     }
   }

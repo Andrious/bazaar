@@ -1,4 +1,8 @@
 
+## 1.6.0
+ April 03, 2022
+- Removed Auth package and firebase
+
 ## 1.5.0+01
  April 01, 2022
 - Overall upgrade

@@ -1,4 +1,4 @@
-import 'package:auth/auth.dart' show Auth;
+//import 'package:auth/auth.dart' show Auth;
 
 import 'package:bazaar/src/controller.dart' show BazaarApp, ControllerMVC;
 
@@ -8,25 +8,25 @@ class LoginPage extends ControllerMVC {
   factory LoginPage() => _this ??= LoginPage._();
   LoginPage._() {
     con = BazaarApp();
-    loggedIn = con.loggedIn!;
-    _auth = con.auth;
+    loggedIn = false; //con.loggedIn!;
+//    _auth = con.auth;
   }
   static LoginPage? _this;
 
   ///
   late BazaarApp con;
 
-  late Auth _auth;
+//  late Auth _auth;
 
   ///
   late bool loggedIn;
 
   ///
-  bool isSignedIn() => _auth.isLoggedIn(); //?? false;
+  bool isSignedIn() => false; // _auth.isLoggedIn(); //?? false;
 
   ///
   String email() {
-    String email = _auth.email;
+    String email = ''; //_auth.email;
     if (email.isEmpty) {
       email = 'Guest User';
     }
@@ -34,14 +34,14 @@ class LoginPage extends ControllerMVC {
   }
 
   ///
-  Future<bool> signIn(String email, String password) =>
-      _auth.signInWithEmailAndPassword(email: email, password: password);
+  Future<bool> signIn(String email, String password) => Future.value(
+      false); //    _auth.signInWithEmailAndPassword(email: email, password: password);
 
   @override
-  bool get inError => _auth.message.isNotEmpty;
+  bool get inError => false; // _auth.message.isNotEmpty;
 
   @override
-  Exception? getError([dynamic error]) => _auth.getError();
+  Exception? getError([dynamic error]) => null; //_auth.getError();
 
   ///
   Future<void> msgError(Exception ex) =>

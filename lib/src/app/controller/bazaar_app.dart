@@ -2,7 +2,7 @@ import 'dart:async' show Future;
 import 'dart:io' show Platform;
 
 import 'package:ads/ads.dart' show Ads;
-import 'package:auth/auth.dart' show Auth;
+//import 'package:auth/auth.dart' show Auth;
 import 'package:bazaar/src/controller.dart' show AppController;
 import 'package:bazaar/src/view.dart' show MsgBox;
 import 'package:flutter/material.dart' show BuildContext;
@@ -13,14 +13,14 @@ class BazaarApp extends AppController {
   ///
   factory BazaarApp() => _this ??= BazaarApp._();
   BazaarApp._() {
-    auth = Auth();
+//    auth = Auth();
   }
 
   ///
   static BazaarApp? _this;
 
   ///
-  late Auth auth;
+//  late Auth auth;
 
   ///
   late Ads ads;
@@ -52,13 +52,13 @@ class BazaarApp extends AppController {
   @override
   Future<bool> initAsync() async {
     final bool init = await super.initAsync();
-    loggedIn = auth.isLoggedIn() ?? false;
+    //   loggedIn = auth.isLoggedIn() ?? false;
     return init;
   }
 
   @override
   void dispose() {
-    auth.dispose();
+//    auth.dispose();
     ads.dispose();
     super.dispose();
   }
