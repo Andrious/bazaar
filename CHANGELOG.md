@@ -1,7 +1,8 @@
 
-## 1.6.0
+## 1.6.0+01
  April 03, 2022
 - Removed Auth package and firebase
+- Replaced dart.io.Platform with universal_platform
 
 ## 1.5.0+01
  April 01, 2022

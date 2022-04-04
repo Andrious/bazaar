@@ -1,11 +1,15 @@
 import 'dart:async' show Future;
-import 'dart:io' show Platform;
 
 import 'package:ads/ads.dart' show Ads;
+
 //import 'package:auth/auth.dart' show Auth;
+
 import 'package:bazaar/src/controller.dart' show AppController;
-import 'package:bazaar/src/view.dart' show MsgBox;
+
+import 'package:bazaar/src/view.dart' show MsgBox, UniversalPlatform;
+
 import 'package:flutter/material.dart' show BuildContext;
+
 import 'package:flutter/services.dart' show PlatformException;
 
 ///
@@ -32,16 +36,16 @@ class BazaarApp extends AppController {
   void initState() {
     super.initState();
     ads = Ads(
-      trackingId: Platform.isAndroid
+      trackingId: UniversalPlatform.isAndroid
           ? 'ca-app-pub-3940256099942544~3347511713'
           : 'ca-app-pub-3940256099942544~1458002511',
-      bannerUnitId: Platform.isAndroid
+      bannerUnitId: UniversalPlatform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
           : 'ca-app-pub-3940256099942544/2934735716',
-      screenUnitId: Platform.isAndroid
+      screenUnitId: UniversalPlatform.isAndroid
           ? 'ca-app-pub-3940256099942544/1033173712'
           : 'ca-app-pub-3940256099942544/4411468910',
-      videoUnitId: Platform.isAndroid
+      videoUnitId: UniversalPlatform.isAndroid
           ? 'ca-app-pub-3940256099942544/5224354917'
           : 'ca-app-pub-3940256099942544/1712485313',
       keywords: ['bazaar', 'clothing'],

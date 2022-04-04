@@ -21,28 +21,36 @@
 ///
 ///
 
-export 'package:mvc_application/view.dart';
-
-export 'package:bazaar/src/home/view/homepage.dart';
-
-export 'package:bazaar/src/login/view/signup_page.dart';
-
-export 'package:bazaar/src/login/view/login_page.dart';
-
 export 'package:bazaar/src/app/view/BazaarApp.dart';
 
-export 'package:bazaar/src/home/view/build/view/recent_products.dart';
-export 'package:bazaar/src/home/view/build/view/routes/view/child/view/similar_products.dart';
+export 'package:bazaar/src/home/view/build/appbar/view/cart.dart';
+
+export 'package:bazaar/src/home/view/build/appbar/view/cart_product_details.dart';
+
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/about.dart';
+
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/contact.dart';
+
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/my_account.dart';
+
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/my_orders.dart';
+
+export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/settings.dart';
 
 export 'package:bazaar/src/home/view/build/drawer/view/home_drawer.dart';
 
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/my_account.dart';
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/my_orders.dart';
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/settings.dart';
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/about.dart';
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/contact.dart';
+export 'package:bazaar/src/home/view/build/view/recent_products.dart';
+
+export 'package:bazaar/src/home/view/build/view/routes/view/child/view/similar_products.dart';
 
 export 'package:bazaar/src/home/view/build/view/routes/view/product_detail_view.dart';
 
-export 'package:bazaar/src/home/view/build/appbar/view/cart.dart';
-export 'package:bazaar/src/home/view/build/appbar/view/cart_product_details.dart';
+export 'package:bazaar/src/home/view/homepage.dart';
+
+export 'package:bazaar/src/login/view/login_page.dart';
+
+export 'package:bazaar/src/login/view/signup_page.dart';
+
+export 'package:mvc_application/view.dart';
+
+export 'package:universal_platform/universal_platform.dart';
