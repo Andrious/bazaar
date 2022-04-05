@@ -1,4 +1,9 @@
 
+## 1.7.0
+ March 04, 2022
+- ScrollConfiguration for browser scrolling
+- Reorganized files and folders
+
 ## 1.6.0+01
  April 03, 2022
 - Removed Auth package and firebase

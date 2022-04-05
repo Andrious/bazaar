@@ -20,21 +20,10 @@
 ///          Created  07 Sep 2019
 ///
 ///
+export 'package:bazaar/src/controller/app/_app_controller.dart';
+
+export 'package:bazaar/src/controller/home/_home_controller.dart';
+
+export 'package:bazaar/src/controller/login/_login_controller.dart';
 
 export 'package:mvc_application/controller.dart';
-
-export 'package:bazaar/src/app/controller/theme_changer.dart';
-
-export 'package:bazaar/src/app/controller/bazaar_app.dart';
-
-export 'package:bazaar/src/login/controller/login_page.dart';
-
-export 'package:bazaar/src/login/controller/signup_page.dart';
-
-export 'package:bazaar/src/home/view/build/drawer/controller/home_drawer.dart';
-
-export 'package:bazaar/src/home/view/build/appbar/controller/home_appbar.dart';
-
-export 'package:bazaar/src/home/view/build/appbar/controller/showSearch/product_search.dart';
-
-export 'package:bazaar/src/home/view/build/view/routes/controller/product_detail_controller.dart';

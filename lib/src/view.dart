@@ -1,55 +1,12 @@
-///
-/// Copyright (C) 2019 Andrious Solutions
-///
-/// This program is free software; you can redistribute it and/or
-/// modify it under the terms of the GNU General Public License
-/// as published by the Free Software Foundation; either version 3
-/// of the License, or any later version.
-///
-/// You may obtain a copy of the License at
-///
-///  http://www.apache.org/licenses/LICENSE-2.0
-///
-///
-/// Unless required by applicable law or agreed to in writing, software
-/// distributed under the License is distributed on an "AS IS" BASIS,
-/// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-/// See the License for the specific language governing permissions and
-/// limitations under the License.
-///
-///          Created  07 Sep 2019
-///
-///
+export 'package:bazaar/src/view/app/bazaar_app.dart';
 
-export 'package:bazaar/src/app/view/BazaarApp.dart';
+export 'package:bazaar/src/view/home/_home_view.dart';
 
-export 'package:bazaar/src/home/view/build/appbar/view/cart.dart';
+export 'package:bazaar/src/view/home/category_images.dart';
 
-export 'package:bazaar/src/home/view/build/appbar/view/cart_product_details.dart';
+export 'package:bazaar/src/view/home/routes/_routes_view.dart';
 
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/about.dart';
-
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/contact.dart';
-
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/my_account.dart';
-
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/my_orders.dart';
-
-export 'package:bazaar/src/home/view/build/drawer/controller/routes/view/settings.dart';
-
-export 'package:bazaar/src/home/view/build/drawer/view/home_drawer.dart';
-
-export 'package:bazaar/src/home/view/build/view/recent_products.dart';
-
-export 'package:bazaar/src/home/view/build/view/routes/view/child/view/similar_products.dart';
-
-export 'package:bazaar/src/home/view/build/view/routes/view/product_detail_view.dart';
-
-export 'package:bazaar/src/home/view/homepage.dart';
-
-export 'package:bazaar/src/login/view/login_page.dart';
-
-export 'package:bazaar/src/login/view/signup_page.dart';
+export 'package:bazaar/src/view/login/_login_view.dart';
 
 export 'package:mvc_application/view.dart';
 

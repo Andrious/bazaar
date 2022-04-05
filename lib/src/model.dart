@@ -23,4 +23,4 @@
 
 //export 'package:firebase_auth/firebase_auth.dart';
 
-export 'package:bazaar/src/home/view/build/model/products.dart';
+export 'package:bazaar/src/model/_model.dart';
