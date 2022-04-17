@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:373766165600:android:73213bd24f7c0135d11f05",
+        "mobilesdk_app_id": "1:373766165600:android:62f9bc3e81690611d11f05",
         "android_client_info": {
-          "package_name": "com.example.bazaar"
+          "package_name": "com.andrioussolutions.bazaar_demo"
         }
       },
       "oauth_client": [

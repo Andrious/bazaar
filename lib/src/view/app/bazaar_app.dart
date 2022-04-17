@@ -9,12 +9,23 @@ class BazaarApp extends AppState {
   ///
   BazaarApp()
       : super(
-          con: c.BazaarApp(),
           title: 'e-Bazaar',
           debugShowCheckedModeBanner: false,
-          home: const Login(),
+          con: c.BazaarApp(),
           controllers: [
             c.ThemeChanger(),
           ],
+          locale: const Locale('en', 'CA'),
+          supportedLocales: const [
+            Locale('en', 'US'),
+            Locale('en', 'GB'),
+            Locale('en', 'AU'),
+          ],
+          localizationsDelegates: const [
+            GlobalCupertinoLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          home: const Login(),
         );
 }

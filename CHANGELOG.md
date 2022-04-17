@@ -1,6 +1,14 @@
 
+## 1.8.0
+ April 06, 2022
+- Comments out the Ads package
+- locale: const Locale('en', 'CA'),
+- import 'package:ads/ads.dart' show Ads;
+- applicationId "com.andrioussolutions.bazaar_demo"
+- msix_config to store on partner.microsoft.com
+
 ## 1.7.0
- March 04, 2022
+ April 04, 2022
 - ScrollConfiguration for browser scrolling
 - Reorganized files and folders
 

@@ -1,6 +1,6 @@
 import 'dart:async' show Future;
 
-import 'package:ads/ads.dart' show Ads;
+//import 'package:ads/ads.dart' show Ads;
 
 //import 'package:auth/auth.dart' show Auth;
 
@@ -27,7 +27,7 @@ class BazaarApp extends AppController {
 //  late Auth auth;
 
   ///
-  late Ads ads;
+//  late Ads ads;
 
   ///
   bool? loggedIn;
@@ -35,22 +35,22 @@ class BazaarApp extends AppController {
   @override
   void initState() {
     super.initState();
-    ads = Ads(
-      trackingId: UniversalPlatform.isAndroid
-          ? 'ca-app-pub-3940256099942544~3347511713'
-          : 'ca-app-pub-3940256099942544~1458002511',
-      bannerUnitId: UniversalPlatform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716',
-      screenUnitId: UniversalPlatform.isAndroid
-          ? 'ca-app-pub-3940256099942544/1033173712'
-          : 'ca-app-pub-3940256099942544/4411468910',
-      videoUnitId: UniversalPlatform.isAndroid
-          ? 'ca-app-pub-3940256099942544/5224354917'
-          : 'ca-app-pub-3940256099942544/1712485313',
-      keywords: ['bazaar', 'clothing'],
-      testing: false,
-    );
+    // ads = Ads(
+    //   trackingId: UniversalPlatform.isAndroid
+    //       ? 'ca-app-pub-3940256099942544~3347511713'
+    //       : 'ca-app-pub-3940256099942544~1458002511',
+    //   bannerUnitId: UniversalPlatform.isAndroid
+    //       ? 'ca-app-pub-3940256099942544/6300978111'
+    //       : 'ca-app-pub-3940256099942544/2934735716',
+    //   screenUnitId: UniversalPlatform.isAndroid
+    //       ? 'ca-app-pub-3940256099942544/1033173712'
+    //       : 'ca-app-pub-3940256099942544/4411468910',
+    //   videoUnitId: UniversalPlatform.isAndroid
+    //       ? 'ca-app-pub-3940256099942544/5224354917'
+    //       : 'ca-app-pub-3940256099942544/1712485313',
+    //   keywords: ['bazaar', 'clothing'],
+    //   testing: false,
+    // );
   }
 
   @override
@@ -63,7 +63,7 @@ class BazaarApp extends AppController {
   @override
   void dispose() {
 //    auth.dispose();
-    ads.dispose();
+//    ads.dispose();
     super.dispose();
   }
 

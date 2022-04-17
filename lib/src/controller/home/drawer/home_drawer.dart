@@ -27,7 +27,7 @@ class HomeDrawer extends ControllerMVC {
     _theme = ThemeChanger();
     _darkmode = _theme.darkMode;
     // Load the Ad into memory.
-    _con.ads.setBannerAd();
+//    _con.ads.setBannerAd();
   }
 
   ///
@@ -65,12 +65,12 @@ class HomeDrawer extends ControllerMVC {
 
   ///
   void onTap(Widget widget) {
-    _con.ads.bannerAd?.show();
-    Navigator.of(_state.context)
-        .push(MaterialPageRoute<void>(builder: (context) => widget))
-        .then((_) {
-      _con.ads.closeBannerAd();
-    });
+    // _con.ads.bannerAd?.show();
+    // Navigator.of(_state.context)
+    //     .push(MaterialPageRoute<void>(builder: (context) => widget))
+    //     .then((_) {
+    //   _con.ads.closeBannerAd();
+    // });
   }
 
   ///
