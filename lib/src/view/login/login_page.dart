@@ -173,9 +173,10 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                   Transform(
                     transform: Matrix4.translationValues(
                         animation.value * width, 0, 0),
-                    child: const Text(
-                      'Welcome Back. I am Very Much Excited About Your Next Shopping',
-                      style: TextStyle(),
+                    child: const Center(
+                      child: Text(
+                        'Welcome Back. Enjoy your shopping.',
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -186,7 +187,7 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                         transform: Matrix4.translationValues(
                             animation.value * width, 0, 0),
                         child: Container(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
                           child: Text(
                             'Login',
                             style: _loginRegStyles(),
@@ -212,6 +213,18 @@ class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
                         ),
                       ),
                     ],
+                  ),
+                  Center(
+                    child: Column(children: const [
+                      Text(
+                        'No need to Login. Tap button to continue.',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      Text(
+                        'DEMO APP ONLY',
+                        style: TextStyle(fontSize: 20, fontFamily: 'Open Sans'),
+                      ),
+                    ]),
                   ),
                   Transform(
                     transform: Matrix4.translationValues(

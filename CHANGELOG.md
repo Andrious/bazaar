@@ -1,11 +1,12 @@
 
-## 1.8.0
+## 1.8.0+01
  April 06, 2022
 - Comments out the Ads package
 - locale: const Locale('en', 'CA'),
 - import 'package:ads/ads.dart' show Ads;
 - applicationId "com.andrioussolutions.bazaar_demo"
 - msix_config to store on partner.microsoft.com
+- 'Demo only' message in login screen
 
 ## 1.7.0
  April 04, 2022
