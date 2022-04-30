@@ -1,8 +1,6 @@
-import 'package:bazaar/src/view.dart' hide HomeDrawer;
-
 import 'package:bazaar/src/controller.dart' as c;
 
-import '../homepage.dart';
+import 'package:bazaar/src/view.dart' hide HomeDrawer;
 
 ///
 class HomeDrawer extends StatelessWidget {

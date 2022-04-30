@@ -69,5 +69,6 @@ class ThemeChanger extends ControllerMVC {
         App.themeData = ThemeData.light();
       }
     }
+    App.iOSTheme = App.themeData;
   }
 }

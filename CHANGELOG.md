@@ -1,4 +1,9 @@
 
+## 1.8.1
+ April 30, 2022
+- Navigator.of(_state.context) in onTap() function
+- App.iOSTheme = App.themeData; in setTheme() function.
+
 ## 1.8.0+03
  April 06, 2022
 - Comments out the Ads package

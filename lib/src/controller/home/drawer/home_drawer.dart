@@ -71,6 +71,10 @@ class HomeDrawer extends ControllerMVC {
     //     .then((_) {
     //   _con.ads.closeBannerAd();
     // });
+
+    Navigator.of(_state.context)
+        .push(MaterialPageRoute<void>(builder: (context) => widget));
+    refresh();
   }
 
   ///
