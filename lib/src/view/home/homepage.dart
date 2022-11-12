@@ -1,7 +1,7 @@
 import 'package:bazaar/src/controller.dart' as c;
 
 import 'package:bazaar/src/view.dart'
-    show HomeDrawer, Image, RecentProducts, StateMVC;
+    show HomeDrawer, Image, RecentProducts, StateX;
 
 // import 'package:carousel_pro/carousel_pro.dart' show Carousel;
 
@@ -11,13 +11,11 @@ import 'package:flutter/material.dart'
     show
         Alignment,
         AppBar,
-        AssetImage,
         BuildContext,
         Color,
         Colors,
         Column,
         Container,
-        Curves,
         EdgeInsets,
         Flexible,
         FontWeight,
@@ -56,7 +54,7 @@ class HomePage extends StatefulWidget {
 }
 
 ///
-class HomePageState extends StateMVC<HomePage> {
+class HomePageState extends StateX<HomePage> {
   ///
   HomePageState() : super(c.ThemeChanger()) {
     add(c.HomeDrawer());

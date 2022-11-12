@@ -1,4 +1,4 @@
-import 'package:bazaar/src/controller.dart' show ControllerMVC, Prefs;
+import 'package:bazaar/src/controller.dart' show StateXController, Prefs;
 
 import 'package:bazaar/src/view.dart' show App;
 
@@ -25,7 +25,7 @@ class ThemeChanger01 extends ChangeNotifier {
 }
 
 ///
-class ThemeChanger extends ControllerMVC {
+class ThemeChanger extends StateXController {
   ///
   factory ThemeChanger() => _this ??= ThemeChanger._();
   ThemeChanger._();

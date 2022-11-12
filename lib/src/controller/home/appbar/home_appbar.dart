@@ -1,4 +1,5 @@
-import 'package:bazaar/src/controller.dart' show ControllerMVC, ProductSearch;
+import 'package:bazaar/src/controller.dart'
+    show StateXController, ProductSearch;
 
 import 'package:bazaar/src/view.dart' show Cart;
 
@@ -13,7 +14,7 @@ import 'package:flutter/material.dart'
         showSearch;
 
 ///
-class HomeAppBar extends ControllerMVC {
+class HomeAppBar extends StateXController {
   ///
   factory HomeAppBar() => _this ??= HomeAppBar._();
   HomeAppBar._();
@@ -23,9 +24,8 @@ class HomeAppBar extends ControllerMVC {
   Widget get search => IconButton(
         icon: const Icon(Icons.search),
         onPressed: () async {
-          await showSearch(
-              context: stateMVC!.context, delegate: ProductSearch());
-          refresh();
+          await showSearch(context: state!.context, delegate: ProductSearch());
+          setState(() {});
         },
       );
 
@@ -33,7 +33,7 @@ class HomeAppBar extends ControllerMVC {
   Widget get cart => IconButton(
         icon: const Icon(Icons.shopping_cart),
         onPressed: () {
-          Navigator.of(stateMVC!.context).push(
+          Navigator.of(state!.context).push(
               MaterialPageRoute<void>(builder: (context) => const Cart()));
         },
       );

@@ -26,4 +26,4 @@ export 'package:bazaar/src/controller/home/_home_controller.dart';
 
 export 'package:bazaar/src/controller/login/_login_controller.dart';
 
-export 'package:mvc_application/controller.dart';
+export 'package:fluttery_framework/controller.dart';

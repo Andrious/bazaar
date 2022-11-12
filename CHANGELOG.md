@@ -1,4 +1,8 @@
 
+## 1.9.0
+ November, 11, 2022
+- import 'package:fluttery_framework'
+
 ## 1.8.1
  April 30, 2022
 - Navigator.of(_state.context) in onTap() function

@@ -1,6 +1,6 @@
 import 'package:bazaar/src/controller.dart' as c;
 
-import 'package:bazaar/src/view.dart' show Key, SimilarProducts, StateMVC;
+import 'package:bazaar/src/view.dart' show Key, SimilarProducts, StateX;
 
 import 'package:flutter/material.dart'
     show
@@ -65,7 +65,7 @@ class ProductDetails extends StatefulWidget {
 }
 
 ///
-class ProductDetailsState extends StateMVC<ProductDetails> {
+class ProductDetailsState extends StateX<ProductDetails> {
   ///
   ProductDetailsState() : super(c.ProductDetails()) {
     con = controller as c.ProductDetails;

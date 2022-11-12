@@ -1,9 +1,9 @@
 //import 'package:auth/auth.dart' show Auth;
 
-import 'package:bazaar/src/controller.dart' show BazaarApp, ControllerMVC;
+import 'package:bazaar/src/controller.dart' show BazaarApp, StateXController;
 
 ///
-class LoginPage extends ControllerMVC {
+class LoginPage extends StateXController {
   ///
   factory LoginPage() => _this ??= LoginPage._();
   LoginPage._() {
@@ -37,13 +37,13 @@ class LoginPage extends ControllerMVC {
   Future<bool> signIn(String email, String password) => Future.value(
       false); //    _auth.signInWithEmailAndPassword(email: email, password: password);
 
-  @override
+  ///
   bool get inError => false; // _auth.message.isNotEmpty;
 
-  @override
+  ///
   Exception? getError([dynamic error]) => null; //_auth.getError();
 
   ///
   Future<void> msgError(Exception ex) =>
-      con.msgError(ex, context: stateMVC!.context);
+      con.msgError(ex, context: state!.context);
 }

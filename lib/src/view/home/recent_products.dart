@@ -19,7 +19,7 @@ class RecentProducts extends StatefulWidget {
   static void clear() => _RecentProductsState.clear();
 }
 
-class _RecentProductsState extends StateMVC<RecentProducts> {
+class _RecentProductsState extends StateX<RecentProducts> {
   _RecentProductsState() : super(c.HomeAppBar());
 
   static void search(String word) {

@@ -1,10 +1,10 @@
-import 'package:bazaar/src/controller.dart' show ControllerMVC, Prefs;
+import 'package:bazaar/src/controller.dart' show StateXController, Prefs;
 import 'package:bazaar/src/view.dart' as v;
 import 'package:flutter/material.dart'
     show Color, Icon, IconButton, Icons, MaterialPageRoute, Navigator, Widget;
 
 ///
-class ProductDetails extends ControllerMVC {
+class ProductDetails extends StateXController {
   ///
   factory ProductDetails() => _this ??= ProductDetails._();
   ProductDetails._();
@@ -19,7 +19,7 @@ class ProductDetails extends ControllerMVC {
   @override
   void initState() {
     super.initState();
-    _state = stateMVC as v.ProductDetailsState;
+    _state = state as v.ProductDetailsState;
     selected = Prefs.getBool(_state.widget.productDetailsName);
   }
 
@@ -43,7 +43,7 @@ class ProductDetails extends ControllerMVC {
         icon: Icon(selected ? Icons.favorite : Icons.favorite_border),
         onPressed: () {
           selected = !selected;
-          refresh();
+          setState(() {});
         },
       );
 }

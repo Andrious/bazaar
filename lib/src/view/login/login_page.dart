@@ -1,6 +1,6 @@
 import 'package:bazaar/src/controller.dart' show LoginPage;
 
-import 'package:bazaar/src/view.dart' show HomePage, SignUp, StateMVC;
+import 'package:bazaar/src/view.dart' show HomePage, SignUp, StateX;
 
 import 'package:flutter/material.dart'
     show
@@ -72,7 +72,7 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends StateMVC<Login> with SingleTickerProviderStateMixin {
+class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
   _LoginState() : super(LoginPage()) {
     con = controller as LoginPage;
     isLoggedin = con.loggedIn;

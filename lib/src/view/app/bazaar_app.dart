@@ -2,7 +2,7 @@ import 'package:bazaar/src/controller.dart' as c;
 
 import 'package:bazaar/src/view.dart' show Login;
 
-import 'package:mvc_application/view.dart';
+import 'package:fluttery_framework/view.dart';
 
 ///
 class BazaarApp extends AppState {
@@ -11,7 +11,7 @@ class BazaarApp extends AppState {
       : super(
           title: 'e-Bazaar',
           debugShowCheckedModeBanner: false,
-          con: c.BazaarApp(),
+          controller: c.BazaarApp(),
           controllers: [
             c.ThemeChanger(),
           ],

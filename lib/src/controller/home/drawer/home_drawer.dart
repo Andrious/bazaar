@@ -5,7 +5,7 @@ import 'package:bazaar/src/controller.dart';
 import 'package:bazaar/src/view.dart' hide BazaarApp;
 
 ///
-class HomeDrawer extends ControllerMVC {
+class HomeDrawer extends StateXController {
   ///
   factory HomeDrawer() => _this ?? HomeDrawer._();
   HomeDrawer._();
@@ -23,7 +23,7 @@ class HomeDrawer extends ControllerMVC {
     super.initState();
     _con = BazaarApp();
 //    _auth = _con.auth;
-    _state = stateMVC as HomePageState;
+    _state = state as HomePageState;
     _theme = ThemeChanger();
     _darkmode = _theme.darkMode;
     // Load the Ad into memory.
@@ -74,7 +74,7 @@ class HomeDrawer extends ControllerMVC {
 
     Navigator.of(_state.context)
         .push(MaterialPageRoute<void>(builder: (context) => widget));
-    refresh();
+    setState(() {});
   }
 
   ///
@@ -116,7 +116,7 @@ class HomeDrawer extends ControllerMVC {
           onChanged: (val) {
             _darkmode = val;
             _theme.setDarkMode(dark: _darkmode);
-            refresh();
+            setState(() {});
           },
         ),
       );
