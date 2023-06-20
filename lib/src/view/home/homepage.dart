@@ -41,13 +41,13 @@ class HomePage extends StatefulWidget {
   }) : super(key: key);
 
   ///
-  final searchProdName;
+  final String? searchProdName;
 
   ///
-  final searchProdImage;
+  final String? searchProdImage;
 
   ///
-  final searchProdPrice;
+  final double? searchProdPrice;
 
   @override
   HomePageState createState() => HomePageState();
@@ -56,14 +56,14 @@ class HomePage extends StatefulWidget {
 ///
 class HomePageState extends StateX<HomePage> {
   ///
-  HomePageState() : super(c.ThemeChanger()) {
+  HomePageState() : super(controller: c.ThemeChanger()) {
     add(c.HomeDrawer());
     add(c.HomeAppBar());
   }
 
   @override
-  Widget build(BuildContext context) {
-    final c.HomeAppBar con = c.HomeAppBar();
+  Widget buildAndroid(BuildContext context) {
+    final con = controllerByType<c.HomeAppBar>()!;
     return Scaffold(
       // Drawer Start
       drawer: HomeDrawer(state: this),
@@ -80,8 +80,6 @@ class HomePageState extends StateX<HomePage> {
       body: Column(
         children: <Widget>[
           _imgCarousel(),
-          // _categories(),
-          // CategoryImages(),
           Container(
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.all(10),
@@ -119,21 +117,6 @@ class HomePageState extends StateX<HomePage> {
           Image.asset('images/c6.jpg'),
         ],
       ),
-      // child: Carousel(
-      //   overlayShadow: true,
-      //   overlayShadowColors: Colors.black45,
-      //   dotSize: 5,
-      //   animationCurve: Curves.bounceInOut,
-      //   dotBgColor: Colors.transparent,
-      //   images: const [
-      //     AssetImage('images/c1.jpg'),
-      //     AssetImage('images/c5.jpg'),
-      //     AssetImage('images/c2.jpg'),
-      //     AssetImage('images/c3.jpg'),
-      //     AssetImage('images/c4.jpg'),
-      //     AssetImage('images/c6.jpg'),
-      //   ],
-      // ),
     );
   }
 

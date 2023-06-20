@@ -15,11 +15,10 @@ description: A sample app demonstrating functions and features implemented by th
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.9.0+01
+version: 1.10.0
 
 environment:
-#  sdk: ">=2.16.2 <3.0.0"
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=2.18.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -69,10 +68,8 @@ dependencies:
   #  # https://pub.dev/packages/google_sign_in
   #  google_sign_in: '>=4.0.0 <5.0.0'
 
-#  mvc_application: ^8.0.0 #^6.0.0
-##   path: ../../packages/mvc_application
 
-  fluttery_framework: ^1.0.0
+  fluttery_framework: ^4.0.0
 #     path: ../../packages/fluttery_framework
 
   # https://pub.dev/packages/universal_platform

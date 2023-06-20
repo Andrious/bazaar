@@ -1,4 +1,8 @@
 
+## 1.10.0
+ June 20, 2023
+- Updated Flutter and Fluttery Framework
+
 ## 1.9.0+01
  November, 11, 2022
 - import 'package:fluttery_framework'

@@ -116,7 +116,10 @@ class HomeDrawer extends StateXController {
           onChanged: (val) {
             _darkmode = val;
             _theme.setDarkMode(dark: _darkmode);
+            // To display the switch button change
             setState(() {});
+            // To display the 'dark mode' change for the whole app.
+            App.setState(() {});
           },
         ),
       );

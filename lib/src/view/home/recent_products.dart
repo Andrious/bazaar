@@ -20,7 +20,7 @@ class RecentProducts extends StatefulWidget {
 }
 
 class _RecentProductsState extends StateX<RecentProducts> {
-  _RecentProductsState() : super(c.HomeAppBar());
+  _RecentProductsState() : super(controller: c.HomeAppBar());
 
   static void search(String word) {
     final String search = word.toLowerCase();
@@ -36,7 +36,7 @@ class _RecentProductsState extends StateX<RecentProducts> {
   List<Map<String, dynamic>>? itemsList;
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildAndroid(BuildContext context) {
     if (items == null) {
       itemsList = productsItems;
     } else {

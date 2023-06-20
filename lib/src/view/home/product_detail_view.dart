@@ -38,27 +38,27 @@ class ProductDetails extends StatefulWidget {
   ///
   const ProductDetails(
       {Key? key,
-      this.productDetailsName,
-      this.productDetailsImage,
-      this.productDetailsoldPrice,
-      this.productDetailsPrice,
-      this.productDetailsDesc})
+      required this.productDetailsName,
+      required this.productDetailsImage,
+      required this.productDetailsoldPrice,
+      required this.productDetailsPrice,
+      required this.productDetailsDesc})
       : super(key: key);
 
-  ///
-  final productDetailsName;
+  /// Name
+  final String productDetailsName;
 
-  ///
-  final productDetailsImage;
+  /// url
+  final String productDetailsImage;
 
-  ///
-  final productDetailsoldPrice;
+  /// Sold price
+  final double productDetailsoldPrice;
 
-  ///
-  final productDetailsPrice;
+  /// Price
+  final double productDetailsPrice;
 
-  ///
-  final productDetailsDesc;
+  /// Description
+  final String productDetailsDesc;
 
   @override
   ProductDetailsState createState() => ProductDetailsState();
@@ -67,7 +67,7 @@ class ProductDetails extends StatefulWidget {
 ///
 class ProductDetailsState extends StateX<ProductDetails> {
   ///
-  ProductDetailsState() : super(c.ProductDetails()) {
+  ProductDetailsState() : super(controller: c.ProductDetails()) {
     con = controller as c.ProductDetails;
   }
 
@@ -75,7 +75,7 @@ class ProductDetailsState extends StateX<ProductDetails> {
   late c.ProductDetails con;
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildAndroid(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -93,7 +93,7 @@ class ProductDetailsState extends StateX<ProductDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 20, left: 20),
                 child: Text(
-                  '${widget.productDetailsName}',
+                  widget.productDetailsName,
                   style: const TextStyle(
                       color: Color(0xFFB33771),
                       fontWeight: FontWeight.bold,
@@ -229,7 +229,7 @@ class ProductDetailsState extends StateX<ProductDetails> {
               textColor: Colors.white,
               padding: const EdgeInsets.all(15),
               onPressed: () {
-                showDialog(
+                showDialog<void>(
                     context: context,
                     builder: (context) {
                       return AlertDialog(
@@ -258,7 +258,7 @@ class ProductDetailsState extends StateX<ProductDetails> {
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 5),
-                child: Text('${widget.productDetailsDesc}'),
+                child: Text(widget.productDetailsDesc),
               ),
             ),
           ),

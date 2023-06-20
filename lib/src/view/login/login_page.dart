@@ -73,7 +73,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
-  _LoginState() : super(LoginPage()) {
+  _LoginState() : super(controller: LoginPage()) {
     con = controller as LoginPage;
     isLoggedin = con.loggedIn;
   }
@@ -85,7 +85,7 @@ class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  late Animation animation, delayAnimation, muchDelayedAnimation;
+  late Animation<num> animation, delayAnimation, muchDelayedAnimation;
   late AnimationController animationController;
 
   bool loading = false;
@@ -123,7 +123,7 @@ class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildAndroid(BuildContext context) {
     if (isLoggedin) {
       return const HomePage();
     }
@@ -214,8 +214,8 @@ class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
                       ),
                     ],
                   ),
-                  Center(
-                    child: Column(children: const [
+                  const Center(
+                    child: Column(children: [
                       Text(
                         'No need to Login. Tap button to continue.',
                         style: TextStyle(fontSize: 18),
@@ -470,9 +470,9 @@ class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        return AlertDialog(
+        return const AlertDialog(
           content: Row(
-            children: const <Widget>[
+            children: <Widget>[
               CircularProgressIndicator(),
               SizedBox(
                 width: 20,
