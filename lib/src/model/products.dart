@@ -1,3 +1,4 @@
+/// List of product items
 final List<Map<String, dynamic>> productsItems = [
   {
     'name': 'Blazer',
@@ -21,7 +22,7 @@ final List<Map<String, dynamic>> productsItems = [
     'oldPrice': 888,
     'price': 200,
     'prodDesc':
-        "A dress (also known as a frock or a gown) is a garment consisting of a skirt with an attached bodice (or a matching bodice giving the effect of a one-piece garment).[1] It consists of a top piece that covers the torso and hangs down over the legs. A dress can be any one-piece garment containing a skirt of any length. Dresses can be formal or informal. In many cultures, dresses are more often worn by women and girls.The hemlines of dresses vary depending on the fashion of the time period and the modesty or personal taste of the wearer"
+        'A dress (also known as a frock or a gown) is a garment consisting of a skirt with an attached bodice (or a matching bodice giving the effect of a one-piece garment).[1] It consists of a top piece that covers the torso and hangs down over the legs. A dress can be any one-piece garment containing a skirt of any length. Dresses can be formal or informal. In many cultures, dresses are more often worn by women and girls.The hemlines of dresses vary depending on the fashion of the time period and the modesty or personal taste of the wearer'
   },
   {
     'name': 'White-Dress',
@@ -29,7 +30,7 @@ final List<Map<String, dynamic>> productsItems = [
     'oldPrice': 888,
     'price': 200,
     'prodDesc':
-        "A dress (also known as a frock or a gown) is a garment consisting of a skirt with an attached bodice (or a matching bodice giving the effect of a one-piece garment).[1] It consists of a top piece that covers the torso and hangs down over the legs. A dress can be any one-piece garment containing a skirt of any length. Dresses can be formal or informal. In many cultures, dresses are more often worn by women and girls.The hemlines of dresses vary depending on the fashion of the time period and the modesty or personal taste of the wearer"
+        'A dress (also known as a frock or a gown) is a garment consisting of a skirt with an attached bodice (or a matching bodice giving the effect of a one-piece garment).[1] It consists of a top piece that covers the torso and hangs down over the legs. A dress can be any one-piece garment containing a skirt of any length. Dresses can be formal or informal. In many cultures, dresses are more often worn by women and girls.The hemlines of dresses vary depending on the fashion of the time period and the modesty or personal taste of the wearer'
   },
   {
     'name': 'Blue-Jeans',
@@ -113,8 +114,8 @@ final List<Map<String, dynamic>> productsItems = [
   },
 ];
 
-// final List searchProd = ["arr", "allow", "Blazer", "ramu", "haz"];
-final List searchProd = [
+/// Search strings.
+final List<String> searchProd = [
   'Blazer',
   'Red-Blazer',
   'Dress',
@@ -128,7 +129,9 @@ final List searchProd = [
   'Heel1',
   'Heel2',
 ];
-final List recentSearchProd = [
+
+/// List of recent searches.
+final List<String> recentSearchProd = [
   'Blazer',
   'Dress',
   'Jeans',

@@ -5,9 +5,17 @@ import 'package:bazaar/src/view.dart' show Login;
 import 'package:fluttery_framework/view.dart';
 
 ///
-class BazaarApp extends AppState {
+class MyApp extends AppStatefulWidget {
   ///
-  BazaarApp()
+  MyApp({Key? key}) : super(key: key);
+  @override
+  AppState createAppState() => _BazaarAppState();
+}
+
+///
+class _BazaarAppState extends AppState {
+  ///
+  _BazaarAppState()
       : super(
           title: 'e-Bazaar',
           debugShowCheckedModeBanner: false,
