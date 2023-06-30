@@ -1,7 +1,8 @@
 
-## 1.10.0+01
+## 1.10.0+02
  June 20, 2023
 - Updated Flutter and Fluttery Framework
+- Updated README.md file
 
 ## 1.9.0+01
  November, 11, 2022
