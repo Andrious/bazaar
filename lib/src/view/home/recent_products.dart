@@ -103,4 +103,8 @@ class _RecentProductsState extends StateX<RecentProducts> {
       ),
     );
   }
+
+  // The Cupertino interface was not implemented.
+  @override
+  Widget buildiOS(BuildContext context) => buildAndroid(context);
 }

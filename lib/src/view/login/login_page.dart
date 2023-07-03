@@ -484,4 +484,8 @@ class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
       },
     );
   }
+
+  // The Cupertino interface was not implemented.
+  @override
+  Widget buildiOS(BuildContext context) => buildAndroid(context);
 }

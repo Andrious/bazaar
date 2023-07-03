@@ -292,4 +292,8 @@ class ProductDetailsState extends StateX<ProductDetails> {
     );
     showDialog<void>(context: context, builder: (context) => _alert);
   }
+
+  // The Cupertino interface was not implemented.
+  @override
+  Widget buildiOS(BuildContext context) => buildAndroid(context);
 }
