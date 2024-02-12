@@ -1,8 +1,35 @@
 //import 'package:auth/auth.dart' show Auth;
 
-import 'package:bazaar/src/controller.dart';
+import 'package:bazaar/src/controller.dart'
+    show BazaarApp, StateXController, ThemeChanger;
 
-import 'package:bazaar/src/view.dart' hide BazaarApp;
+import 'package:bazaar/src/view.dart'
+    show
+        About,
+        App,
+        AppStateExtension,
+        BoxDecoration,
+        CircleAvatar,
+        Color,
+        Colors,
+        Contact,
+        FontWeight,
+        GestureDetector,
+        HomePageState,
+        Icons,
+        Image,
+        InkWell,
+        ListTile,
+        MaterialPageRoute,
+        MyAccount,
+        MyOrders,
+        Navigator,
+        Settings,
+        Switch,
+        Text,
+        TextStyle,
+        UserAccountsDrawerHeader,
+        Widget;
 
 ///
 class HomeDrawer extends StateXController {

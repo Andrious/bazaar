@@ -6,7 +6,7 @@ import 'dart:async' show Future;
 
 import 'package:bazaar/src/controller.dart' show AppController;
 
-import 'package:bazaar/src/view.dart' show MsgBox, UniversalPlatform;
+import 'package:bazaar/src/view.dart' show MsgBox;
 
 import 'package:flutter/material.dart' show BuildContext;
 

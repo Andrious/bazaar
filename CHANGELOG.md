@@ -1,4 +1,9 @@
 
+## 1.11.0
+ February 12, 2023
+- isLoggedin = true; // Ignore the Login Page for now. gp
+- allowChangeTheme: true, allowChangeLocale: true,
+
 ## 1.10.0+03
  June 20, 2023
 - Updated Flutter and Fluttery Framework

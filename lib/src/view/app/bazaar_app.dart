@@ -23,6 +23,8 @@ class _BazaarAppState extends AppState {
           controllers: [
             c.ThemeChanger(),
           ],
+          allowChangeTheme: true,
+          allowChangeLocale: true,
           locale: const Locale('en', 'CA'),
           supportedLocales: const [
             Locale('en', 'US'),

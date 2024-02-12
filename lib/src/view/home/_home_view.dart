@@ -11,8 +11,6 @@ export 'package:bazaar/src/view/home/homepage.dart';
 
 export 'package:bazaar/src/view/home/product_detail_view.dart';
 
-export 'package:bazaar/src/view/home/product_detail_view.dart';
-
 export 'package:bazaar/src/view/home/recent_products.dart';
 
 export 'package:bazaar/src/view/home/routes/_routes_view.dart';

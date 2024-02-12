@@ -75,7 +75,8 @@ class Login extends StatefulWidget {
 class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
   _LoginState() : super(controller: LoginPage()) {
     con = controller as LoginPage;
-    isLoggedin = con.loggedIn;
+    // Ignore the Login Page for now. gp
+    isLoggedin = true; // con.loggedIn;
   }
   late LoginPage con;
 
@@ -245,12 +246,12 @@ class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
                                     // color: Colors.white,
                                     ),
                                 labelText: 'Email'),
-                            // validator: (val) {
-                            //   if (val.isEmpty) {
-                            //     return "Please Provide Email";
-                            //   }
-                            //   return null;
-                            // },
+                            validator: (val) {
+                              if (val != null && val.isEmpty) {
+                                return 'Please Provide Email';
+                              }
+                              return null;
+                            },
                             onSaved: (val) {
                               _emailController.text = val!;
                             },
@@ -284,8 +285,6 @@ class _LoginState extends StateX<Login> with SingleTickerProviderStateMixin {
                             validator: (val) {
                               if (val!.isNotEmpty && val.length < 6) {
                                 return 'Password must contain at least 6 characters';
-                                // } else if (val.isEmpty) {
-                                //   return "Password field can't be empty";
                               }
                               return null;
                             },

@@ -1,6 +1,6 @@
 import 'package:bazaar/src/controller.dart' show StateXController, Prefs;
 
-import 'package:bazaar/src/view.dart' show App, AppStateExtension;
+import 'package:bazaar/src/view.dart' show App;
 
 import 'package:flutter/material.dart' show ChangeNotifier, ThemeData;
 
@@ -69,6 +69,6 @@ class ThemeChanger extends StateXController {
         App.themeData = ThemeData.light();
       }
     }
-    App.iOSTheme = App.themeData;
+    App.iOSThemeData = App.themeData;
   }
 }

@@ -15,7 +15,7 @@ description: A sample app demonstrating functions and features implemented by th
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.10.0+03
+version: 1.11.0
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
@@ -70,7 +70,7 @@ dependencies:
 
 
   fluttery_framework: ^4.0.0
-#     path: ../../packages/fluttery_framework
+ #    path: ../../packages/fluttery_framework
 
   # https://pub.dev/packages/universal_platform
   universal_platform: ^1.0.0

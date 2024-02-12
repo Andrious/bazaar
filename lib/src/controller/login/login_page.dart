@@ -8,7 +8,7 @@ class LoginPage extends StateXController {
   factory LoginPage() => _this ??= LoginPage._();
   LoginPage._() {
     con = BazaarApp();
-    loggedIn = false; //con.loggedIn!;
+    loggedIn = con.loggedIn ?? false;
 //    _auth = con.auth;
   }
   static LoginPage? _this;
