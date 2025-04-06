@@ -99,8 +99,8 @@ mapping.txt
 seeds.txt
 unused.txt
 
-/obfuscate/
-/obfuscation/
+obfuscate/
+obfuscation/
 
 # No need for testing
 /test/
@@ -130,17 +130,17 @@ GeneratedPluginRegistrant.*
 Info.plist
 
 # Linux related
-/linux/
+linux/
 
 # macro related
-/macros/
-/macos/
+macros/
+macos/
 
 ## Don't need the Web stuff
-/web/
+web/
 
 ## Don't need the Windows stuff
-/windows/
+windows/
 
 # flutter_local_notifications
 -keep class com.dexterous.** { *; }

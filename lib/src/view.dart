@@ -10,4 +10,6 @@ export 'package:bazaar/src/view/login/_login_view.dart';
 
 export 'package:fluttery_framework/view.dart';
 
+export 'package:ui_widgets_utils/ui_widgets_utils.dart';
+
 export 'package:universal_platform/universal_platform.dart';

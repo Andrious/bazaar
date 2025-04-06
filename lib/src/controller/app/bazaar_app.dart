@@ -4,7 +4,7 @@ import 'dart:async' show Future;
 
 //import 'package:auth/auth.dart' show Auth;
 
-import 'package:bazaar/src/controller.dart' show AppController;
+import 'package:bazaar/src/controller.dart' show AppStateXController;
 
 import 'package:bazaar/src/view.dart' show MsgBox;
 
@@ -13,7 +13,7 @@ import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter/services.dart' show PlatformException;
 
 ///
-class BazaarApp extends AppController {
+class BazaarApp extends AppStateXController {
   ///
   factory BazaarApp() => _this ??= BazaarApp._();
   BazaarApp._() {

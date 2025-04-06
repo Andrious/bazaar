@@ -1,4 +1,9 @@
 
+## 1.12.0
+ April 05, 2025
+- Updated Fluttery Framework
+- converted int to double in products.dart 
+
 ## 1.11.0
  February 12, 2023
 - isLoggedin = true; // Ignore the Login Page for now. gp

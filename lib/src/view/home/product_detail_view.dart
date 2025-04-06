@@ -203,7 +203,7 @@ class ProductDetailsState extends StateX<ProductDetails> {
               children: <Widget>[
                 const Text('You Save :  '),
                 Text(
-                  ' \$ ${widget.productDetailsoldPrice - widget.productDetailsPrice} Inclusive all taxes',
+                  ' \$ ${(widget.productDetailsoldPrice - widget.productDetailsPrice).toStringAsFixed(2)} Inclusive all taxes',
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
                   ),

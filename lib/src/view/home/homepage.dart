@@ -107,7 +107,7 @@ class HomePageState extends StateX<HomePage> {
         options: CarouselOptions(
           autoPlay: true,
         ),
-        carouselController: CarouselController(),
+        carouselController: CarouselSliderController(),
         items: [
           Image.asset('images/c1.jpg'),
           Image.asset('images/c5.jpg'),
